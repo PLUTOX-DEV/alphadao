@@ -53,6 +53,7 @@ export const SparklesCore = ({
       speedY: number
 
       constructor() {
+        const canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
         this.size = Math.random() * (maxSize - minSize) + minSize
@@ -63,7 +64,7 @@ export const SparklesCore = ({
       update() {
         this.x += this.speedX
         this.y += this.speedY
-
+        const canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
         if (this.x > canvas.width) this.x = 0
         if (this.x < 0) this.x = canvas.width
         if (this.y > canvas.height) this.y = 0

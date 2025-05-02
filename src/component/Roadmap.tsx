@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState , ReactNode} from "react"
 import { Badge } from "../components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Beaker, CheckCircle2, Code2, Coins, FileText, Globe, LockKeyhole, Network, Rocket, Users } from "lucide-react"
+
+
 
 type Phase = {
   id: string
@@ -13,7 +15,7 @@ type Phase = {
   milestones: {
     title: string
     description: string
-    icon: JSX.Element
+    icon: ReactNode
     completed?: boolean
   }[]
 }
@@ -37,7 +39,7 @@ export function Roadmap() {
         },
         {
           title: "Core Team Formation",
-          description: "Assembling a team of blockchain developers, cryptographers, and business strategists.",
+          description: "Assembling a team of blockchain developers, project managers, ambassadors and business strategists.",
           icon: <Users className="h-5 w-5 text-blue-400" />,
           completed: true,
         },
@@ -48,7 +50,7 @@ export function Roadmap() {
           completed: true,
         },
         {
-          title: "Seed Funding Round",
+          title: "Seed Round",
           description: "Initial capital raise from strategic investors and venture capital firms.",
           icon: <Coins className="h-5 w-5 text-blue-400" />,
           completed: true,
@@ -57,14 +59,14 @@ export function Roadmap() {
     },
     {
       id: "phase2",
-      title: "Phase 2: Development",
-      timeline: "Q3-Q4 2025",
+      title: "Phase 2: Launch",
+      timeline: "Q2-Q3 -2025",
       status: "in-progress",
       description: "Building and testing the core protocol and platform features.",
       milestones: [
         {
-          title: "Testnet Launch",
-          description: "Deployment of the protocol on a test network for initial validation and bug fixing.",
+          title: "Education Hub & Governance",
+          description: "Education hub and Governance tools goes live",
           icon: <Beaker className="h-5 w-5 text-purple-400" />,
           completed: true,
         },
@@ -72,7 +74,7 @@ export function Roadmap() {
           title: "Security Audit",
           description: "Comprehensive third-party security audit of all smart contracts and platform code.",
           icon: <LockKeyhole className="h-5 w-5 text-purple-400" />,
-          completed: true,
+          completed: false,
         },
         {
           title: "Community Building",
@@ -91,25 +93,25 @@ export function Roadmap() {
     {
       id: "phase3",
       title: "Phase 3: Launch",
-      timeline: "Q1-Q2 2026",
+      timeline: "Q3-Q4 2025",
       status: "upcoming",
       description: "Official launch of the platform and token to the public.",
       milestones: [
         {
-          title: "Mainnet Launch",
-          description: "Deployment of the fully functional protocol on the main blockchain network.",
+          title: "Token Generation Event",
+          description: "ALPHA token and Soulbound NFT minting begins in June.",
           icon: <Rocket className="h-5 w-5 text-green-400" />,
           completed: false,
         },
         {
-          title: "Token Generation Event",
-          description: "Public distribution of tokens through various allocation mechanisms.",
+          title: "Soulbound NFTs",
+          description: "Soulbound NFTs for first batch of education hub graduates",
           icon: <Coins className="h-5 w-5 text-green-400" />,
           completed: false,
         },
         {
-          title: "Exchange Listings",
-          description: "Listing of the token on major centralized and decentralized exchanges.",
+          title: "Trading Platform Beta ",
+          description: " 1-month free trial for new users on website demo trading platform.",
           icon: <Globe className="h-5 w-5 text-green-400" />,
           completed: false,
         },
@@ -124,34 +126,40 @@ export function Roadmap() {
     {
       id: "phase4",
       title: "Phase 4: Expansion",
-      timeline: "Q3 2026 - Beyond",
+      timeline: "Q1 2026 - Beyond",
       status: "upcoming",
       description: "Scaling the ecosystem and implementing advanced features.",
       milestones: [
         {
-          title: "Cross-Chain Integration",
+          title: "Trading Platform Launch",
           description: "Expanding functionality to support multiple blockchain networks.",
           icon: <Network className="h-5 w-5 text-orange-400" />,
           completed: false,
         },
         {
-          title: "Enterprise Partnerships",
-          description: "Strategic collaborations with traditional finance and tech companies.",
+          title: "Global Expansion",
+          description: "Expand partnerships and global marketing efforts.",
           icon: <Users className="h-5 w-5 text-orange-400" />,
           completed: false,
         },
         {
-          title: "Layer 2 Scaling",
-          description: "Implementation of layer 2 solutions to improve throughput and reduce costs.",
+          title: "DePin Integration",
+          description: "Integrate DePIN for real-world asset contributions.",
           icon: <Rocket className="h-5 w-5 text-orange-400" />,
           completed: false,
         },
         {
-          title: "Global Expansion",
-          description: "Targeted growth initiatives in key markets around the world.",
+          title: "Voting Commence",
+          description: "Governance voting for investment and marketing proposals begins.",
           icon: <Globe className="h-5 w-5 text-orange-400" />,
           completed: false,
         },
+        {
+          title: "Trading Pool",
+          description: "Collective Trading Pool introduced to generate revenue.",
+          icon: <Globe className="h-5 w-5 text-orange-400" />,
+          completed: false,
+        }
       ],
     },
   ]
@@ -179,12 +187,13 @@ export function Roadmap() {
   }
 
   return (
+    <div className="flex justify-center">
     <div className="space-y-8 w-2/3 ">
      
       <div className="relative">
-        <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800 rounded-full">
+        <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800  rounded-full">
           <div
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
+            className="h-full bg-gradient-to-r from-blue-500 to-pink-500 rounded-full"
             style={{
               width:
                 activePhase === "phase1"
@@ -210,9 +219,9 @@ export function Roadmap() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center z-10 border-2 ${
                       phase.status === "completed"
-                        ? "bg-blue-500 border-blue-600"
+                        ? "bg-blue-500 "
                         : phase.status === "in-progress"
-                          ? "bg-purple-500 border-purple-600"
+                          ? "bg-blue-700 border-blue-800"
                           : "bg-gray-800 border-gray-700"
                     }`}
                   >
@@ -230,11 +239,11 @@ export function Roadmap() {
 
           {phases.map((phase) => (
             <TabsContent key={phase.id} value={phase.id} className="mt-8">
-              <Card className="bg-gray-900/50 border border-gray-800">
+              <Card className="bg-gray-800/50  border border-gray-800">
                 <CardHeader>
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                      <CardTitle className="text-xl md:text-2xl">{phase.title}</CardTitle>
+                      <CardTitle className="text-xl  text-pink-500 md:text-2xl">{phase.title}</CardTitle>
                       <CardDescription className="text-gray-400 mt-1">{phase.timeline}</CardDescription>
                     </div>
                     <Badge className={`${getStatusColor(phase.status)} px-3 py-1 text-xs`}>
@@ -273,7 +282,7 @@ export function Roadmap() {
       </div>
 
       {/* Progress summary */}
-      <div className="mt-12 bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+      <div className="mt-12 bg-gray-800/50 border border-gray-800 rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4">Project Progress</h2>
         <div className="space-y-4">
           {phases.map((phase) => {
@@ -291,7 +300,7 @@ export function Roadmap() {
                 </div>
                 <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
+                    className="h-full bg-gradient-to-r from-blue-500 to-pink-500 rounded-full"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -300,6 +309,7 @@ export function Roadmap() {
           })}
         </div>
       </div>
+    </div>
     </div>
   )
 }
