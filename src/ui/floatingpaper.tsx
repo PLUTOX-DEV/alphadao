@@ -26,7 +26,7 @@ export function FloatingPaper({ count = 5 }) {
 
   return (
   
-    <div className="relative w-full h-full">
+    <>
       {Array.from({ length: count }).map((_, i) => (
         <motion.div
           key={i}
@@ -55,7 +55,7 @@ export function FloatingPaper({ count = 5 }) {
           </div>
         </motion.div>
       ))}
-    </div>
+    </>
     
   )
 }
