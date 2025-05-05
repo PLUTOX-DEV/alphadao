@@ -188,7 +188,7 @@ export function Roadmap() {
 
   return (
     <div className="flex justify-center">
-    <div className="space-y-8 w-2/3 ">
+    <div className="space-y-8 w-4/5 ">
      
       <div className="relative">
         <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800  rounded-full">
