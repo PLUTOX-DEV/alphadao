@@ -2,7 +2,7 @@ import Header from "../component/Header";
 import Hero from "../component/Hero";
 import { Roadmap } from "../component/Roadmap";
 import { FloatingPaper } from "../ui/floatingpaper"
-import Footer from "../component/footer"; 
+import Footer from "../component/Footer"; 
 // import { SparklesCore } from "../ui/sparkles"
 
 

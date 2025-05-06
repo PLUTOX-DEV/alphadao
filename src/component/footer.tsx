@@ -14,17 +14,17 @@ const Footer = () => {
 
   // Resources links data
   const resourceLinks = [
-    { title: 'White Paper', href: 'public\ALPHA DAO Whitepaper.pdf' },
+    { title: 'White Paper', href: '/ALPHA DAO Whitepaper.pdf' },
     { title: 'Documentation', href: '#' },
     { title: 'Insights', href: '#' },
-    { title: 'Assets', href: '#' },
+    { title: 'Brand Assets', href: '#' },
   ];
 
   // Useful links data
   const usefulLinks = [
-    { title: 'Privacy Policy', href: '#' },
+    { title: 'Privacy Policy', href: '/Privacypolicy' },
     { title: 'Terms & Conditions', href: '#' },
-    { title: 'Contact', href: '#' },
+    { title: 'Contact', href: '/Contactus' },
   ];
 
   // Social media links data
