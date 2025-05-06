@@ -14,7 +14,7 @@ const Footer = () => {
 
   // Resources links data
   const resourceLinks = [
-    { title: 'White Paper', href: '#' },
+    { title: 'White Paper', href: 'public\ALPHA DAO Whitepaper.pdf' },
     { title: 'Documentation', href: '#' },
     { title: 'Insights', href: '#' },
     { title: 'Assets', href: '#' },
