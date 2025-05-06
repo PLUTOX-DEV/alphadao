@@ -44,8 +44,8 @@ const ContactUs = () => {
     <div className="min-h-screen">
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">Contact Us</h1>
-        <p className="text-gray-600 mb-8 max-w-2xl">
+        <h1 className="text-4xl font-bold text-shadow-white mb-6">Contact Us</h1>
+        <p className="text-white mb-8 max-w-2xl">
           We’d love to hear from you! Fill out the form below, and our team will
           respond within one business day.
         </p>

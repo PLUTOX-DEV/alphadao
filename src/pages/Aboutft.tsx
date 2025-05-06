@@ -2,7 +2,7 @@
 import React from 'react';
 import Footer from '../component/Footer';
 import { Link } from 'react-router-dom';
-import logo from '../assets/Daologo.png'; 
+import logo from '../assets/backgr/bg-about-us.jpg'; 
 
 const About = () => {
   const teamMembers = [
@@ -17,8 +17,8 @@ const About = () => {
       className="min-h-screen bg-gray-100"
       style={{
         backgroundImage: `url(${logo})`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '100px 100px', // Adjust size for aesthetics
+        
+        backgroundSize: 'max', // Adjust size for aesthetics
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         backgroundColor: 'rgba(243, 244, 246, 0.9)', // Light overlay to ensure readability
@@ -28,8 +28,8 @@ const About = () => {
       <main className="container mx-auto px-4 py-12">
         {/* About Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Alpha Trader's DAO</h1>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-8">
+          <h1 className="text-4xl font-bold text-white mb-6">Alpha Trader's DAO</h1>
+          <p className="text-white max-w-3xl mx-auto mb-8">
             At Alpha Trader's DAO, we are passionate about driving innovation through cutting-edge technology. Our mission is to empower businesses and individuals with solutions that transform the future. Founded in 2020, our team combines expertise in AI, blockchain, and software development to deliver unparalleled results.
           </p>
           <Link
