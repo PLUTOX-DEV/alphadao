@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  background: linear-gradient(to right, #2f2f2f, #3b0a52); /* Grey to Purple */
+  background: linear-gradient(to right, #0f0c0c, #2c073f); /* Grey to Purple */
   color: white;
 }
 
