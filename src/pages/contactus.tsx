@@ -41,7 +41,7 @@ const ContactUs = () => {
   ];
 
   return (
-    <div className="min-h-screen, background-image:url('src\assets\backgr\bg-about-us.jpg')">
+    <div className="min-h-screen">
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-6">Contact Us</h1>

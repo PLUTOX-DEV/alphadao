@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/Privacypolicy";  
 import ContactUs from "./pages/contactus";
+import Governance from "./pages/Governance";
+import Footer from "./component/Footer";
+import About from "./pages/Aboutft";
 
 
 
@@ -15,8 +18,11 @@ const App = () => {
         <Route path="/home" element={<Home />} /> 
         <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
         <Route path="/contactus" element={<ContactUs />} /> 
-      
-        
+        <Route path="/governance" element={<Governance />} />
+        <Route path="/Footer" element={<Footer />} />
+        <Route path="/about" element={<About />} />
+
+           
       </Routes>
     
     </BrowserRouter>
