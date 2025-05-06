@@ -5,7 +5,7 @@ export default function Hero() {
 
   const [active, setActive] = useState(false);
   return (
-    <div className="relative z-10 min-h-130 flex items-center">
+    <div className="relative z-10 min-h-130 md:mt-14 md:mb-14 flex items-center">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
