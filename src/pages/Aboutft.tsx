@@ -2,7 +2,7 @@
 import React from 'react';
 import Footer from '../component/Footer';
 import { Link } from 'react-router-dom';
-import logo from '../Daologo.png'; 
+import logo from '../assets/Daologo.png'; 
 
 const About = () => {
   const teamMembers = [
