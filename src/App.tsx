@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/Privacypolicy";  
-import ContactUs from "./pages/contactus";
+import ContactUs from "./pages/ContactUs";
 import Governance from "./pages/Governance";
 import Footer from "./component/Footer";
 import About from "./pages/Aboutft";

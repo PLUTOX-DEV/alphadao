@@ -1,5 +1,5 @@
 // src/components/ContactUs.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Footer from '../component/Footer';
 
 const ContactUs = () => {
@@ -11,12 +11,12 @@ const ContactUs = () => {
     message: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement |HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Placeholder for form submission logic (e.g., API call)
     console.log('Form submitted:', formData);
@@ -153,7 +153,7 @@ const ContactUs = () => {
               onChange={handleChange}
               placeholder="Enter your message"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-vertical"
-              rows="5"
+              rows={5}
               required
             />
           </div>
