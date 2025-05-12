@@ -1,5 +1,4 @@
 // src/components/About.js
-import React from 'react';
 import Footer from '../component/Footer';
 import { Link } from 'react-router-dom';
 import logo from '../assets/backgr/bg-about-us.jpg'; 
