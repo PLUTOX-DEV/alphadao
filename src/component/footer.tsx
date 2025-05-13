@@ -13,15 +13,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-200 py-12">
+    <footer className="bg-gray-900 text-gray-200 py-6 leading-px">
       <div className="container mx-auto px-4">
         {/* Footer Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid sm:grid-cols-2 lg: gap-8 py-4">
 
 
 {/* Newsletter & Social Media Section */}
         <div className="flex flex-col items-center lg:items-start">
-            <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
+          <img width={30} src='src\assets\Daologo.png'/>
+            <h1 className="text-lg align-middle text-semibold mb-4 rounded-lg bg-purple-900 glow-button transition hover:scale-105 hover:bg-purple-600">Get Alpha</h1>
             {/* Newsletter Form */}
             <form className="w-full max-w-xs mb-6">
               <label htmlFor="email" className="sr-only">
