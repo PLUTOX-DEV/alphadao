@@ -15,14 +15,10 @@ const Footer = () => {
   return (
     <footer className="bg-purple-950 text-gray-200 py-6">
       <div className="container mx-auto px-4">
-        {/* Footer Grid */}
-        <div className="grid sm:grid-cols-2 lg: gap-3 py-4">
-
-
 {/* Newsletter & Social Media Section */}
         <div className="flex flex-col items-center lg:items-start align-items-center">
           <img width={30} src='src\assets\Daologo.png'/>
-            <h1 className="text-lg align-middle text-semibold mb-4 rounded-lg bg-purple-900 glow-button transition hover:scale-105 hover:bg-purple-600">Get Alpha</h1>
+            <h1 className="text-lg align-middle text-semibold mb-4 rounded-lg bg-purple-900 glow-button transition hover:scale-105 hover:bg-purple-600">Web3 Harmony</h1>
             {/* Newsletter Form */}
             <form className="w-full max-w-xs mb-6">
               <label htmlFor="email" className="sr-only">
@@ -47,7 +43,7 @@ const Footer = () => {
             
             
             {/* Social Media Links */}
-             <div className="flex space-x-4 justify-center align-top">
+             <div className="flex space-x-4 justify-center align-top md:flex-row space-y-2 md:space-y-0 md:space-x-6">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -60,13 +56,13 @@ const Footer = () => {
                   <span className="text-2xl">{social.icon}</span>
                 </a>
               ))}
+              <div className='justify-items-center flex-1/2 pb-3 pt-0.1 text-gray-400'><a href='/privacypolicy'>PrivacyPolicy</a></div>
             </div>
           </div>
-        </div>
+        
 
  {/* Divider */}
         <hr className="my-3 border-gray-700" />
-        <div className='justify-items-center flex-1/2 pb-3 pt-0.1 text-gray-400'><a href='/privacypolicy'>PrivacyPolicy</a></div>
         {/* Copyright Section */}
         <div className="text-center text-sm text-gray-400 flex justify-center-safe">
           <p>© {currentYear} ALPHA TRADERS DAO. All Rights Reserved.</p>
