@@ -1,4 +1,5 @@
-import Footer from '../component/Footer';
+import Footer from '../component/footer';
+
 
 const PrivacyPolicy = () => {
   return (
@@ -90,8 +91,6 @@ const PrivacyPolicy = () => {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
 // src/components/ContactUs.js
 import { useState } from 'react';
-import Footer from '../component/Footer';
+import Footer from '../component/footer';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const ContactUs = () => {
           <div className="mb-6">
             <label
               htmlFor="firstName"
-              className="block text-gray-700 font-semibold mb-2"
+              className="block text-purple-900 font-semibold mb-2"
             >
               First Name
             </label>
@@ -78,7 +78,7 @@ const ContactUs = () => {
           <div className="mb-6">
             <label
               htmlFor="lastName"
-              className="block text-gray-700 font-semibold mb-2"
+              className="block text-purple-900 font-semibold mb-2"
             >
               Last Name
             </label>
@@ -98,7 +98,7 @@ const ContactUs = () => {
           <div className="mb-6">
             <label
               htmlFor="email"
-              className="block text-gray-700 font-semibold mb-2"
+              className="block text-purple-900 font-semibold mb-2"
             >
               Email
             </label>
@@ -118,7 +118,7 @@ const ContactUs = () => {
           <div className="mb-6">
             <label
               htmlFor="enquiry"
-              className="block text-gray-700 font-semibold mb-2"
+              className="block text-purple-900 font-semibold mb-2"
             >
               Enquiry Type
             </label>
@@ -127,7 +127,7 @@ const ContactUs = () => {
               name="enquiry"
               value={formData.enquiry}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-2 focus:ring-2 focus:ring-blue-500 text-purple-900"
               required
             >
               {enquiryOptions.map((option, index) => (
@@ -142,7 +142,7 @@ const ContactUs = () => {
           <div className="mb-6">
             <label
               htmlFor="message"
-              className="block text-gray-700 font-semibold mb-2"
+              className="block text-purple-900 font-semibold mb-2"
             >
               Message
             </label>
@@ -162,7 +162,7 @@ const ContactUs = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors duration-200"
+              className="px-6 py-3 bg-purple-900 text-white font-semibold rounded-md hover:bg-purple-900 transition-colors duration-200"
             >
               Submit
             </button>

@@ -1,5 +1,5 @@
 // src/components/About.js
-import Footer from '../component/Footer';
+import Footer from '../component/footer';
 import { Link } from 'react-router-dom';
 import logo from '../assets/backgr/bg-about-us.jpg'; 
 
@@ -27,13 +27,13 @@ const About = () => {
       <main className="container mx-auto px-4 py-12">
         {/* About Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white mb-6">Alpha Trader's DAO</h1>
-          <p className="text-white max-w-3xl mx-auto mb-8">
-            At Alpha Trader's DAO, we are passionate about driving innovation through cutting-edge technology. Our mission is to empower businesses and individuals with solutions that transform the future. Founded in 2020, our team combines expertise in AI, blockchain, and software development to deliver unparalleled results.
+          <h1 className="text-4xl font-bold text-purple-300 mb-6 backdrop-blur-lg">ALPHA TRADERS DAO</h1>
+          <p className="text-gray-400 max-w-3xl mx-auto mb-8 backdrop-blur-xl bg-purple-900 rounded-2xl text-semibold backdrop-blur-2xl font-bold ">
+            ALPHA DAO is a decentralized autonomous organization (DAO) designed to bring people together in a community-owned ecosystem where they collectively manage and grow a financial system powered by its members. By building on The Open Network (TON), ALPHA DAO taps into TON’s exceptional scalability, low fees, and deep integration with Telegram—a platform with over 900 million users. This enables us to create an accessible, engaging, and innovative experience for our community.
           </p>
           <Link
             to="/contactus"
-            className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors duration-200"
+            className="inline-block px-6 py-3 bg-purple-900 text-white font-semibold rounded-md hover:bg-purple-900 transition-colors duration-200"
           >
             Get in Touch
           </Link>
@@ -41,7 +41,7 @@ const About = () => {
 
         {/* Team Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Meet Our Team</h2>
+          <h2 className="text-3xl font-bold text-purple-300 text-center mb-10 backdrop-blur-lg">Meet Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <div
