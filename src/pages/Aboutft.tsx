@@ -28,7 +28,7 @@ const About = () => {
         {/* About Section */}
         <section className="text-center mb-16">
           <h1 className="text-4xl font-bold text-purple-300 mb-6 backdrop-blur-lg">ALPHA TRADERS DAO</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto mb-8 backdrop-blur-xl bg-purple-900 rounded-2xl text-semibold backdrop-blur-2xl font-bold ">
+          <p className="text-white  max-w-3xl mx-auto mb-8 backdrop-blur-xl bg-purple-900 rounded-2xl text-semibold backdrop-blur-2xl font-bold ">
             ALPHA DAO is a decentralized autonomous organization (DAO) designed to bring people together in a community-owned ecosystem where they collectively manage and grow a financial system powered by its members. By building on The Open Network (TON), ALPHA DAO taps into TON’s exceptional scalability, low fees, and deep integration with Telegram—a platform with over 900 million users. This enables us to create an accessible, engaging, and innovative experience for our community.
           </p>
           <Link
