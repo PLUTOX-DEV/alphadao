@@ -7,16 +7,18 @@ const Header: React.FC = () => {
     <nav className="bg-gradient-to-bl dark:bg-gray-900 fixed w-full z-40 top-0 start-0 backdrop-filter backdrop-brightness-100 backdrop-blur-3xl dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
         <a href="" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
-          <img src="src\assets\Daologo.png" className="h-8" alt="Alpha" />
+          <img src="src\assets\Daologo.png" className="w-10 h-10 animate-spin-slow" alt="Alpha"/>
           <span className="self-center text-xl font-bold whitespace-nowrap  dark:text-shadow-purple-900">Alpha DAO</span>
         </a>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0  rtl:space-x-reverse">
-        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group bg-gradient-to-br from-purple-900 to-gray-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+        <a href='/sign-in'>
+          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group bg-gradient-to-br from-purple-900 to-gray-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-900 dark:bg-purple-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
-                  Sign In
+                 Sign In
                 </span>
               </button>
+        </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"

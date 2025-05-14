@@ -5,8 +5,7 @@ import ContactUs from "./pages/contactus";
 import Governance from "./pages/Governance";
 import Footer from "./component/footer";
 import About from "./pages/Aboutft";
-
-
+import SignIn from "./pages/SignIn.tsx";
 
 const App = () => {
   return (
@@ -21,6 +20,8 @@ const App = () => {
         <Route path="/governance" element={<Governance />} />
         <Route path="/Footer" element={<Footer />} />
         <Route path="/about" element={<About />} />
+        <Route path="/sign-in" element={<SignIn />} />
+
 
            
       </Routes>
