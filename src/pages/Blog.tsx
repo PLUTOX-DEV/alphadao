@@ -1,71 +1,88 @@
-// import { useState } from "react";
+// src/components/Blog.tsx
+import React from 'react';
+import Header from '../component/Header';
+import Footer from '../component/footer';
 
-// const Blogs = () => {
-//   const postsPerPage = 9;
-//   const [currentPage, setCurrentPage] = useState(1);
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  date: string;
+  image: string;
+}
 
-//   // Calculate the current page's posts
-//   const indexOfLastPost = currentPage * postsPerPage;
-//   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-//   //const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+const Blog: React.FC = () => {
+  const blogPosts: BlogPost[] = [
+    {
+      title: 'The Future of AI in Business',
+      excerpt: 'Explore how AI is reshaping industries and driving innovation.',
+      date: 'May 10, 2025',
+      image: 'https://via.placeholder.com/300x200',
+    },
+    {
+      title: 'Blockchain Beyond Cryptocurrency',
+      excerpt: 'Learn about the diverse applications of blockchain technology.',
+      date: 'April 15, 2025',
+      image: 'https://via.placeholder.com/300x200',
+    },
+    {
+      title: 'Building Scalable Software Solutions',
+      excerpt: 'Tips and best practices for creating robust software.',
+      date: 'March 20, 2025',
+      image: 'https://via.placeholder.com/300x200',
+    },
+  ];
 
-//   const totalPages = Math.ceil(posts.length / postsPerPage);
+  return (
+    <div
+      className="min-h-screen bg-gray-900 flex flex-col"
+      style={{
+        backgroundSize: 'max',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <div className='bg-transparent'>
+        <Header />
+        </div>
+      <main className="container mx-auto px-4 py-12 flex-grow">
+        <h1 className="text-4xl font-bold text-white  text-center mb-8 mt-16">
+          Alpha DAO Blog
+        </h1>
+        <p className="text-white text-center max-w-2xl mx-auto mb-12">
+          Stay updated with the latest insights and trends in technology.
+        </p>
 
-//   const handlePrev = () => {
-//     if (currentPage > 1) setCurrentPage(currentPage - 1);
-//   };
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post, index) => (
+            <div
+              key={index}
+              className="bg-whit e shadow-md rounded-lg overflow-hidden bg-gray-500"
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {post.title}
+                </h3>
+                <p className="text-gray-500 text-sm mb-2">{post.date}</p>
+                <p className="text-gray-600">{post.excerpt}</p>
+                <a
+                  href="#"
+                  className="mt-4 inline-block text-blue-600 hover:underline"
+                >
+                  Read More
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-//   const handleNext = () => {
-//     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-//   };
-
-//   return (
-//     <section id="blog" className="p-8 text-white bg-black/90">
-//       <h2 className="text-4xl font-bold text-purple-300 mb-8">DAO Blog</h2>
-
-//       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-//         {currentPosts.map((post, index) => (
-//           <a
-//             key={index}
-//             href={post.slug}
-//             className="bg-white/5 rounded-lg overflow-hidden shadow-lg hover:scale-105 transform transition"
-//           >
-//             <img
-//               src={post.image}
-//               alt={post.title}
-//               className="w-full h-48 object-cover"
-//             />
-//             <div className="p-4">
-//               <h3 className="text-xl font-semibold text-purple-200">{post.title}</h3>
-//             </div>
-//           </a>
-//         ))}
-//       </div>
-
-//       {/* Pagination Controls */}
-//       {totalPages > 1 && (
-//         <div className="flex justify-center items-center gap-4 mt-10">
-//           <button
-//             onClick={handlePrev}
-//             disabled={currentPage === 1}
-//             className="bg-purple-600 text-white px-4 py-2 rounded disabled:opacity-40"
-//           >
-//             ← Previous
-//           </button>
-//           <span className="text-purple-300">
-//             Page {currentPage} of {totalPages}
-//           </span>
-//           <button
-//             onClick={handleNext}
-//             disabled={currentPage === totalPages}
-//             className="bg-purple-600 text-white px-4 py-2 rounded disabled:opacity-40"
-//           >
-//             Next →
-//           </button>
-//         </div>
-//       )}
-//     </section>
-//   );
-// };
-
-// export default Blogs;
+export default Blog;

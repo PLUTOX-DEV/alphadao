@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   return (
     <nav className="bg-gradient-to-bl dark:bg-gray-900 fixed w-full z-40 top-0 start-0 backdrop-filter backdrop-brightness-100 backdrop-blur-3xl dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
-        <a href="" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
+        <a href="/home" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
           <img src="src\assets\Daologo.png" className="w-8 h-8 animate-spin-slow" alt="Alpha"/>
           <span className="self-center text-xl font-bold whitespace-nowrap  dark:text-shadow-purple-900">Alpha DAO</span>
         </a>
@@ -39,13 +39,13 @@ const Header: React.FC = () => {
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="#" className="block py-2 px-3 text-white rounded-sm md:bg-transparent md:text-purple-900 md:p-0 md:dark:text-purple-900" aria-current="page">Home</a>
+              <a href="/home" className="block py-2 px-3 text-white rounded-sm md:bg-transparent md:text-purple-900 md:p-0 md:dark:text-purple-900" aria-current="page">Home</a>
             </li>
             <li>
               <a href="\ALPHA DAO Whitepaper.pdf" className="block py-2 px-3 text-white rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-white dark:hover:bg-purple-900 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Whitepaper</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Blogs</a>
+              <a href="/blog" className="block py-2 px-3 text-white rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Blogs</a>
             </li>
             <li>
               <a href="#" className="block py-2 px-3 text-white rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Miniapp</a>

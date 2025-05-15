@@ -51,7 +51,7 @@ const SignIn: React.FC = () => {
       }}
     >
       <main className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 text-center mb-8 font-serif">
+        <h1 className="text-2xl font-bold text-gray-900 text-center mb-8 font-serif">
           EXPERIENCE THE DAO
         </h1>
 

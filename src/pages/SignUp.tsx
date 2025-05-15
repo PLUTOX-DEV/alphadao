@@ -2,10 +2,7 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../component/footer';
-import logo from '../assets/backgr/bg3.jpg';
-import { FcGoogle } from 'react-icons/fc';
-import { FaWallet } from 'react-icons/fa';
-
+import logo from '../assets/backgr/bg2.jpg';
 interface FormData {
   email: string;
   password: string;
@@ -35,15 +32,6 @@ const SignUp: React.FC = () => {
     setFormData({ email: '', password: '', confirmPassword: '' });
   };
 
-  const handleGoogleSignUp = () => {
-    console.log('Google Sign-Up triggered');
-    alert('Google sign-up initiated! (Placeholder)');
-  };
-
-  const handleWalletSignUp = () => {
-    console.log('Wallet Sign-Up triggered');
-    alert('Wallet sign-up initiated! (Placeholder)');
-  };
 
   return (
     <div
@@ -57,8 +45,8 @@ const SignUp: React.FC = () => {
       }}
     >
       <main className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 text-center mb-8 font-serif">
-          Start Your Alpha DAO Journey
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-8 font-serif sm:text-2xl">
+          ENTER THE DAO
         </h1>
 
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-8">
