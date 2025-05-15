@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <nav className="bg-gradient-to-bl dark:bg-gray-900 fixed w-full z-40 top-0 start-0 backdrop-filter backdrop-brightness-100 backdrop-blur-3xl dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
         <a href="" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
-          <img src="src\assets\Daologo.png" className="w-10 h-10 animate-spin-slow" alt="Alpha"/>
+          <img src="src\assets\Daologo.png" className="w-8 h-8 animate-spin-slow" alt="Alpha"/>
           <span className="self-center text-xl font-bold whitespace-nowrap  dark:text-shadow-purple-900">Alpha DAO</span>
         </a>
 

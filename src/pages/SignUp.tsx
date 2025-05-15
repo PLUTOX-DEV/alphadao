@@ -1,20 +1,22 @@
-// src/components/SignIn.tsx
+// src/components/SignUp.tsx
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from "../component/footer";
-import logo from '../assets/backgr/bg-sign-in-basic.jpeg';
+import Footer from '../component/footer';
+import logo from '../assets/backgr/bg3.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWallet } from 'react-icons/fa';
 
 interface FormData {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
+    confirmPassword: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,21 +24,25 @@ const SignIn: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleEmailSignIn = (e: FormEvent<HTMLFormElement>) => {
+  const handleEmailSignUp = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Email Sign-In:', formData);
-    alert('Email sign-in submitted! (Placeholder)');
-    setFormData({ email: '', password: '' });
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+    console.log('Email Sign-Up:', formData);
+    alert('Sign-up submitted! (Placeholder)');
+    setFormData({ email: '', password: '', confirmPassword: '' });
   };
 
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign-In triggered');
-    alert('Google sign-in initiated! (Placeholder)');
+  const handleGoogleSignUp = () => {
+    console.log('Google Sign-Up triggered');
+    alert('Google sign-up initiated! (Placeholder)');
   };
 
-  const handleWalletSignIn = () => {
-    console.log('Wallet Sign-In triggered');
-    alert('Wallet sign-in initiated! (Placeholder)');
+  const handleWalletSignUp = () => {
+    console.log('Wallet Sign-Up triggered');
+    alert('Wallet sign-up initiated! (Placeholder)');
   };
 
   return (
@@ -52,34 +58,12 @@ const SignIn: React.FC = () => {
     >
       <main className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 text-center mb-8 font-serif">
-          EXPERIENCE THE DAO
+          Start Your Alpha DAO Journey
         </h1>
 
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-8">
-          <button
-            onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200"
-          >
-            <FcGoogle className="text-2xl mr-2" />
-            <span className="text-gray-700 font-semibold">Sign in with Google</span>
-          </button>
 
-          <button
-            onClick={handleWalletSignIn}
-            className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200"
-          >
-            <FaWallet className="text-2xl mr-2 text-purple-900" />
-            <span className="text-gray-700 font-semibold">Sign in with Wallet</span>
-          </button>
-
-          <div className="relative my-6">
-            <hr className="border-gray-300" />
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500">
-              OR
-            </span>
-          </div>
-
-          <form onSubmit={handleEmailSignIn}>
+          <form onSubmit={handleEmailSignUp}>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -99,7 +83,7 @@ const SignIn: React.FC = () => {
               />
             </div>
 
-            <div className="mb-6">
+            <div className="mb-4">
               <label
                 htmlFor="password"
                 className="block text-gray-700 font-semibold mb-2"
@@ -118,25 +102,38 @@ const SignIn: React.FC = () => {
               />
             </div>
 
+            <div className="mb-6">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-gray-700 font-semibold mb-2"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Confirm your password"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
             <button
               type="submit"
               className="w-full px-4 py-3 bg-purple-900 text-white font-semibold rounded-md hover:bg-purple-500 transition-colors duration-200"
             >
-              Sign In with Email
+              Sign Up with Email
             </button>
           </form>
 
           <div className="mt-4 text-center text-sm text-gray-600">
             <p>
-              Don’t have an account?{' '}
-              <Link to="/sign-up" className="text-blue-600 hover:underline">
-                Sign Up
-              </Link>
-            </p>
-            <p className="mt-2">
-              Forgot your password?{' '}
-              <Link to="/forgot-password" className="text-blue-600 hover:underline">
-                Reset Password
+              Already have an account?{' '}
+              <Link to="/sign-in" className="text-blue-600 hover:underline">
+                Sign In
               </Link>
             </p>
           </div>
@@ -147,4 +144,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
