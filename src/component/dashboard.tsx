@@ -54,7 +54,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
-      <Header isAuthenticated={true} onLogout={handleLogout} />
+      <Header/>
       <main className="container mx-auto px-4 py-12 flex-grow">
         <h1 className="text-4xl font-bold text-gray-900 mb-6">
           Welcome, {user.name}!
