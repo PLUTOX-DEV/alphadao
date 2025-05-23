@@ -2,7 +2,7 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../component/footer';
-import logo from '../assets/backgr/bg2.jpg';
+import logo from '../../public/bg2.jpg';
 interface FormData {
   email: string;
   password: string;

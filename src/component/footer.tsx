@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
 {/* Newsletter & Social Media Section */}
         <div className="flex flex-col items-center lg:items-start align-items-center">
-          <img className="w-10 h-10 animate-spin-slow" src='src\assets\Daologo.png'/>
+          <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png'/>
             <h1 className="text-lg align-middle text-semibold mb-4 rounded-lg bg-purple-900 glow-button transition hover:scale-105 hover:bg-purple-600">Web3 Harmony</h1>
             {/* Newsletter Form */}
             <form className="w-full max-w-xs mb-6">

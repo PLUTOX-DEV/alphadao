@@ -41,7 +41,7 @@ const BlogSearch: React.FC = () => {
         title="search"
         className=" text-gray-200"
       >
-        <Search className=" absolute right-0 top-0 text-white mt-6 w-4 mr-7" />
+        <Search className=" absolute right-0 top-0 text-white mt-6 w-4 mr-10" />
         
       </button>
     </form>

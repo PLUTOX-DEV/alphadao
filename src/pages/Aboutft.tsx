@@ -1,7 +1,7 @@
 // src/components/About.js
 import Footer from '../component/footer';
 import { Link } from 'react-router-dom';
-import logo from '../assets/backgr/bg-about-us.jpg'; 
+import logo from '../../public/bg-about-us.jpg'; 
 
 const About = () => {
   const teamMembers = [
