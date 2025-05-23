@@ -9,10 +9,12 @@ import SignIn from "./pages/SignIn.tsx";
 import SignUP from "./pages/SignUp.tsx";
 import Blog from "./pages/Blog.tsx";
 import Services from "./pages/Services.tsx";  
+import { BlogProvider } from "./blog/context/BlogContext.tsx";
 
 
 const App = () => {
   return (
+    <BlogProvider>
     <BrowserRouter>
    
     
@@ -34,6 +36,8 @@ const App = () => {
       </Routes>
     
     </BrowserRouter>
+    </BlogProvider>
+    
   );  
 };
 

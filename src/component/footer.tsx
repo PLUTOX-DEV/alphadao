@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-purple-950 text-gray-200 py-6">
+    <footer className="bg-purple-950 text-gray-200 py-4 m-0 w-full h-64 static bottom-0 ">
       <div className="container mx-auto px-4">
 {/* Newsletter & Social Media Section */}
         <div className="flex flex-col items-center lg:items-start align-items-center">
