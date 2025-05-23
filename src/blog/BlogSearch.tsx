@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useBlog } from './context/BlogContext';
 import {Input} from '../components/ui/input'
-import {Button} from '../components/ui/button';
+// import {Button} from '../components/ui/button';
 import { Search } from "lucide-react"
 
 const BlogSearch: React.FC = () => {
@@ -36,15 +36,14 @@ const BlogSearch: React.FC = () => {
         onChange={handleInputChange}
         className="pr-12 h-10 w-full"
       />
-      <Button
+      <button
         type="submit"
-        size="icon"
-        variant="ghost"
-        className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:text-foreground"
+        title="search"
+        className=" text-gray-200"
       >
-        <Search className="h-4 text-white w-4" />
-        <span className="sr-only">Search</span>
-      </Button>
+        <Search className=" absolute right-0 top-0 text-white mt-6 w-4 mr-7" />
+        
+      </button>
     </form>
     );
 };
