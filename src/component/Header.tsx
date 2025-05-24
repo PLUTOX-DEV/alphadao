@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
         <Link to="/home" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
           <img src="../Daologo.png" className="w-8 h-8 animate-spin-slow" alt="Alpha"/>
-          <span className="self-center text-xl font-bold whitespace-nowrap  dark:text-shadow-purple-900">Alpha DAO</span>
+          <span className="self-center text-xl font-serif whitespace-nowrap font-extrabold  dark:text-shadow-purple-900">ALPHA DAO</span>
         </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 md:px-5 lg:px-7 rtl:space-x-reverse">

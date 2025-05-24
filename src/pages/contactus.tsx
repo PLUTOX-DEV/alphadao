@@ -36,18 +36,19 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 via-purple-800 to-purple-700">
+    <div className="min-h-screen flex flex-col  bg-purple-950 ">
       <main className="flex-grow container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-white drop-shadow mb-6 text-center">
+
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-950 border-b-gray-500 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
+        >
+          <h1 className="text-4xl font-bold text-white drop-shadow mb-6 text-center">
           Contact Us
         </h1>
         <p className="text-white mb-10 max-w-2xl mx-auto text-center">
           We’d love to hear from you! Fill out the form below, and our team will respond within one business day.
         </p>
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white/90 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
-        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* First Name */}
             <div>
