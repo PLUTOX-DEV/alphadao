@@ -62,7 +62,7 @@ const SignIn: React.FC = () => {
     >
       <main className="container mx-auto px-3 py-1">
             <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8 mt-1">
-              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-gray-200
+              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-purple-900
                text-center font-serif">
           ALPHA DAO
         </h1></Link></div>
