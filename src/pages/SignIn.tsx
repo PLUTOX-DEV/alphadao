@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../public/bg-sign-in-basic.jpeg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWallet } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 interface FormData {
   email: string;
@@ -37,6 +38,11 @@ const SignIn: React.FC = () => {
     console.log('Wallet Sign-In triggered');
     alert('Wallet sign-in initiated! (Placeholder)');
   };
+  const handleTwitterSignIn = () => {
+    console.log('Wallet Sign-In triggered');
+    alert('Wallet sign-in initiated! (Placeholder)');
+  };
+
 
   return (
     <div
@@ -51,11 +57,15 @@ const SignIn: React.FC = () => {
     >
       <main className="container mx-auto px-3 py-0.5">
             <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white text-center font-serif">
+              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white
+               text-center font-serif">
           ALPHA DAO
         </h1></Link></div>
-          <div className="mt-2 mb-5 ml-0 text-center text-sm text-white ">
-            <h2 className='mt-1 mb4'>Welcome</h2>
+          <div className="mb-5 ml-0 text-center text-sm text-white ">
+            <h2 className='text-3xl font-bold text-gray-400 dark:text white mt-0.5 mb-1'>Welcome Back</h2>
+            <p className="mb-4 text-gray-300">
+              Sign in to your account.
+            </p>
             <p>
               Don’t have an account?{' '}
               <Link to="/sign-up" className="text-purple-500 hover:underline">
@@ -70,7 +80,13 @@ const SignIn: React.FC = () => {
             <FcGoogle className="text-2xl mr-2" />
             <span className="text-white font-semibold">Sign in with Google</span>
           </button>
-
+          <button
+            onClick={handleTwitterSignIn}
+            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"   
+          >
+            <FaTwitter className="text-2xl mr-2 text-blue-600" />
+            <span className="text-white font-semibold">Sign in with Twitter</span>
+          </button>
           <button
             onClick={handleWalletSignIn}
             className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
