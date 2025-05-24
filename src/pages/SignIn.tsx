@@ -68,7 +68,7 @@ const SignIn: React.FC = () => {
         </h1></Link></div>
           <div className="mb-5 ml-0 text-center text-sm text-white ">
             <h2 className='text-3xl font-bold text-gray-400 dark:text white mt-0.5 mb-1'>Welcome Back</h2>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-10 text-gray-300 font-semibold">
               Sign in to your account
             </p>
             <p>
