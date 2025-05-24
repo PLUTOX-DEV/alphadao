@@ -40,7 +40,7 @@ const SignIn: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen bg-gray-950"
+      className="min-h-screen bg-gray-950 "
       style={{
         backgroundImage: `url(${logo})`,
         backgroundSize: 'max',
@@ -51,10 +51,10 @@ const SignIn: React.FC = () => {
     >
       <main className="container mx-auto px-3 py-0.5">
             <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-              <div className='content-center position:center'><Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white text-center mb-8 py-0.5 font-serif">
+              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white text-center mb-8 py-0.5 font-serif">
           ALPHA DAO
         </h1></Link></div>
-          <div className="mt-4 mb-5 text-center text-sm text-white ">
+          <div className="mt-4 mb-5 ml-0 text-center text-sm text-white ">
             <p>
               Don’t have an account?{' '}
               <Link to="/sign-up" className="text-purple-500 hover:underline">
