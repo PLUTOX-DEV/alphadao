@@ -5,6 +5,18 @@ import logo from '../../public/bg-sign-in-basic.jpeg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWallet } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
+
+const handleToggle = () => {
+   if (type==='password'){
+      setIcon(FaEye);
+      setType('text')
+   } else {
+      setIcon(FaEyeSlash)
+      setType('password')
+   }
+}
 
 interface FormData {
   email: string;

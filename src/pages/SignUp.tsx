@@ -5,13 +5,14 @@ import logo from '../../public/bg2.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWallet } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
 
 interface FormData {
   email: string;
   password: string;
   confirmPassword: string;
 }
-
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: '',
@@ -63,29 +64,29 @@ const SignUp: React.FC = () => {
     >
       <main className="container mx-auto px-3 py-1">
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-<h1 className="text-3xl font-bold text-white text-center mb-8 font-serif sm:text-2xl">
-          ENTER THE DAO
+<h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
+      BEGIN YOUR JOURNEY WITH ALPHA DAO
         </h1>
         <button
                     onClick={handleGoogleSignUp}
                     className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
                   >
                     <FcGoogle className="text-2xl mr-2" />
-                    <span className="text-white font-semibold">Sign in with Google</span>
+                    <span className="text-white font-semibold">Sign up with Google</span>
                   </button>
                   <button
                     onClick={handleTwitterSignUp}
                     className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"   
                   >
                     <FaTwitter className="text-2xl mr-2 text-blue-600" />
-                    <span className="text-white font-semibold">Sign in with Twitter</span>
+                    <span className="text-white font-semibold">Sign up with Twitter</span>
                   </button>
                   <button
                     onClick={handleWalletSignUp}
                     className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
                   >
                     <FaWallet className="text-2xl mr-2 text-blue-600" />
-                    <span className="text-white font-semibold">Sign in with Ton Wallet</span>
+                    <span className="text-white font-semibold">Sign up with Ton Wallet</span>
                   </button>
         
                   <div className="relative my-6">
@@ -164,7 +165,7 @@ const SignUp: React.FC = () => {
           <div className="mt-4 text-center text-sm text-gray-600">
             <p>
               Already have an account?{' '}
-              <Link to="/sign-in" className="text-blue-600 hover:underline">
+              <Link to="/sign-in" className="text-purple-500 hover:underlinee">
                 Sign In
               </Link>
             </p>
