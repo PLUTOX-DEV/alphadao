@@ -12,12 +12,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-purple-950 text-gray-200 py-4 m-0 w-full h-64 static bottom-0 ">
+    <footer className="py-6 border-t border-purple-950 mt-10 bg-gray-950">
       <div className="container mx-auto px-4">
 {/* Newsletter & Social Media Section */}
-        <div className="flex flex-col items-center lg:items-start align-items-center">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png'/>
-            <h1 className="text-lg align-middle text-semibold mb-4 rounded-lg bg-purple-900 glow-button transition hover:scale-105 hover:bg-purple-600">Web3 Harmony</h1>
             {/* Newsletter Form */}
             <form className="w-full max-w-xs mb-6">
               <label htmlFor="email" className="sr-only">
@@ -28,12 +27,12 @@ const Footer = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email"
-                  className="w-full px-4 py-2 text-gray-900 bg-gray-100 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 text-gray-900 bg-gray-100 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-purple-900 text-white rounded-r-md hover:bg-gray-900 transition-colors duration-200"
+                  className="px-4 py-2 bg-gray-950 text-white rounded-r-md hover:bg-purple-500 transition-colors duration-200"
                 >
                   Subscribe
                 </button>
@@ -48,7 +47,7 @@ const Footer = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-purple-400 hover:text-purple-300 duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -64,7 +63,7 @@ const Footer = () => {
         <hr className="my-3 border-gray-700" />
         {/* Copyright Section */}
         <div className="text-center text-sm text-gray-400 flex justify-center-safe">
-          <p>© {currentYear} ALPHA TRADERS DAO. All Rights Reserved.</p>
+          <p>© {currentYear} ALPHA DAO. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
