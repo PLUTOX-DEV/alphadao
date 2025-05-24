@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         <div className="flex md:order-2 space-x-3 md:space-x-0 md:px-5 lg:px-7 rtl:space-x-reverse">
         <Link to='/sign-in'>
           <button className="rrelative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group  group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-900 dark:bg-purple-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
+                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-950 dark:bg-purple-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
                  Sign In
                 </span>
               </button>
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
           className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'}`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-purple-900 rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col p-4 md:p-5 mt-4 font-medium border border-purple-900 rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link to="/home" className="block py-2 px-3 text-white rounded-sm md:bg-transparent md:text-purple-900 md:p-0 md:dark:text-purple-900" aria-current="page">Home</Link>
             </li>
