@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
 {/* Newsletter & Social Media Section */}
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png'/>
+          <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png' alt='Alpha Dao'/>
             {/* Newsletter Form */}
             <form className="w-full max-w-xs mb-6">
               <label htmlFor="email" className="sr-only">
