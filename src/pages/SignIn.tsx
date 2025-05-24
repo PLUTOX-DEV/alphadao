@@ -51,10 +51,11 @@ const SignIn: React.FC = () => {
     >
       <main className="container mx-auto px-3 py-0.5">
             <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white text-center mb-8 py-0.5 font-serif">
+              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white text-center font-serif">
           ALPHA DAO
         </h1></Link></div>
-          <div className="mt-4 mb-5 ml-0 text-center text-sm text-white ">
+          <div className="mt-2 mb-5 ml-0 text-center text-sm text-white ">
+            <h2 className='mt-1 mb4'>Welcome</h2>
             <p>
               Don’t have an account?{' '}
               <Link to="/sign-up" className="text-purple-500 hover:underline">
@@ -64,7 +65,7 @@ const SignIn: React.FC = () => {
           </div>
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200"
+            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
           >
             <FcGoogle className="text-2xl mr-2" />
             <span className="text-white font-semibold">Sign in with Google</span>
@@ -72,7 +73,7 @@ const SignIn: React.FC = () => {
 
           <button
             onClick={handleWalletSignIn}
-            className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200"
+            className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
           >
             <FaWallet className="text-2xl mr-2 text-blue-600" />
             <span className="text-white font-semibold">Sign in with Ton Wallet</span>
@@ -89,7 +90,7 @@ const SignIn: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-semibold mb-2"
+                className="block text-white font-semibold mb-2"
               >
                 Email
               </label>
@@ -108,7 +109,7 @@ const SignIn: React.FC = () => {
             <div className="mb-6">
               <label
                 htmlFor="password"
-                className="block text-gray-700 font-semibold mb-2"
+                className="block text-white font-semibold mb-2"
               >
                 Password
               </label>
