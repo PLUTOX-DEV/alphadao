@@ -6,7 +6,7 @@ import Governance from "./pages/Governance";
 import Footer from "./component/footer";
 import About from "./pages/Aboutft";
 import SignIn from "./pages/SignIn.tsx";
-import SignUP from "./pages/SignUp.tsx";
+import SignUp from "./pages/SignUp.tsx";
 import Blog from "./pages/Blog.tsx";
 import Services from "./pages/Services.tsx";  
 import { BlogProvider } from "./blog/context/BlogContext.tsx";
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/Footer" element={<Footer />} />
         <Route path="/about" element={<About />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUP/>} />
+        <Route path="/sign-up" element={<SignUp/>} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/services " element={<Services/>} />
 

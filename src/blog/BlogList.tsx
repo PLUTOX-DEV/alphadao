@@ -1,12 +1,13 @@
 import React from 'react';
 import BlogCard from './BlogCard';
 import { useBlog } from './context/BlogContext';
+import Loader from '../component/loader';
 
 const BlogList: React.FC = () => {
     const { blogPosts, loading, error } = useBlog();
 
     if (loading) {
-        return <div className="text-center py-10 text-xl text-gray-600">Loading blog posts...</div>;
+        return <Loader/>;
     }
 
     if (error) {
