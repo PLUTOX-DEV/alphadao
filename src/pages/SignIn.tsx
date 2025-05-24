@@ -55,21 +55,20 @@ const SignIn: React.FC = () => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
-      <main className="container mx-auto px-3 py-0.5">
+      <main className="container mx-auto px-3 py-1">
             <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-white
+              <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-gray-200
                text-center font-serif">
           ALPHA DAO
         </h1></Link></div>
           <div className="mb-5 ml-0 text-center text-sm text-white ">
             <h2 className='text-3xl font-bold text-gray-400 dark:text white mt-0.5 mb-1'>Welcome Back</h2>
             <p className="mb-4 text-gray-300">
-              Sign in to your account.
+              Sign in to your account
             </p>
             <p>
-              Don’t have an account?{' '}
               <Link to="/sign-up" className="text-purple-500 hover:underline">
-                Sign Up
+                Don’t have an account?{' '} Sign Up
               </Link>
             </p>
           </div>

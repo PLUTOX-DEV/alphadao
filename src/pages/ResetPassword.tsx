@@ -1,1 +1,0 @@
-<div class="relative h-16 w-48"><img alt="Helius logo - an orange stylized sun" fetchpriority="high" decoding="async" data-nimg="fill" class="object-contain" src="/Helius-Orange.svg" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></div>
