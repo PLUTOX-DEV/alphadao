@@ -1,4 +1,3 @@
-// src/components/SignIn.tsx
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg-sign-in-basic.jpeg';
@@ -7,16 +6,6 @@ import { FaWallet } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
-
-const handleToggle = () => {
-   if (type==='password'){
-      setIcon(FaEye);
-      setType('text')
-   } else {
-      setIcon(FaEyeSlash)
-      setType('password')
-   }
-}
 
 interface FormData {
   email: string;
@@ -28,6 +17,7 @@ const SignIn: React.FC = () => {
     email: '',
     password: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,6 +45,9 @@ const SignIn: React.FC = () => {
     alert('Wallet sign-in initiated! (Placeholder)');
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   return (
     <div
@@ -68,7 +61,7 @@ const SignIn: React.FC = () => {
       }}
     >
       <main className="container mx-auto px-3 py-1">
-            <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
+            <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8 mt-1">
               <div className='lg:ml-15 md:ml-15'><Link to="/home"><img className=" motion-safe:w-15 h-15 animate-spin-slow display: inline mb-2" src='./Daologo.png'/><h1 className=" text-2xl  font-bold display: inline text-gray-200
                text-center font-serif">
           ALPHA DAO
@@ -140,16 +133,26 @@ const SignIn: React.FC = () => {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 focus:outline-none"
+                  tabIndex={-1}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
 
             <button

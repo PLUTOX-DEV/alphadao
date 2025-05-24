@@ -1,4 +1,3 @@
-// src/components/SignUp.tsx
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg2.jpg';
@@ -19,6 +18,10 @@ const SignUp: React.FC = () => {
     password: '',
     confirmPassword: '',
   });
+
+  // State for password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -49,8 +52,6 @@ const SignUp: React.FC = () => {
     alert('Wallet sign-in initiated! (Placeholder)');
   };
 
-
-
   return (
     <div
       className="min-h-screen bg-gray-950"
@@ -62,40 +63,40 @@ const SignUp: React.FC = () => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
-      <main className="container mx-auto px-3 py-1">
+      <main className="container mx-auto px-3 py-3">
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
-<h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
-      BEGIN YOUR JOURNEY WITH ALPHA DAO
-        </h1>
-        <button
-                    onClick={handleGoogleSignUp}
-                    className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
-                  >
-                    <FcGoogle className="text-2xl mr-2" />
-                    <span className="text-white font-semibold">Sign up with Google</span>
-                  </button>
-                  <button
-                    onClick={handleTwitterSignUp}
-                    className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"   
-                  >
-                    <FaTwitter className="text-2xl mr-2 text-blue-600" />
-                    <span className="text-white font-semibold">Sign up with Twitter</span>
-                  </button>
-                  <button
-                    onClick={handleWalletSignUp}
-                    className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
-                  >
-                    <FaWallet className="text-2xl mr-2 text-blue-600" />
-                    <span className="text-white font-semibold">Sign up with Ton Wallet</span>
-                  </button>
-        
-                  <div className="relative my-6">
-                    <hr className="border-gray-300" />
-                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500">
-                      OR
-                    </span>
-                  </div>
-        
+          <h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
+            BEGIN YOUR JOURNEY WITH ALPHA DAO
+          </h1>
+          <button
+            onClick={handleGoogleSignUp}
+            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
+          >
+            <FcGoogle className="text-2xl mr-2" />
+            <span className="text-white font-semibold">Sign up with Google</span>
+          </button>
+          <button
+            onClick={handleTwitterSignUp}
+            className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
+          >
+            <FaTwitter className="text-2xl mr-2 text-blue-600" />
+            <span className="text-white font-semibold">Sign up with Twitter</span>
+          </button>
+          <button
+            onClick={handleWalletSignUp}
+            className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
+          >
+            <FaWallet className="text-2xl mr-2 text-blue-600" />
+            <span className="text-white font-semibold">Sign up with Ton Wallet</span>
+          </button>
+
+          <div className="relative my-6">
+            <hr className="border-gray-300" />
+            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500">
+              OR
+            </span>
+          </div>
+
           <form onSubmit={handleEmailSignUp}>
             <div className="mb-4">
               <label
@@ -123,16 +124,27 @@ const SignUp: React.FC = () => {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 focus:outline-none"
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
 
             <div className="mb-6">
@@ -142,16 +154,27 @@ const SignUp: React.FC = () => {
               >
                 Confirm Password
               </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Confirm your password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm your password"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 focus:outline-none"
+                  tabIndex={-1}
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
 
             <button
