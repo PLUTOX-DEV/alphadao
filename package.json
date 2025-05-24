@@ -19,6 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "formik": "^2.4.6",
     "framer-motion": "^12.9.4",
     "gsap": "^3.13.0",
     "lucide-react": "^0.503.0",
@@ -26,12 +27,13 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
-    "react-quill": "^2.0.0",
+    "react-quill": "^0.0.2",
     "react-router-dom": "^7.5.3",
     "tailwind-merge": "^3.2.0",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.1.5",
-    "three": "^0.176.0"
+    "three": "^0.176.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.27.1",

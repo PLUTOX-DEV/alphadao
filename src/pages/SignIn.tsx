@@ -49,18 +49,25 @@ const SignIn: React.FC = () => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
-      <main className="container mx-auto px-4 py-12">
-        <h1 className="text-2xl font-bold text-gray-900 text-center mb-8 font-serif">
-          EXPERIENCE THE DAO
-        </h1>
-
-        <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-8">
+      <main className="container mx-auto px-3 py-12">
+            <div className="max-w-md mx-auto bg-purple-950 opacity-90 shadow-md rounded-lg p-8">
+              <Link to="/home"><img className="w-15 h-15 animate-spin-slow display: inline" src='./Daologo.png'/><h1 className=" py- text-2xl display: inline font-bold text-gray-900 15px text-center mb-8 font-serif">
+          ALPHA DAO
+        </h1></Link>
+          <div className="mt-4 text-center text-sm text-gray-600">
+            <p>
+              Don’t have an account?{' '}
+              <Link to="/sign-up" className="text-blue-600 hover:underline">
+                Sign Up
+              </Link>
+            </p>
+          </div>
           <button
             onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200"
           >
             <FcGoogle className="text-2xl mr-2" />
-            <span className="text-gray-700 font-semibold">Sign in with Google</span>
+            <span className="text-white font-semibold">Sign in with Google</span>
           </button>
 
           <button
@@ -124,21 +131,12 @@ const SignIn: React.FC = () => {
               Sign In with Email
             </button>
           </form>
-
-          <div className="mt-4 text-center text-sm text-gray-600">
-            <p>
-              Don’t have an account?{' '}
-              <Link to="/sign-up" className="text-blue-600 hover:underline">
-                Sign Up
-              </Link>
-            </p>
             <p className="mt-2">
               Forgot your password?{' '}
               <Link to="/forgot-password" className="text-blue-600 hover:underline">
                 Reset Password
               </Link>
             </p>
-          </div>
         </div>
       </main>
      

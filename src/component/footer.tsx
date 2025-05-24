@@ -32,7 +32,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-gray-950 text-white rounded-r-md hover:bg-purple-500 transition-colors duration-200"
+                  className="px-4 py-2 bg-gray-950 text-white rounded-r-md hover:bg-purple-950 transition-colors duration-200"
                 >
                   Subscribe
                 </button>
@@ -47,7 +47,7 @@ const Footer = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-purple-400 hover:text-purple-300 duration-200"
+                  className="text-purple-950 hover:text-purple-900 duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
