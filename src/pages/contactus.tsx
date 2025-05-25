@@ -42,7 +42,7 @@ const ContactUs = () => {
       <Header/>
       <main className="flex-grow container mx-auto px-4 py-12"
       style={{
-        backgroundImage: `bg-gray-950 url(${logo})`,
+        backgroundImage: ` url(${logo})`,
         backgroundSize: 'max',
         backgroundPosition: 'center', 
         backgroundAttachment: 'fixed'
@@ -52,7 +52,7 @@ const ContactUs = () => {
           onSubmit={handleSubmit}
           className="bg-gray-950 border-b-purple-900 opacity-90 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
         >
-          <h1 className="text-4xl font-bold text-white drop-shadow mb-6 text-center">
+          <h1 className="text-4xl font-bold text-gray-500 border-b-4 border-purple-900 drop-shadow mb-6 text-center">
           Contact Us
         </h1>
         <p className="text-white mb-10 max-w-2xl mx-auto text-center">
@@ -61,7 +61,7 @@ const ContactUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* First Name */}
             <div>
-              <label htmlFor="firstName" className="block text-purple-900 font-semibold mb-2">
+              <label htmlFor="firstName" className="block text-white font-semibold mb-2">
                 First Name
               </label>
               <input
@@ -77,7 +77,7 @@ const ContactUs = () => {
             </div>
             {/* Last Name */}
             <div>
-              <label htmlFor="lastName" className="block text-purple-900 font-semibold mb-2">
+              <label htmlFor="lastName" className="block text-white font-semibold mb-2">
                 Last Name
               </label>
               <input
@@ -94,7 +94,7 @@ const ContactUs = () => {
           </div>
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-purple-900 font-semibold mb-2">
+            <label htmlFor="email" className="block text-white font-semibold mb-2">
               Email
             </label>
             <input
@@ -110,7 +110,7 @@ const ContactUs = () => {
           </div>
           {/* Enquiry Dropdown */}
           <div>
-            <label htmlFor="enquiry" className="block text-purple-900 font-semibold mb-2">
+            <label htmlFor="enquiry" className="block text-white font-semibold mb-2">
               Enquiry Type
             </label>
             <select
@@ -118,7 +118,7 @@ const ContactUs = () => {
               name="enquiry"
               value={formData.enquiry}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-purple-900"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-400"
               required
             >
               {enquiryOptions.map((option) => (
@@ -130,7 +130,7 @@ const ContactUs = () => {
           </div>
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-purple-900 font-semibold mb-2">
+            <label htmlFor="message" className="block text-white font-semibold mb-2">
               Message
             </label>
             <textarea
@@ -148,7 +148,7 @@ const ContactUs = () => {
           <div className="text-center pt-2">
             <button
               type="submit"
-              className="px-8 py-3 bg-gradient-to-r from-purple-700 to-purple-900 text-white font-semibold rounded-md shadow hover:from-purple-800 hover:to-purple-950 transition-colors duration-200"
+              className="px-8 py-3 bg-gradient-to-r from-purple-700 to-purple-950 text-white font-semibold rounded-md shadow hover:from-purple-800 hover:to-purple-950 transition-colors duration-200"
             >
               Submit
             </button>

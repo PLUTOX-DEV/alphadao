@@ -49,7 +49,7 @@ const About = () => (
       backgroundAttachment: 'fixed',
     }}
   >
-    <Header />
+    <div className='position:fixed bg-gray-950'><Header /></div>
     <main className="container mx-auto px-4 py-16">
       {/* About Section */}
       <section className="text-center mb-20">
@@ -59,7 +59,7 @@ const About = () => (
         </p>
         <Link
           to="/contactus"
-          className="inline-block px-8 py-3 bg-gradient-to-r from-purple-950 to-indigo-700 text-white font-bold rounded-lg shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
+          className="inline-block px-8 py-3 bg-purple-950 text-white font-bold rounded-lg shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
         >
           Get in Touch
         </Link>
@@ -67,7 +67,7 @@ const About = () => (
 
       {/* Team Section */}
       <section>
-        <h2 className="text-3xl font-bold text-white text-center mb-12">Meet Our Team</h2>
+        <h2 className="text-3xl font-bold text-gray-400 font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">Meet Our Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {teamMembers.map((member) => (
             <div
