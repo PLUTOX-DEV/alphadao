@@ -121,7 +121,7 @@ const SignIn: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-900"
                 required
               />
             </div>
@@ -141,7 +141,7 @@ const SignIn: React.FC = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-900 pr-10"
                   required
                 />
                 <button
@@ -162,7 +162,7 @@ const SignIn: React.FC = () => {
               Sign In with Email
             </button>
           </form>
-            <p className="mt-2">
+            <p className="mt-2 text-gray-400">
               Forgot your password?{' '}
               <Link to="/forgot-password" className="text-purple-500 hover:underline">
                 Reset Password

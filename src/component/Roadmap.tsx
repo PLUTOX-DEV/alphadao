@@ -193,7 +193,7 @@ export function Roadmap() {
       <div className="relative">
         <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800  rounded-full">
           <div
-            className="h-full bg-gradient-to-r from-blue-500 to-pink-500 rounded-full"
+            className="h-full bg-gradient-to-r from-purple-900 to-pink-500 rounded-full"
             style={{
               width:
                 activePhase === "phase1"
@@ -219,9 +219,9 @@ export function Roadmap() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center z-10 border-2 ${
                       phase.status === "completed"
-                        ? "bg-blue-500 "
+                        ? "bg-purple-900 "
                         : phase.status === "in-progress"
-                          ? "bg-blue-700 border-blue-800"
+                          ? "bg-purple-900 border-purple-950"
                           : "bg-gray-800 border-gray-700"
                     }`}
                   >

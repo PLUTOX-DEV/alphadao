@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-6 border-t border-purple-950 mt-10 bg-gray-950">
+    <footer className="py-6  mt-10 bg-gray-950">
       <div className="container mx-auto px-4">
 {/* Newsletter & Social Media Section */}
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">

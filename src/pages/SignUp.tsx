@@ -101,7 +101,7 @@ const SignUp: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-semibold mb-2"
+                className="block text-white font-semibold mb-2"
               >
                 Email
               </label>
@@ -112,7 +112,7 @@ const SignUp: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-900"
                 required
               />
             </div>
@@ -120,7 +120,7 @@ const SignUp: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-gray-700 font-semibold mb-2"
+                className="block text-white font-semibold mb-2"
               >
                 Password
               </label>
@@ -132,7 +132,7 @@ const SignUp: React.FC = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-900 pr-10"
                   required
                 />
                 <button
@@ -150,7 +150,7 @@ const SignUp: React.FC = () => {
             <div className="mb-6">
               <label
                 htmlFor="confirmPassword"
-                className="block text-gray-700 font-semibold mb-2"
+                className="block text-white font-semibold mb-2"
               >
                 Confirm Password
               </label>
@@ -162,7 +162,7 @@ const SignUp: React.FC = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Confirm your password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-900 pr-10"
                   required
                 />
                 <button
