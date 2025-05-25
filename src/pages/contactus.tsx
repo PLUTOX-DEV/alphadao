@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Footer from '../component/footer';
+import Header from '../component/Header';
+import logo from '../../public/Dao.jpeg'
 
 const enquiryOptions = [
   { value: '', label: 'Select an enquiry type' },
@@ -36,12 +38,19 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col  bg-purple-950 ">
-      <main className="flex-grow container mx-auto px-4 py-12">
+    <div className="min-h-screen flex flex-col bg-gray-950 bg-opacity-90">
+      <Header/>
+      <main className="flex-grow container mx-auto px-4 py-12"
+      style={{
+        backgroundImage: `bg-gray-950 url(${logo})`,
+        backgroundSize: 'max',
+        backgroundPosition: 'center', 
+        backgroundAttachment: 'fixed'
+      }}>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-950 border-b-gray-500 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
+          className="bg-gray-950 border-b-purple-900 opacity-90 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
         >
           <h1 className="text-4xl font-bold text-white drop-shadow mb-6 text-center">
           Contact Us

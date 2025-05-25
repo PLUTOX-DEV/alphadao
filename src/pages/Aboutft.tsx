@@ -2,6 +2,8 @@
 import Footer from '../component/footer';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg-about-us.jpg';
+import React from 'react';
+import Header from '../component/Header';
 
 type TeamMember = {
   name: string;
@@ -12,28 +14,28 @@ type TeamMember = {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Alice Johnson',
-    role: 'Founder & CEO',
+    name: 'LEX ',
+    role: 'Founder',
     image: 'https://randomuser.me/api/portraits/women/44.jpg',
-    twitter: 'alicejohnson',
+    twitter: 'Alexander0_0_7_',
   },
   {
-    name: 'Bob Smith',
+    name: 'Npm',
     role: 'CTO',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
     twitter: 'bobsmith',
   },
   {
-    name: 'Carol Lee',
-    role: 'Lead Developer',
+    name: 'L3VI 🧧𝕏 l3viticus',
+    role: 'Community Manager',
     image: 'https://randomuser.me/api/portraits/women/68.jpg',
-    twitter: 'carollee',
+    twitter: 'toney_levi',
   },
   {
-    name: 'David Kim',
-    role: 'Marketing Director',
-    image: 'https://randomuser.me/api/portraits/men/85.jpg',
-    twitter: 'davidkim',
+    name: 'Justin',
+    role: 'Project Manager',
+    image: 'https://x.com/mrjustinn/photo',
+    twitter: 'mrjustinn',
   },
 ];
 
@@ -47,11 +49,12 @@ const About = () => (
       backgroundAttachment: 'fixed',
     }}
   >
+    <Header />
     <main className="container mx-auto px-4 py-16">
       {/* About Section */}
       <section className="text-center mb-20">
-        <h1 className="text-5xl font-extrabold text-white mb-6 drop-shadow-lg">ALPHA DAO</h1>
-        <p className="text-lg text-purple-100 max-w-2xl mx-auto mb-8 bg-purple-900 bg-opacity-60 rounded-xl p-6 font-medium shadow-lg">
+        
+        <p className="text-lg text-purple-100 mx-auto mb-8 bg-gray-900 bg-opacity-60 rounded-xl p-6 font-medium shadow-lg">
           Alpha DAO is a decentralized autonomous organization (DAO) designed to bring people together in a community-owned ecosystem. By building on The Open Network (TON), Alpha DAO leverages exceptional scalability, low fees, and deep Telegram integration, creating an accessible, engaging, and innovative experience for our community.
         </p>
         <Link
@@ -69,12 +72,12 @@ const About = () => (
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="flex flex-col items-center bg-white bg-opacity-90 shadow-xl rounded-2xl p-8 hover:scale-105 transition-transform"
+              className="flex flex-col items-center bg-gray-900 bg-opacity-90 shadow-xl rounded-2xl p-8 hover:scale-105 transition-transform"
             >
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-purple-500 shadow"
+                className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-white shadow"
               />
               <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
               <p className="text-purple-700 font-medium mb-2">{member.role}</p>
