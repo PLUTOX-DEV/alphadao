@@ -30,14 +30,14 @@ export default function Home() {
     {/* </div> */}
   
     
-    <div className="relative z-10 w-full">
+    <div className="relative z-10 w-full flex flex-col min-h-screen">
       <Header/>
       <Hero/>
       <Roadmap/>
+      <Footer/>
 
     </div>
-    <div><Footer/></div>
-    
+     
   </div>
   )
 }

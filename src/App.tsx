@@ -4,7 +4,7 @@ import PrivacyPolicy from "./pages/Privacypolicy";
 import ContactUs from "./pages/contactus";
 import Governance from "./pages/Governance";
 import Footer from "./component/footer";
-import About from "./pages/Aboutft";
+import About from "./pages/About.tsx";
 import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import Blog from "./pages/Blog.tsx";

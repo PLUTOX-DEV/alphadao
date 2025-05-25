@@ -101,7 +101,7 @@ const SignIn: React.FC = () => {
 
           <div className="relative my-6">
             <hr className="border-gray-300" />
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500">
+            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-4 text-gray-500">
               OR
             </span>
           </div>

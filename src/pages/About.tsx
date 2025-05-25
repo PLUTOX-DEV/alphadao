@@ -41,22 +41,22 @@ const teamMembers: TeamMember[] = [
 
 const About = () => (
   <div
-    className="min-h-screen bg-gray-900 bg-opacity-90"
+    className="min-h-screen bg-gray-950 bg-opacity-90"
     style={{
-      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(30, 27, 75, 0.7)), url(${logo})`,
+      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(243, 244, 246, 0.9)), url(${logo})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
     }}
   >
-    <div className='position:fixed border-b-1 border-gray-500 bg-gray-950'><Header /></div>
+    <div className='position:fixed border-b-1 border-black bg-gray-950'><Header /></div>
     <main className="container mx-auto px-4 py-16">
       {/* About Section */}
       <section className="text-center mb-20">
-        
-        <p className="text-lg text-purple-100 mx-auto mb-8 bg-gray-900 bg-opacity-60 rounded-xl p-6 font-medium shadow-lg">
+        <div className='bg-gray-950 opacity-90 rounded-xl'><p className="text-lg text-white mx-auto mb-8  p-6 font-medium">
           Alpha DAO is a decentralized autonomous organization (DAO) designed to bring people together in a community-owned ecosystem. By building on The Open Network (TON), Alpha DAO leverages exceptional scalability, low fees, and deep Telegram integration, creating an accessible, engaging, and innovative experience for our community.
-        </p>
+        </p></div>
+        
         <Link
           to="/contactus"
           className="inline-block px-8 py-3 bg-purple-950 text-white font-bold rounded-lg shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
@@ -67,7 +67,7 @@ const About = () => (
 
       {/* Team Section */}
       <section>
-        <h2 className="text-3xl font-bold text-gray-400 font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">Meet Our Team</h2>
+        <h2 className="text-3xl font-bold text-white font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">Meet Our Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {teamMembers.map((member) => (
             <div

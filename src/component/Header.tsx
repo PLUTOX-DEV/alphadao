@@ -6,7 +6,7 @@ const Header: React.FC = () => {
 
   return (
     <div>
-    <nav className="bg-gradient-to-bl dark:bg-gray-900  w-full z-40 top-0 start-0 backdrop-filter backdrop-brightness-100 backdrop-blur-3xl dark:border-gray-600">
+    <nav className="bg-gradient-to-bl dark:bg-gray-900 border-b-1 border-black w-full z-40 top-0 start-0 backdrop-filter backdrop-brightness-100 backdrop-blur-3xl dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
         <Link to="/home" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
           <img src="../Daologo.png" className="w-8 h-8 animate-spin-slow" alt="Alpha"/>

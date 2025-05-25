@@ -60,7 +60,7 @@ const Footer = () => {
         
 
  {/* Divider */}
-        <hr className="my-3 border-gray-700" />
+        <hr className="my-3 border-gray-500" />
         {/* Copyright Section */}
         <div className="text-center text-sm text-gray-400 flex justify-center-safe">
           <p>© {currentYear} ALPHA DAO. All Rights Reserved.</p>

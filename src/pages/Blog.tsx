@@ -20,7 +20,7 @@ const Blog: React.FC = () => {
         backgroundAttachment: 'fixed',
       }}
     >
-      <div className='border-b-1 border-gray-500'>
+      <div className='border-b-1 border-black bg-purple-950 rounded-2xl text-white'>
         <Header />
       </div>
       <BlogSearch/> 
