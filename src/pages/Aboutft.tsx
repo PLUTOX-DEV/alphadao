@@ -49,7 +49,7 @@ const About = () => (
       backgroundAttachment: 'fixed',
     }}
   >
-    <div className='position:fixed bg-gray-950'><Header /></div>
+    <div className='position:fixed border-b-1 border-gray-500 bg-gray-950'><Header /></div>
     <main className="container mx-auto px-4 py-16">
       {/* About Section */}
       <section className="text-center mb-20">

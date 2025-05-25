@@ -39,7 +39,7 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-950 bg-opacity-90">
-      <Header/>
+      <div className='border-b-1 border-gray-500'><Header/></div>
       <main className="flex-grow container mx-auto px-4 py-12"
       style={{
         backgroundImage: ` url(${logo})`,
