@@ -42,7 +42,7 @@ const ContactUs = () => {
       <div className='border-b-1 border-black'><Header/></div>
       <main className="flex-grow container mx-auto px-4 py-12"
       style={{
-        backgroundImage: ` url(${logo})`,
+        backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(59, 7, 100, 1)), url(${logo})`,
         backgroundSize: 'max',
         backgroundPosition: 'center', 
         backgroundAttachment: 'fixed'
