@@ -43,7 +43,7 @@ const About = () => (
   <div
     className="min-h-screen bg-gray-950 bg-opacity-90"
     style={{
-      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(243, 244, 246, 0.9)), url(${logo})`,
+      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(59, 7, 100, 1)), url(${logo})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

@@ -13,7 +13,7 @@ export interface BlogPost {
 }
 
 export interface BlogContextType {
-    blogPosts: BlogPost[];
+      blogPosts: BlogPost[];
     loading: boolean;
     error: string | null;
     currentPage: number;
