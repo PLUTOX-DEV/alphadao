@@ -13,14 +13,14 @@ const Blog: React.FC = () => {
   return (
 
     <div
-      className="min-h-screen bg-gray-950 flex flex-col"
+      className="min-h-screen bg-gray-300 flex flex-col"
       style={{
         backgroundSize: 'max',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
-      <div className='border-b-1 border-black bg-purple-950 rounded-2xl text-white'>
+      <div className='border-b-1 border-black bg-gray-950 rounded-2xl text-white'>
         <Header />
       </div>
       <BlogSearch/> 

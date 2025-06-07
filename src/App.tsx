@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp.tsx";
 import Blog from "./pages/Blog.tsx";
 import Services from "./pages/Services.tsx";  
 import { BlogProvider } from "./blog/context/BlogContext.tsx";
+import Dashboard from "./component/dashboard.tsx";
 
 
 const App = () => {
@@ -30,6 +31,12 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp/>} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/services " element={<Services/>} />
+        <Route path="/dashboard" element={<Dashboard user={{
+            name: "",
+            email: ""
+          }} onLogout={function (): void {
+            throw new Error("Function not implemented.");
+          } }/>} />
 
 
            
