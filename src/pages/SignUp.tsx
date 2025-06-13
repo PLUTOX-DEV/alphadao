@@ -6,6 +6,8 @@ import { FaWallet } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
+import supabase from "../services/supabaseClient";
+import { ToastContainer, toast } from "react-toastify";
 
 interface FormData {
   email: string;
@@ -22,21 +24,41 @@ const SignUp: React.FC = () => {
   // State for password visibility
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleEmailSignUp = (e: FormEvent<HTMLFormElement>) => {
+  const handleEmailSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
+
     }
-    console.log('Email Sign-Up:', formData);
-    alert('Sign-up submitted! (Placeholder)');
-    setFormData({ email: '', password: '', confirmPassword: '' });
+    setLoading(true);
+
+    const { error } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+    });
+
+    setLoading(false);
+
+     if (error) {
+      toast.error(error.message, { position: "top-right" });
+    } else {
+      toast.success("Signup successful! Check your email for verification.", {
+        position: "top-right",
+      });
+      setFormData({
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    }
   };
   const handleGoogleSignUp = () => {
     console.log('Google Sign-In triggered');
@@ -51,9 +73,12 @@ const SignUp: React.FC = () => {
     console.log('Wallet Sign-In triggered');
     alert('Wallet sign-in initiated! (Placeholder)');
   };
+  
 
   return (
+    
     <div
+
       className="min-h-screen bg-gray-950"
       style={{
         backgroundImage: `url(${logo})`,
@@ -63,6 +88,7 @@ const SignUp: React.FC = () => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
+      <ToastContainer/>
       <main className="container mx-auto px-3 py-3">
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">

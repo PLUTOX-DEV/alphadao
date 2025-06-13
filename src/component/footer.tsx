@@ -12,8 +12,13 @@ const Footer = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <footer className="py-6  mt-10 bg-gray-950">
       <div className="container mx-auto px-4">
+=======
+    <footer className="py-11 border-t border-purple-950  bg-gray-950">
+      <div className="container  mt-20  mx-auto px-4">
+>>>>>>> 127be26 (...)
 {/* Newsletter & Social Media Section */}
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png' alt='Alpha Dao'/>
@@ -32,7 +37,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-purple-950 text-white rounded-r-md hover:bg-purple-950 transition-colors duration-200"
+                  className="px-4 py-2 bg-purple-800 text-white rounded-r-md hover:bg-purple-950 transition-colors duration-200"
                 >
                   Subscribe
                 </button>
@@ -47,14 +52,14 @@ const Footer = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-purple-950 hover:text-purple-900 duration-200"
+                  className="text-purple-200 hover:text-purple-900 duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span className="text-2xl">{social.icon}</span>
                 </a>
               ))}
-              <div className='justify-items-center flex-1/2 pb-3 pt-0.1 text-gray-400'><a href='/privacypolicy'>PrivacyPolicy</a></div>
+              <div className='justify-items-center flex-1/2 pb-3 pt-0.1 text-gray-400'><a href='/privacypolicy'>Privacy Policy</a></div>
             </div>
           </div>
         
