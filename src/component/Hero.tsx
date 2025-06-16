@@ -20,8 +20,7 @@ export default function Hero() {
           >
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
               Start Your Journey Into The Web3 Landscape With
-<<<<<<< HEAD
-              <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-600 px-2 animate-gradient-x font-serif">
+                <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-600 px-2 animate-gradient-x font-serif">
                 ALPHA DAO
               </span>
             </h1>
@@ -33,16 +32,15 @@ export default function Hero() {
                 className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 shadow-lg hover:from-pink-500 hover:to-purple-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300"
               >
                 <span className="relative z-10 text-white tracking-wide">
-=======
-              <div>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r px-10 from-purple-400 to-purple-950">
-                  ALPHA DAO
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r px-10 from-purple-400 to-purple-950">
+                    ALPHA DAO
+                  </span>
                 </span>
-              </div>
-              <Link onClick={() => setActive(!active)} to="/sign-in">
-              <button  className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group bgroup-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-950 dark:bg-purple-950 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent  active:bg-purple-900">
->>>>>>> 127be26 (...)
+              </button>
+            </Link>
+            <Link onClick={() => setActive(!active)} to="/sign-in">
+              <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-950 dark:bg-purple-950 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
                   Get ALPHA
                 </span>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl" />

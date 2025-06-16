@@ -1,16 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Aboutus from "./pages/About";
 import Home from "./pages/Home";
-import PrivacyPolicy from "./pages/Privacypolicy";  
-import ContactUs from "./pages/contactus";
-import Governance from "./pages/Governance";
-import Footer from "./component/footer";
-import About from "./pages/About.tsx";
+import { BlogProvider } from "./blog/context/BlogContext.tsx";
+import Blog from "./pages/Blog.tsx";
 import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
-import Blog from "./pages/Blog.tsx";
-import Services from "./pages/Services.tsx";  
-import { BlogProvider } from "./blog/context/BlogContext.tsx";
-import Dashboard from "./component/dashboard.tsx";
+import ContactUs from "./pages/contactus.tsx";
+
 
 
 const App = () => {
@@ -21,29 +17,16 @@ const App = () => {
     
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} /> 
-        <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
-        <Route path="/contactus" element={<ContactUs />} /> 
-        <Route path="/governance" element={<Governance />} />
-        <Route path="/Footer" element={<Footer />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp/>} />
-        <Route path="/blog" element={<Blog/>} />
-        <Route path="/services " element={<Services/>} />
-        <Route path="/dashboard" element={<Dashboard user={{
-            name: "",
-            email: ""
-          }} onLogout={function (): void {
-            throw new Error("Function not implemented.");
-          } }/>} />
-
-
-           
+        <Route path="/about" element={<Aboutus />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     
     </BrowserRouter>
     </BlogProvider>
+    
     
   );  
 };
