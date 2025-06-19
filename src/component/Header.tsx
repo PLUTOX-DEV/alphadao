@@ -55,7 +55,7 @@ const Header: React.FC = () => {
             </li>
             <li>
 
-              <Link to="/profile" className="block py-2 px-3 text-gray-300 rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300 md:dark:hover:bg-transparent dark:border-gray-700">Miniapp</Link>
+              <Link to="#" className="block py-2 px-3 text-gray-300 rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300 md:dark:hover:bg-transparent dark:border-gray-700">Miniapp</Link>
 
             </li>
            <li>

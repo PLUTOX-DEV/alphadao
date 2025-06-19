@@ -23,11 +23,11 @@ const SignUp: React.FC = () => {
     password: '',
     confirmPassword: '',
   });
+  const [, setLoading] = useState(false);
 
   // State for password visibility
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,14 +42,14 @@ const SignUp: React.FC = () => {
 
     }
     setLoading(true);
+    // setLoading(true);
 
     const { error } = await supabase.auth.signUp({
       email: formData.email,
       password: formData.password,
     });
 
-    setLoading(false);
-
+    // setLoading(false);
      if (error) {
       toast.error(error.message, { position: "top-right" });
     } else {
@@ -98,7 +98,6 @@ const SignUp: React.FC = () => {
       <main className="container mx-auto px-3 py-3 font-[Georgia]">
 
       <ToastContainer/>
-      <main className="container mx-auto px-3 py-3">
 
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
