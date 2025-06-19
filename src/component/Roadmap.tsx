@@ -199,7 +199,7 @@ export function Roadmap() {
       <div className="relative">
         <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800  rounded-full">
           <div
-            className="h-full bg-gradient-to-r from-purple-900 to-pink-500 rounded-full"
+            className="h-full bg-gradient-to-r from-purple-900 to-purple-300 rounded-full"
             style={{
               width:
                 activePhase === "phase1"
@@ -289,7 +289,7 @@ export function Roadmap() {
 
       {/* Progress summary */}
       <div className="mt-12 bg-gray-800/50 border border-gray-800 rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Project Progress</h2>
+        <h2 className="text-xl font-semibold mb-4 text-purple-300">Project Progress</h2>
         <div className="space-y-4">
           {phases.map((phase) => {
             const completedMilestones = phase.milestones.filter((m) => m.completed).length
@@ -306,7 +306,7 @@ export function Roadmap() {
                 </div>
                 <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-blue-500 to-pink-500 rounded-full"
+                    className="h-full bg-gradient-to-r from-purple-900 to-purple-300 rounded-full"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
