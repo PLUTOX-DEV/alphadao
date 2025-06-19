@@ -3,6 +3,7 @@ import { Badge } from "../components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Beaker, CheckCircle2, Code2, Coins, FileText, Globe, LockKeyhole, Network, Rocket, Users } from "lucide-react"
+import { motion } from "framer-motion";
 
 
 
@@ -187,6 +188,11 @@ export function Roadmap() {
   }
 
   return (
+    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
     <div className="flex justify-center">
     <div className="space-y-8 w-4/5 ">
      
@@ -311,5 +317,6 @@ export function Roadmap() {
       </div>
     </div>
     </div>
+    </motion.div>
   )
 }

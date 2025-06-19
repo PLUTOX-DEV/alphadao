@@ -2,7 +2,6 @@
 import Footer from '../component/footer';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg-about-us.jpg';
-import React from 'react';
 import Header from '../component/Header';
 
 type TeamMember = {
@@ -43,11 +42,10 @@ const About = () => (
   <div
     className="min-h-screen bg-gray-950 bg-opacity-90"
     style={{
-      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(59, 7, 100, 1)), url(${logo})`,
+      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgb(0, 0, 0)), url(${logo})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-    }}
+        }}
   >
     <div className='position:fixed border-b-1 border-black bg-gray-950'><Header /></div>
     <main className="container mx-auto px-4 py-16">
@@ -59,7 +57,7 @@ const About = () => (
         
         <Link
           to="/contactus"
-          className="inline-block px-8 py-3 bg-purple-950 text-white font-bold rounded-lg shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
+          className="inline-block px-8 py-3 bg-gradient-to-r from-purple-700 to-purple-950 text-white font-bold rounded-lg shadow-lg hover:from-purple-700 hover:to-indigo-700 transition"
         >
           Get in Touch
         </Link>

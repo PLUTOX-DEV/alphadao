@@ -6,7 +6,7 @@ import { FaWallet } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
-
+import { motion } from "framer-motion";
 interface FormData {
   email: string;
   password: string;
@@ -63,6 +63,11 @@ const SignUp: React.FC = () => {
         backgroundColor: 'rgba(243, 244, 246, 0.9)',
       }}
     >
+      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
       <main className="container mx-auto px-3 py-3">
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
@@ -179,7 +184,7 @@ const SignUp: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full px-4 py-3 bg-purple-900 text-white font-semibold rounded-md hover:bg-purple-500 transition-colors duration-200"
+              className="w-full px-4 py-3 bg-gradient-to-r from-purple-700 to-purple-950 opacity-100 text-white font-semibold rounded-md hover:bg-purple-500 transition-colors duration-200"
             >
               Sign Up with Email
             </button>
@@ -195,6 +200,7 @@ const SignUp: React.FC = () => {
           </div>
         </div>
       </main>
+      </motion.div>
     </div>
   );
 };

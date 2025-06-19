@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Footer from '../component/footer';
 import Header from '../component/Header';
-import logo from '../../public/Dao.jpeg'
+import logo from '../assets/chart.jpg'
+import { motion } from "framer-motion";
 
 const enquiryOptions = [
   { value: '', label: 'Select an enquiry type' },
@@ -40,19 +41,25 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-950 bg-opacity-90">
       <div className='border-b-1 border-black'><Header/></div>
+     
       <main className="flex-grow container mx-auto px-4 py-12"
       style={{
-        backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgba(59, 7, 100, 1)), url(${logo})`,
+        backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgb(0, 0, 0)), url(${logo})`,
         backgroundSize: 'max',
         backgroundPosition: 'center', 
-        backgroundAttachment: 'fixed'
+       
       }}>
+         <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >        
 
         <form
           onSubmit={handleSubmit}
           className="bg-gray-950 border-b-purple-900 opacity-90 shadow-xl rounded-2xl p-8 max-w-2xl mx-auto space-y-6"
         >
-          <h1 className="text-4xl font-bold text-gray-500 border-b-4 border-purple-900 drop-shadow mb-6 text-center">
+          <h1 className="text-4xl font-serif font-bold text-gray-500 border-b-4 border-purple-900 drop-shadow mb-6 text-center">
           Contact Us
         </h1>
         <p className="text-white mb-10 max-w-2xl mx-auto text-center">
@@ -154,7 +161,9 @@ const ContactUs = () => {
             </button>
           </div>
         </form>
+         </motion.div>
       </main>
+     
       <Footer />
     </div>
   );
