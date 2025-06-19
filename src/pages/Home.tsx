@@ -151,7 +151,7 @@ export default function Home() {
                 key={i}
                 className="bg-gradient-to-br from-purple-800/80 to-gray-900/80 border border-purple-900/40 rounded-xl shadow-lg min-w-[90vw] sm:min-w-[18rem] max-w-xs flex flex-col items-center p-6 transition-transform hover:scale-105 duration-200 snap-center"
               >
-                <div className="w-24 h-24 rounded-full bg-gray-700 mb-4 flex items-center justify-center overflow-hidden">
+                <div className="w-70 h-40 rounded-xl bg-gray-700 mb-4 flex items-center justify-center overflow-hidden">
                   <span className="text-4xl text-purple-300">👤</span>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-100 mb-1">Name</h3>

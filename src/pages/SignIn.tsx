@@ -105,7 +105,7 @@ const SignIn: React.FC = () => {
           </button>
           <button
             onClick={handleWalletSignIn}
-            className="w-full flex items-center bg-blue-700 justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-blue-500 transition-colors duration-200"
+            className="w-full flex items-center bg-blue-700 justify-center px-4 py-3 mb-6 border border-blue-700 rounded-md hover:bg-blue-500 transition-colors duration-200"
           >
             <img src={FaWallet} alt="Ton Wallet" className="w-6 h-6 mr-2" />
             <span className="text-white font-semibold">Sign in with Ton Wallet</span>
