@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg2.jpg';
 import { FcGoogle } from 'react-icons/fc';
-import { FaWallet } from 'react-icons/fa';
+import FaWallet from '../assets/ton_symbol.svg';
 import { FaTwitter } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
@@ -56,11 +56,9 @@ const SignUp: React.FC = () => {
     <div
       className="min-h-screen bg-gray-950"
       style={{
-        backgroundImage: `url(${logo})`,
-        backgroundSize: 'max',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundColor: 'rgba(243, 244, 246, 0.9)',
+      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgb(0, 0, 0)), url(${logo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       }}
     >
       <motion.div
@@ -68,7 +66,7 @@ const SignUp: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                       >
-      <main className="container mx-auto px-3 py-3">
+      <main className="container mx-auto px-3 py-3 font-[Georgia]">
         <div className="max-w-md mx-auto bg-gray-900 opacity-90 shadow-md rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-500 text-center mb-8 font-serif sm:text-2xl">
             BEGIN YOUR JOURNEY WITH ALPHA DAO
@@ -89,12 +87,11 @@ const SignUp: React.FC = () => {
           </button>
           <button
             onClick={handleWalletSignUp}
-            className="w-full flex items-center justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
+            className="w-full flex items-center bg-blue-700 justify-center px-4 py-3 mb-6 border border-gray-300 rounded-md hover:bg-blue-500 transition-colors duration-200"
           >
-            <FaWallet className="text-2xl mr-2 text-blue-600" />
-            <span className="text-white font-semibold">Sign up with Ton Wallet</span>
+            <img src={FaWallet} alt="Ton Wallet" className="w-6 h-6 mr-2" />
+            <span className="text-white font-semibold">Sign in with Ton Wallet</span>
           </button>
-
           <div className="relative my-6">
             <hr className="border-gray-300" />
             <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-4 text-gray-500">
@@ -113,7 +110,7 @@ const SignUp: React.FC = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="email" 
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"

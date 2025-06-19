@@ -13,7 +13,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 
     return (
         <Link to={`/blog/${post.id}`} className="block border border-gray-700 rounded-lg">
-            <div className="bg-gray-950 rounded-lg shadow-md hover:shadow-xl w-96 hover:bg-gray-800 transition-shadow duration-200 ease-in-out overflow-hidden h-full flex flex-col">
+            <div className="w-full max-w-md sm:max-w-sm md:max-w-md mx-auto rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-gray-950 hover:bg-gray-900 transition-colors duration-200">
                 <div className="relative w-full pb-[56.25%] overflow-hidden bg-gray-200">
                     <img
                         src={post.imageUrl || defaultImage}

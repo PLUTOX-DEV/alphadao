@@ -18,26 +18,28 @@ const Footer = () => {
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <img className="w-10 h-10 animate-spin-slow" src='./Daologo.png' alt='Alpha Dao'/>
             {/* Newsletter Form */}
-            <form className="w-full max-w-xs mb-6">
+            <div className="flex justify-center w-full mb-6">
+              <form className="w-full max-w-xs">
               <label htmlFor="email" className="sr-only">
                 Email Address
               </label>
               <div className="flex">
                 <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-2 text-gray-900 bg-gray-100 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  required
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 text-gray-900 bg-gray-100 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
                 />
                 <button
-                  type="submit"
-                  className="px-4 py-2 bg-gradient-to-r from-purple-700 to-purple-950 text-white rounded-r-md hover:bg-purple-950 transition-colors duration-200"
+                type="submit"
+                className="px-4 py-2 bg-gradient-to-r from-purple-700 to-purple-950 text-white rounded-r-md hover:bg-purple-950 transition-colors duration-200"
                 >
-                  Subscribe
+                Subscribe
                 </button>
               </div>
-            </form>
+              </form>
+            </div>
             
             
             {/* Social Media Links */}
