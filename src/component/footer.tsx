@@ -12,6 +12,7 @@ const Footer = () => {
   ];
 
   return (
+
     <div className="container mx-auto px-4">
       {/* Newsletter & Social Media Section */}
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -35,6 +36,7 @@ const Footer = () => {
             >
               Subscribe
             </button>
+
           </div>
         </form>
         {/* Social Media Links */}

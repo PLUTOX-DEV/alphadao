@@ -17,12 +17,18 @@ const App = () => {
     
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<Aboutus />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/contact" element={<ContactUs />} />
-      </Routes>
+        <Route path="/home" element={<Home />} /> 
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
+        <Route path="/contactus" element={<ContactUs />} /> 
+        <Route path="/governance" element={<Governance />} />
+        <Route path="/Footer" element={<Footer />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/blog" element={<Blog/>} />
+       
+       
+     </Routes>
     
     </BrowserRouter>
     </BlogProvider>

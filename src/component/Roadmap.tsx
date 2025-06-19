@@ -3,6 +3,7 @@ import { Badge } from "../components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Beaker, CheckCircle2, Code2, Coins, FileText, Globe, LockKeyhole, Network, Rocket, Users } from "lucide-react"
+import { motion } from "framer-motion";
 
 
 
@@ -187,14 +188,22 @@ export function Roadmap() {
   }
 
   return (
+    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
     <div className="flex justify-center">
     <div className="space-y-8 w-4/5 ">
      
       <div className="relative">
         <div className="absolute left-0 right-0 h-1 top-4 bg-gray-800  rounded-full">
           <div
+
+
             className="h-full bg-gradient-to-r from-purple-900 to-pink-500 rounded-full"
             className="h-full bg-gradient-to-r from-purple-950 to-purple-300 rounded-full"
+
             style={{
               width:
                 activePhase === "phase1"
@@ -284,7 +293,9 @@ export function Roadmap() {
 
       {/* Progress summary */}
       <div className="mt-12 bg-gray-800/50 border border-gray-800 rounded-lg p-6">
+
         <h2 className="text-xl text-purple-600 font-semibold mb-4">Project Progress</h2>
+
         <div className="space-y-4">
           {phases.map((phase) => {
             const completedMilestones = phase.milestones.filter((m) => m.completed).length
@@ -301,6 +312,7 @@ export function Roadmap() {
                 </div>
                 <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                   <div
+
                     className="h-full bg-gradient-to-r from-purple-950 to-purple-300 rounded-full"
                     style={{ width: `${progressPercentage}%` }}
                   />
@@ -312,5 +324,6 @@ export function Roadmap() {
       </div>
     </div>
     </div>
+    </motion.div>
   )
 }

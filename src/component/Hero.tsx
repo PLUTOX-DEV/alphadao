@@ -2,45 +2,50 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import logo from '../assets/Dao.jpeg'
+export default function Hero() {
+
+
 export default function Hero() {
   const [active, setActive] = useState(false);
 
   return (
-    <section className="relative z-10 min-h-[70vh] flex items-center bg-gradient-to-br from-[#1a1333] via-[#2d184a] to-[#3a1c5c] overflow-hidden">
-      {/* Decorative Blurs */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-700 opacity-30 rounded-full blur-3xl -z-1 animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500 opacity-20 rounded-full blur-3xl -z-1 animate-pulse" />
 
-      <div className="container mx-auto px-6 mb-12 mt-5">
+    <div
+      className="relative z-10 min-h-130 bg-gray-950 md:mt-14 md:mb-14 flex items-center"
+      style={{
+      backgroundImage: `linear-gradient(rgba(30, 27, 75, 0.7), rgb(0, 0, 0)), url(${logo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderBottom: '1px solid rgba(55, 48, 163, 0.3)', // subtle purple border
+      boxShadow: '0 20px 40px -20px rgba(30,27,75,0.7)', // soft shadow for blending
+      }}
+    >
+      <div className="container mx-auto px-6 font-[Georgia] sm-px-12 md:px-16 lg:px-20 xl:px-24">
+
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
-              Start Your Journey Into The Web3 Landscape With
-                <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-600 px-2 animate-gradient-x font-serif">
-                ALPHA DAO
-              </span>
-            </h1>
-            <p className="text-lg md:text-2xl text-gray-200 mb-8 font-light max-w-2xl mx-auto">
-              Unlock exclusive access, connect with pioneers, and shape the future of decentralized communities.
-            </p>
-            <Link onClick={() => setActive(!active)} to="/sign-in">
-              <button
-                className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-lg font-semibold rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 shadow-lg hover:from-pink-500 hover:to-purple-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300"
-              >
-                <span className="relative z-10 text-white tracking-wide">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r px-10 from-purple-400 to-purple-950">
-                    ALPHA DAO
-                  </span>
+
+            <h1 className="text-2xl md:text-4xl lg:text-7xl   font-bold text-white mb-6">
+             <h1 className="text-5xl font-bold text-purple-400 mt-22 mb-4">
+          Unlock <br /> the Power  of <br /> Collective Finance
+        </h1>
+        <p className="text-lg mb-6">
+          Decentralized. Community-Owned. Built on TON. <br /> Join Alpha DAO and shape the future of people-powered investing.
+        </p>
+              <div>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r px-10 from-purple-950 to-gray-300" style={{ fontFamily: "'Georgia', cursive" }}>
+                  ALPHA DAO
                 </span>
-              </button>
-            </Link>
-            <Link onClick={() => setActive(!active)} to="/sign-in">
-              <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-purple-950 dark:bg-purple-950 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
+              </div>
+              <Link onClick={() => setActive(!active)} to="/sign-in">
+              <button  className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group  hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+                <span className="relative px-5 py-2.5 bg-gray-800 transition-all ease-in duration-75 bg-gradient-to-r from-purple-700 to-purple-950  bg-purple-950 dark:bg-purple-950 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
+
                   Get ALPHA
                 </span>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl" />
