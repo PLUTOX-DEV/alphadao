@@ -5,7 +5,9 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+
     <div className='fixed top-0 left-0 w-full bg-gray-900 text-white shadow-lg z-50'>
+
     <nav className=" bg-opacity-80 backdrop-blur-md w-full z-40 top-0 start-0 transition-all duration-300">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0.5">
         <Link to="/home" className="flex items-center space-x-3 ml-4 rtl:space-x-reverse">
@@ -15,8 +17,10 @@ const Header: React.FC = () => {
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 md:px-5 lg:px-7 rtl:space-x-reverse">
         <Link to='/sign-in'>
+
           <button className="relative inline-flex items-center justify-center md:px-1 p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group  group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-950 dark:focus:ring-purple-800">
                 <span className="relative px-5 py-2.5 font-[Georgia] transition-all ease-in duration-75 bg-gradient-to-r from-purple-700 to-purple-950 dark:bg-purple-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
+
                  Sign In
                 </span>
               </button>
@@ -50,7 +54,9 @@ const Header: React.FC = () => {
               <Link to="/blog" className="block py-2 px-3 text-gray-300 rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300 md:dark:hover:bg-transparent dark:border-gray-700">Blogs</Link>
             </li>
             <li>
+
               <Link to="/profile" className="block py-2 px-3 text-gray-300 rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300 md:dark:hover:bg-transparent dark:border-gray-700">Miniapp</Link>
+
             </li>
            <li>
               <Link to="/about" className="block py-2 px-3 text-gray-300 rounded-sm hover:bg-purple-900 md:hover:bg-transparent md:hover:text-purple-900 md:p-0 md:dark:hover:text-purple-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300 md:dark:hover:bg-transparent dark:border-gray-700">About</Link>

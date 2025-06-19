@@ -27,14 +27,14 @@ const BlogSearch: React.FC = () => {
 
     return (
 
-        <form onSubmit={() => handleExplicitSearch} className="relative w-full max-w-md flex flex-col sm:flex-row gap-4 my-8 mx-auto p-4  rounded-lg shadow-md">
+        <form onSubmit={() => handleExplicitSearch} className="relative w-full max-w-md bg-purple-950 flex flex-col sm:flex-row gap-4 my-8 mx-auto p-4  rounded-lg shadow-md">
       <Input
         id="tag-search"
         type='text'
         placeholder="Search by tag (e.g., alphadao, web3)"
         value={tagInput}
         onChange={handleInputChange}
-        className="pr-12 h-10 w-full"
+        className="pr-12 h-10 w-full text-white"
       />
       <button
         type="submit"

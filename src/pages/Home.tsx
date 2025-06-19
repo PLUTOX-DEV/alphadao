@@ -17,6 +17,7 @@ import freq from "../assets/super-about.jpg";
 export default function Home() {
   return (
     
+
     // <div className=" min-h-[calc(100vh-76px)] items-center">
     // {/* Background elements */}
     // {/* <div className="absolute inset-0 z-0 max-w-screen"> */}
@@ -37,6 +38,7 @@ export default function Home() {
   
     
     <div className="relative z-10 w-full flex flex-col min-h-screen bg-gray-950 text-gray-300 font-[Georgia]">
+
       <Header/>
       <Hero/>
       {/* Key Features Section */}
@@ -224,5 +226,6 @@ export default function Home() {
     
     <Footer/>
   </div>
+
   )
 }
