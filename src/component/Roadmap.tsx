@@ -201,7 +201,7 @@ export function Roadmap() {
           <div
 
 
-            className="h-full bg-gradient-to-r from-purple-900 to-pink-500 rounded-full"
+            
             className="h-full bg-gradient-to-r from-purple-950 to-purple-300 rounded-full"
 
             style={{
