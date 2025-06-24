@@ -1,12 +1,15 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../public/bg-sign-in-basic.jpeg';
-import { FcGoogle } from 'react-icons/fc';
 import FaWallet from '../assets/ton_symbol.svg';
 import { FaTwitter } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import supabase from "../services/supabaseClient";
+import {  toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom'
+
 
 interface FormData {
   email: string;
@@ -18,37 +21,56 @@ const SignIn: React.FC = () => {
     email: '',
     password: '',
   });
+  const [isLoading,  setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleEmailSignIn = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Email Sign-In:', formData);
-    alert('Email sign-in submitted! (Placeholder)');
-    setFormData({ email: '', password: '' });
-  };
-
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign-In triggered');
-    alert('Google sign-in initiated! (Placeholder)');
-  };
-
-  const handleWalletSignIn = () => {
-    console.log('Wallet Sign-In triggered');
-    alert('Wallet sign-in initiated! (Placeholder)');
-  };
-  const handleTwitterSignIn = () => {
-    console.log('Wallet Sign-In triggered');
-    alert('Wallet sign-in initiated! (Placeholder)');
-  };
-
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+
+  const handleEmailSignIn = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+     setLoading(true)
+    
+   try {  
+   const { data, error } = await supabase.auth.signInWithPassword({
+    email: formData.email,
+    password: formData.password,
+  })
+
+    if (error) {
+       toast.error(
+       error.message || "Wrong Login Details. Please check your credentials"
+      );
+      }
+
+    if (data?.user) {
+        toast.success("Login successful!");
+        navigate("/", { replace: true });
+      }
+  
+
+    setFormData({ email: '', password: '' });
+    
+  }
+  catch (error) {
+      toast.error(
+        error.message || "Wrong Login Details. Please check your credentials"
+      );
+      console.error("Login error:", error);
+    } finally {
+      setFormData({email:"", password:""})
+    }
+  
+  
+ 
+}
 
   return (
     <div
@@ -89,34 +111,23 @@ const SignIn: React.FC = () => {
               </Link>
             </p>
           </div>
-          <button
+          {/* <button
             onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"
           >
             <FcGoogle className="text-2xl mr-2" />
             <span className="text-white font-semibold">Sign in with Google</span>
-          </button>
-          <button
+          </button> */}
+          {/* <button
             onClick={handleTwitterSignIn}
             className="w-full flex items-center justify-center px-4 py-3 mb-4 border border-gray-300 rounded-md hover:bg-purple-500 transition-colors duration-200"   
           >
             <FaTwitter className="text-2xl mr-2 text-blue-600" />
             <span className="text-white font-semibold">Sign in with Twitter</span>
           </button>
-          <button
-            onClick={handleWalletSignIn}
-            className="w-full flex items-center bg-blue-700 justify-center px-4 py-3 mb-6 border border-blue-700 rounded-md hover:bg-blue-500 transition-colors duration-200"
-          >
-            <img src={FaWallet} alt="Ton Wallet" className="w-6 h-6 mr-2" />
-            <span className="text-white font-semibold">Sign in with Ton Wallet</span>
-          </button>
+        */}
 
-          <div className="relative my-6">
-            <hr className="border-gray-300" />
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-4 text-gray-500">
-              OR
-            </span>
-          </div>
+         
 
           <form onSubmit={handleEmailSignIn}>
             <div className="mb-4">
@@ -171,7 +182,7 @@ const SignIn: React.FC = () => {
               type="submit"
               className="w-full px-4 py-3 bg-gradient-to-r from-purple-700 to-purple-950 opacity-100 text-white font-semibold rounded-md hover:bg-purple-500 transition-colors duration-200"
             >
-              Sign In with Email
+              Sign In
             </button>
           </form>
             <p className="mt-2 text-gray-400">

@@ -7,12 +7,17 @@ import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import ContactUs from "./pages/contactus.tsx";
 import PrivacyPolicy from "./pages/Privacypolicy.tsx";
+import {THEME, TonConnectUIProvider} from "@tonconnect/ui-react";
+import { AuthProvider } from './context/AuthContext';
 
 
 
 const App = () => {
   return (
+    <AuthProvider>
+   
     <BlogProvider>
+
     <BrowserRouter>
    
     
@@ -30,6 +35,8 @@ const App = () => {
     
     </BrowserRouter>
     </BlogProvider>
+ 
+    </AuthProvider>
     
     
   );  

@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext"
+import { ProfileMenu } from './ProfileHeader';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const{isAuthenticated } = useAuth()
+  
+  
 
   return (
 
@@ -16,15 +22,15 @@ const Header: React.FC = () => {
         </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 md:px-5 lg:px-7 rtl:space-x-reverse">
-        <Link to='/sign-in'>
+        { isAuthenticated == true? <ProfileMenu/> : <Link to='/sign-in'>
 
-          <button className="relative inline-flex items-center justify-center md:px-1 p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group  group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-950 dark:focus:ring-purple-800">
+            <button className="relative inline-flex items-center justify-center md:px-1 p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group  group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white  focus:bg-gray-950 focus:outline-none focus:ring-purple-950 dark:focus:ring-purple-800">
                 <span className="relative px-5 py-2.5 font-[Georgia] transition-all ease-in duration-75 bg-gradient-to-r from-purple-700 to-purple-950 dark:bg-purple-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent active:bg-purple-900">
 
                  Sign In
                 </span>
               </button>
-        </Link>
+        </Link>}
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"

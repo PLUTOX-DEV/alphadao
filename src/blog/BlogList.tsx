@@ -7,7 +7,8 @@ const BlogList: React.FC = () => {
     const { blogPosts, loading, error } = useBlog();
 
     if (loading) {
-        return <Loader/>;
+
+        return <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"> <Loader/> </div>;
     }
 
     if (error) {
@@ -19,7 +20,7 @@ const BlogList: React.FC = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 max-w-7xl mx-auto">
+        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 max-w-7xl mx-auto">
             {blogPosts.map(post => (
                 <BlogCard key={post.id} post={post} />
             ))}

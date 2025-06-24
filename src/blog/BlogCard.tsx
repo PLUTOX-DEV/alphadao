@@ -12,8 +12,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     const defaultImage = '/assets/placeholder-image.jpg';
 
     return (
-        <Link to={`/blog/${post.id}`} className="block border border-gray-700 rounded-lg">
-            <div className="w-full max-w-md sm:max-w-sm md:max-w-md mx-auto rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-gray-950 hover:bg-gray-900 transition-colors duration-200">
+        <Link to={`/blog/${post.id}`}>
+            <div className="w-full h-full max-w-md sm:max-w-sm md:max-w-md mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-700 bg-gray-950 hover:bg-gray-800 transition-colors duration-200 block ">
                 <div className="relative w-full pb-[56.25%] overflow-hidden bg-gray-200">
                     <img
                         src={post.imageUrl || defaultImage}

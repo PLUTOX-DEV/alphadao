@@ -7,6 +7,7 @@ import Footer from "../component/footer";
 import teamImg from "../assets/teamp.png";
 import { FAQItem } from "../component/f&q";
 import freq from "../assets/super-about.jpg";
+
 // import { useEffect } from "react";
 
 
@@ -106,6 +107,7 @@ export default function Home() {
           />
         </div>
       </div>
+     
     </section>
     {/* Roadmap Section */}
     <Roadmap/>

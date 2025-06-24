@@ -21,7 +21,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
             // Placeholder: Replace with actual API call
             const response: { data: BlogPost[], total: number, page: number, limit: number } = await new Promise(resolve => setTimeout(() => {
-                const allPosts: BlogPost[] = [
+     const allPosts: BlogPost[] = [
                    
   {
     id: '1',
