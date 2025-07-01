@@ -7,8 +7,9 @@ import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import ContactUs from "./pages/contactus.tsx";
 import PrivacyPolicy from "./pages/Privacypolicy.tsx";
-import {THEME, TonConnectUIProvider} from "@tonconnect/ui-react";
+//import {THEME, TonConnectUIProvider} from "@tonconnect/ui-react";
 import { AuthProvider } from './context/AuthContext';
+import Profile from "./pages/Profile.tsx";
 
 
 
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/profile" element={<Profile />} />
+        
       </Routes>
     
     </BrowserRouter>
