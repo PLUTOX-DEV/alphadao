@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 interface Post {
   id: number;
@@ -56,22 +58,7 @@ const Profile: React.FC = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       {/* Header */}
-      <header className="flex justify-between items-center p-4">
-        <div className="text-2xl">🌐</div>
-        <nav className="space-x-4">
-          <a href="/" className="hover:text-purple-400">Home</a>
-          <a href="#" className="hover:text-purple-400">White Paper</a>
-          <a href="/blog" className="hover:text-purple-400">Blog</a>
-          <a href="#" className="hover:text-purple-400">About Us</a>
-          <a href="#" className="hover:text-purple-400">Contact Us</a>
-        </nav>
-        <button
-          onClick={() => navigate('/join')}
-          className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-        >
-          Join Our DAO
-        </button>
-      </header>
+      <header/>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
@@ -203,7 +190,7 @@ const Profile: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
+                  className="w-full bg-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
                 >
                   Save Changes
                 </button>
@@ -289,6 +276,7 @@ const Profile: React.FC = () => {
           </button>
         </div>
       </div>
+      <footer/>
     </div>
   );
 };
