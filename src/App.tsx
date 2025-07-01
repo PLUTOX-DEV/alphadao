@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp.tsx";
 import Blog from "./pages/Blog.tsx";
 import Services from "./pages/Services.tsx";  
 import { BlogProvider } from "./blog/context/BlogContext.tsx";
+import Profile from "./pages/Profile.tsx"; // Import Profile component if needed
 
 
 const App = () => {
@@ -30,6 +31,8 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/services " element={<Services/>} />
+        <Route path="/profile" element={<Profile />} /> {/* Add Profile route if needed */}
+        <Route path="*" element={<Home />} /> {/* Fallback route */}
 
     
 
