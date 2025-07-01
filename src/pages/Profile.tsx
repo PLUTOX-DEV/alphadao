@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< Updated upstream
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-=======
 import Header from '../component/Header';
 import Footer from '../component/footer';
->>>>>>> Stashed changes
 
 interface Post {
   id: number;
@@ -61,20 +56,11 @@ const Profile: React.FC = () => {
   };
 
   return (
-<<<<<<< Updated upstream
-    <div className="bg-gray-900 text-white min-h-screen">
-      {/* Header */}
-      <header/>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-=======
     <div className="bg-gray-900 text-white min-h-screen font-[Georgia]">
       <Header />
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12 mt-12">
->>>>>>> Stashed changes
         <h1 className="text-4xl font-bold text-purple-400 mb-8">Profile</h1>
 
         {/* Tabs */}
@@ -116,11 +102,7 @@ const Profile: React.FC = () => {
                 <p className="text-gray-400">@{username} | Joined: July 01, 2025</p>
                 <button
                   onClick={() => setActiveTab('settings')}
-<<<<<<< Updated upstream
-                  className="mt-4 w-full lg:w-auto bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
                   className="mt-4 w-full lg:w-auto bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
                 >
                   Edit Profile
                 </button>
@@ -149,11 +131,7 @@ const Profile: React.FC = () => {
                 </div>
                 <button
                   onClick={() => navigate('/transactions')}
-<<<<<<< Updated upstream
-                  className="mt-6 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
                   className="mt-6 bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
                 >
                   View Transaction History
                 </button>
@@ -211,11 +189,7 @@ const Profile: React.FC = () => {
 
                 <button
                   type="submit"
-<<<<<<< Updated upstream
-                  className="w-full bg-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
                   className="w-full bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
                 >
                   Save Changes
                 </button>
@@ -265,11 +239,7 @@ const Profile: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/create-post')}
-<<<<<<< Updated upstream
-                className="mt-6 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
                 className="mt-6 bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
               >
                 Create New Post
               </button>
@@ -283,11 +253,7 @@ const Profile: React.FC = () => {
                     <p className="mb-4">{selectedPost.content}</p>
                     <button
                       onClick={() => setSelectedPost(null)}
-<<<<<<< Updated upstream
-                      className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
                       className="bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
                     >
                       Close
                     </button>
@@ -303,24 +269,15 @@ const Profile: React.FC = () => {
           <p className="text-lg mb-4">Have more questions?</p>
           <button
             onClick={() => navigate('/community')}
-<<<<<<< Updated upstream
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
-=======
             className="bg-gradient-to-r from-purple-700 to-purple-950 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition duration-300"
->>>>>>> Stashed changes
           >
             Join Our Community
           </button>
         </div>
       </div>
-<<<<<<< Updated upstream
-      <footer/>
-    </div>
-=======
       <Footer />
     </div>
     
->>>>>>> Stashed changes
   );
 };
 
