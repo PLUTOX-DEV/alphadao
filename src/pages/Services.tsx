@@ -32,16 +32,13 @@ const Services: React.FC = () => {
     <div
       className="min-h-screen bg-gray-900 flex flex-col"
       style={{
-        backgroundSize: 'max',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
-      <div className='bg-transparent'>
-        <Header />
-        </div>
+      <Header />
       <main className="container mx-auto px-4 py-12 flex-grow">
-        <h1 className="text-4xl font-bold text-white  text-center mb-8 mt-7">
+        <h1 className="text-4xl font-bold text-white text-center mb-8 mt-7">
           Our Services
         </h1>
         <p className="text-white text-center max-w-2xl mx-auto mb-12">
@@ -52,7 +49,7 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg p-6 text-center"
+              className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition-shadow duration-300"
             >
               <img
                 src={service.icon}
