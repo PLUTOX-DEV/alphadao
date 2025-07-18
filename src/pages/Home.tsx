@@ -7,6 +7,7 @@ import Footer from "../component/footer";
 import teamImg from "../assets/teamp.png";
 import { FAQItem } from "../component/f&q";
 import freq from "../assets/super-about.jpg";
+
 // import { useEffect } from "react";
 // import { SparklesCore } from "../ui/sparkles"
 
@@ -79,12 +80,14 @@ export default function Home() {
             />
           </div>
         </div>
+
       </section>
     
       {/* Roadmap Section */}
       <Roadmap/>
     
       {/* Team Section */}
+
       <section className="py-12 px-4 md:px-12 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl mx-2 md:mx-8 shadow-lg border border-gray-800 transition-all mt-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-purple-300">Meet the Alpha DAO Team</h2>
         <p className="mb-2 text-center text-gray-300">A global, remote team building the future of Alpha DAO — one block at a time.</p>
@@ -146,7 +149,7 @@ export default function Home() {
       </section>
     
       {/* FAQ Section */}
-      <section className="py-12 px-4 md:px-12 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl mx-2 md:mx-8 shadow-lg border border-gray-800 mt-8 flex flex-col md:flex-row gap-10 items-center">
+      <section className="py-12 px-4 mb-6 md:px-12 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl mx-2 md:mx-8 shadow-lg border border-gray-800 mt-8 flex flex-col md:flex-row gap-10 items-center">
         {/* FAQ List */}
         <div className="flex-1 max-w-2xl space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-left text-purple-300">Frequently Asked Questions</h2>
@@ -172,6 +175,7 @@ export default function Home() {
             <FAQItem key={idx} question={item.q} answer={item.a} />
           ))}
           <div className="flex flex-col md:flex-row items-center justify-start gap-4 mt-10">
+
             <a
               href="https://t.me/yourcommunity"
               target="_blank"
@@ -186,6 +190,7 @@ export default function Home() {
             >
               Read Whitepaper
             </a>
+
           </div>
         </div>
         {/* Responsive Image */}

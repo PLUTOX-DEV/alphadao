@@ -1,13 +1,18 @@
+
 import React, { useState, useEffect, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../public/bg2.jpg";
 import { FaTwitter, FaEyeSlash, FaEye } from "react-icons/fa";
+
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
+
 import api from "../api/axiosInstance";
 import "react-toastify/dist/ReactToastify.css";
 
+
 interface FormData {
+  fullname:string,
   email: string;
   password: string;
   confirmPassword: string;
@@ -21,14 +26,19 @@ declare global {
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
+
     email: "",
     password: "",
     confirmPassword: "",
+
   });
+  const [isLoading,  setLoading] = useState(false);
+
+  // const wallet = useTonWallet();
+  const navigate = useNavigate(); // from React Router
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -77,12 +87,14 @@ const SignUp: React.FC = () => {
       return;
     }
 
+
     setLoading(true);
 
     try {
       const res = await api.post("/api/auth/register", {
         email: formData.email,
         password: formData.password,
+
       });
       toast.success(res.data.message || "Signup successful! Please verify your email.");
       setFormData({ email: "", password: "", confirmPassword: "" });
@@ -94,6 +106,7 @@ const SignUp: React.FC = () => {
       setLoading(false);
     }
   };
+
 
   const handleWalletSignUp = () => {
     alert("Wallet sign-in initiated! (Placeholder)");
@@ -113,6 +126,7 @@ const SignUp: React.FC = () => {
       }}
     >
       <motion.div
+
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -157,6 +171,7 @@ const SignUp: React.FC = () => {
                 <label htmlFor="email" className="block text-white font-semibold mb-2">
                   Email
                 </label>
+
                 <input
                   type="email"
                   id="email"
@@ -194,6 +209,7 @@ const SignUp: React.FC = () => {
                   </button>
                 </div>
               </div>
+
 
               <div className="mb-6">
                 <label htmlFor="confirmPassword" className="block text-white font-semibold mb-2">
@@ -240,6 +256,7 @@ const SignUp: React.FC = () => {
                 </Link>
               </p>
             </div>
+
           </div>
         </main>
       </motion.div>

@@ -91,14 +91,14 @@ const BlogEditor: React.FC = () => {
                     placeholder="Enter blog post title"
                     required
                 />
-                <Input
+                {/* <Input
                     
                     id="author"
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                     placeholder="Enter author name"
                     required
-                />
+                /> */}
                 <Input
                     
                     id="description"

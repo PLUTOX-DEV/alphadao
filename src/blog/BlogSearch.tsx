@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useBlog } from './context/BlogContext';
 import {Input} from '../components/ui/input'
 // import {Button} from '../components/ui/button';
@@ -9,9 +9,9 @@ const BlogSearch: React.FC = () => {
     const { handleSearch, searchTag: currentSearchTag } = useBlog();
     const [tagInput, setTagInput] = useState<string>(currentSearchTag);
 
-    useEffect(() => {
-        setTagInput(currentSearchTag);
-    }, [currentSearchTag]);
+    // useEffect(() => {
+    //     setTagInput(currentSearchTag);
+    // }, [currentSearchTag]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;

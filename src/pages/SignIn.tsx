@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../public/bg-sign-in-basic.jpeg';
+
 import Daologo from '../../public/Daologo.png';
 import { FcGoogle } from 'react-icons/fc';
 import FaWallet from '../assets/ton_symbol.svg';
@@ -9,6 +10,7 @@ import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import api from '../api/axiosInstance';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 interface FormData {
   email: string;
@@ -22,7 +24,9 @@ declare global {
 }
 
 const SignIn: React.FC = () => {
+
   const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
+
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -57,13 +61,18 @@ const SignIn: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleEmailSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     try {
       const res = await api.post("/api/auth/login", {
         email: formData.email,
@@ -85,9 +94,28 @@ const SignIn: React.FC = () => {
     alert("Twitter sign-in initiated! (Placeholder)");
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
+
+    if (data?.user) {
+        toast.success("Login successful!");
+        navigate("/", { replace: true });
+      }
+  
+
+    setFormData({ email: '', password: '' });
+    
+  }
+  catch (error) {
+      toast.error(
+        error.message || "Wrong Login Details. Please check your credentials"
+      );
+      console.error("Login error:", error);
+    } finally {
+      setFormData({email:"", password:""})
+    }
+  
+  
+ 
+}
 
   return (
     <div
@@ -117,7 +145,9 @@ const SignIn: React.FC = () => {
                   ALPHA DAO
                 </h1>
               </Link>
+
             </div>
+
 
             <div className="mb-5 ml-0 text-center text-sm text-white ">
               <h2 className="text-3xl font-bold text-gray-400 dark:text white mt-0.5 mb-6 border-b-4 border-purple-900 drop-shadow">
@@ -206,6 +236,7 @@ const SignIn: React.FC = () => {
                 Sign In with Email
               </button>
             </form>
+
 
             <p className="mt-2 text-gray-400">
               Forgot your password?{' '}

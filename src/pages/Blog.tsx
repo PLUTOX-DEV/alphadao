@@ -12,14 +12,10 @@ import { motion } from 'framer-motion';
 const Blog: React.FC = () => {
  
   return (
+    
 
     <div
-      className="min-h-screen bg-gray-300 flex flex-col"
-      style={{
-        backgroundSize: 'max',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
+      className="min-h-screen bg-gray-900 flex flex-col"
     >
 
       <div className='border-b-1 border-black bg-purple-950 rounded-2xl text-white py-7'>
@@ -35,8 +31,11 @@ const Blog: React.FC = () => {
       <BlogList/>
       <BlogPagination/>
        </motion.div>
-      <Footer />
+     <footer className='mt-auto'>
+        <Footer />
+      </footer>
     </div>
+    
    
   );
 };
