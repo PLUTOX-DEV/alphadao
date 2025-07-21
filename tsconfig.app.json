@@ -17,6 +17,10 @@
     /* Output and build */
     "composite": true,
     "outDir": "./dist/app",
+    "noEmit": true,
+
+    /* Interop fix */
+    "esModuleInterop": true,
 
     /* Linting */
     "strict": true,

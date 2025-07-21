@@ -15,6 +15,10 @@
     /* Output and build */
     "composite": true,
     "outDir": "./dist/node",
+    "noEmit": true,
+
+    /* Interop fix */
+    "esModuleInterop": true,
 
     /* Linting */
     "strict": true,
