@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import api from '../api/axiosInstance';
 import Header from '../component/Header';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../component/loader';
 
 declare global {
   interface Window {
@@ -50,6 +51,8 @@ const SignIn: React.FC = () => {
   };
 
   return (
+     <>
+    { loading ?<Loader/>:
     <div
       className="min-h-screen bg-gray-950"
       style={{
@@ -100,6 +103,8 @@ const SignIn: React.FC = () => {
         </main>
       </motion.div>
     </div>
+}
+    </>
   );
 };
 
