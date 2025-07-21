@@ -54,7 +54,6 @@ const Profile: React.FC = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-
       const formData = new FormData();
       formData.append("name", name);
       formData.append("username", username);
@@ -97,19 +96,23 @@ const Profile: React.FC = () => {
   }
 
   if (!user) {
-    return <div className="text-center text-white mt-12">Not authorized</div>;
+    return (
+      <div className="text-center text-white mt-12">
+        <p>Not authorized</p>
+      </div>
+    );
   }
 
   return (
     <div className="bg-gray-900 text-white min-h-screen font-[Georgia]">
       <Header />
 
-      <div className="container mx-auto px-4 py-12 mt-12">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-400">Profile</h1>
+      <div className="container mx-auto px-4 py-8 mt-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-purple-400">My Profile</h1>
           <button
             onClick={handleLogout}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md shadow transition"
           >
             Logout
           </button>
@@ -121,9 +124,9 @@ const Profile: React.FC = () => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab as any)}
-              className={`pb-2 px-4 ${
+              className={`pb-2 px-4 text-sm font-medium ${
                 activeTab === tab
-                  ? "border-b-2 border-purple-400 text-purple-400"
+                  ? "border-b-2 border-purple-500 text-purple-400"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -132,73 +135,87 @@ const Profile: React.FC = () => {
           ))}
         </div>
 
-        {/* Tabs Content */}
+        {/* Dashboard */}
         {activeTab === "dashboard" && (
-          <div className="bg-gray-800 p-6 rounded-lg flex flex-col lg:flex-row">
-            <div className="w-full lg:w-1/3 text-center lg:text-left">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-700">
+          <div className="bg-gray-800 p-6 rounded-lg flex flex-col lg:flex-row gap-8">
+            <div className="w-full lg:w-1/3 text-center lg:text-left space-y-3">
+              <div className="w-32 h-32 mx-auto lg:mx-0 rounded-full overflow-hidden bg-gray-700 shadow">
                 <img
                   src={avatar || "/default-avatar.png"}
                   alt="Avatar"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h2 className="text-2xl font-bold mt-4">{name}</h2>
-              <p className="text-gray-400">
-                @{username} | {user.email}
-              </p>
+              <h2 className="text-2xl font-bold">{name}</h2>
+              <p className="text-gray-400">@{username || "username"} | {user.email}</p>
             </div>
-            <div className="w-full lg:w-2/3 lg:pl-8 mt-6 lg:mt-0">
-              <h3 className="text-xl font-bold mb-4">Dashboard</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gray-700 p-4 rounded-lg">Tokens: 150 ALPHA</div>
-                <div className="bg-gray-700 p-4 rounded-lg">Staked: 100 ALPHA</div>
-                <div className="bg-gray-700 p-4 rounded-lg">Votes: 5</div>
-                <div className="bg-gray-700 p-4 rounded-lg">Rewards: 25 ALPHA</div>
+            <div className="w-full lg:w-2/3 space-y-4">
+              <h3 className="text-xl font-bold mb-2">Dashboard Metrics</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { label: "Tokens", value: "150 ALPHA" },
+                  { label: "Staked", value: "100 ALPHA" },
+                  { label: "Votes", value: "5" },
+                  { label: "Rewards", value: "25 ALPHA" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="bg-gray-700 p-4 rounded-lg shadow hover:bg-gray-600 transition"
+                  >
+                    <p className="text-gray-400 text-sm">{item.label}</p>
+                    <p className="text-lg font-semibold">{item.value}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         )}
 
+        {/* Settings */}
         {activeTab === "settings" && (
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Profile Settings</h2>
+          <div className="bg-gray-800 p-6 rounded-lg max-w-xl mx-auto">
+            <h2 className="text-xl font-bold mb-4">Edit Profile</h2>
             <form onSubmit={handleSaveSettings} className="space-y-4">
               <div>
-                <label className="block text-gray-400 mb-2">Avatar</label>
-                <input type="file" accept="image/*" onChange={handleAvatarUpload} />
+                <label className="block text-gray-400 text-sm mb-1">Avatar</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAvatarUpload}
+                  className="text-sm"
+                />
               </div>
               <div>
-                <label>Name</label>
+                <label className="block text-gray-400 text-sm mb-1">Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-2 bg-gray-700 rounded-lg text-white"
+                  className="w-full p-2 bg-gray-700 rounded-md text-white"
                 />
               </div>
               <div>
-                <label>Username</label>
+                <label className="block text-gray-400 text-sm mb-1">Username</label>
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full p-2 bg-gray-700 rounded-lg text-white"
+                  className="w-full p-2 bg-gray-700 rounded-md text-white"
                 />
               </div>
               <div>
-                <label>Password</label>
-                <div className="flex items-center">
+                <label className="block text-gray-400 text-sm mb-1">New Password</label>
+                <div className="flex">
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full p-2 bg-gray-700 rounded-l-lg text-white"
+                    className="w-full p-2 bg-gray-700 rounded-l-md text-white"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
-                    className="px-3 bg-gray-600 rounded-r-lg"
+                    className="px-3 bg-gray-600 rounded-r-md text-sm"
                   >
                     {showPassword ? "Hide" : "Show"}
                   </button>
@@ -206,7 +223,7 @@ const Profile: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-purple-700 px-4 py-2 rounded-full"
+                className="w-full bg-purple-700 hover:bg-purple-800 px-4 py-2 rounded-md transition"
               >
                 Save Changes
               </button>
