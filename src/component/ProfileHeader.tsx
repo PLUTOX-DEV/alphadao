@@ -1,36 +1,28 @@
-import { useState, useRef, useEffect } from "react"
-import {useProfiles} from "../hooks/useProfile"
-import { useAuth } from "../context/AuthContext"
-
-
-
-import { useNavigate } from "react-router-dom" // or `next/router` if using Next.js
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function ProfileMenu() {
-  const{loading, error , profiles} = useProfiles()
-  const [open, setOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-  const navigate = useNavigate()
-  const {logout} = useAuth()
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpen(false)
+        setOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="relative" ref={menuRef}>
       <button onClick={() => setOpen(!open)} className="focus:outline-none">
-        <span>Gm,{profiles?.fullname || "Guest"}</span>
+        <span>Menu</span>
         <img
-          src=""
+          src="/default-avatar.png"
           alt="Profile"
           className="h-10 w-10 rounded-full border-2 border-purple-500"
         />
@@ -40,8 +32,8 @@ export function ProfileMenu() {
         <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg z-50 overflow-hidden">
           <button
             onClick={() => {
-              navigate("/dashboard")
-              setOpen(false)
+              navigate("/dashboard");
+              setOpen(false);
             }}
             className="w-full text-left px-4 py-2 hover:bg-gray-100"
           >
@@ -49,8 +41,7 @@ export function ProfileMenu() {
           </button>
           <button
             onClick={() => {
-              logout()
-              setOpen(false)
+              setOpen(false);
             }}
             className="w-full text-left px-4 py-2 hover:bg-gray-100"
           >
@@ -59,5 +50,5 @@ export function ProfileMenu() {
         </div>
       )}
     </div>
-  )
+  );
 }
