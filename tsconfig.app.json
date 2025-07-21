@@ -12,8 +12,11 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Output and build */
+    "composite": true,
+    "outDir": "./dist/app",
 
     /* Linting */
     "strict": true,
@@ -23,5 +26,4 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
-  
 }
