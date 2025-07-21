@@ -16,26 +16,38 @@ const teamMembers: TeamMember[] = [
   {
     name: 'LEX ',
     role: 'Founder',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
-    twitter: 'Alexander0_0_7_',
+    image: 'public/lex (2).jpg',
+    twitter: 'ALPHADAO101',
   },
   {
     name: 'Npm',
     role: 'CTO',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    twitter: 'bobsmith',
+    image: 'public/npm.jpg',
+    twitter: '2xQuant',
   },
   {
     name: 'L3VI 🧧𝕏 l3viticus',
     role: 'Community Manager',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
+    image: 'public/levi.jpg',
     twitter: 'toney_levi',
   },
   {
-    name: 'Justin',
+    name: 'Feraragotta',
     role: 'Project Manager',
-    image: 'https://x.com/mrjustinn/photo',
-    twitter: 'mrjustinn',
+    image: 'public/fola.jpg',
+    twitter: 'GotaHarmony',
+  },
+   {
+    name: 'Mr. Professional',
+    role: 'CMO',
+    image: 'public/mr. professional.jpg',
+    twitter: 'sales_unwana',
+  },
+  {
+    name: 'Big Marv',
+    role: 'CFO',
+    image: 'public/bigmarv.jpg',
+    twitter: 'JustcallMarv',
   },
 ];
 
@@ -71,7 +83,7 @@ const About = () => (
 
       {/* Team Section */}
       <section>
-        <h2 className="text-3xl font-bold text-white font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">Meet Our Team</h2>
+        <h2 className="text-3xl font-bold text-white font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">Meet Our Team Leads</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {teamMembers.map((member) => (
             <div
@@ -96,7 +108,7 @@ const About = () => (
                   <svg width="20" height="20" fill="currentColor" className="inline-block" viewBox="0 0 24 24">
                     <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 2c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 7.89 4.1 6.13 1.671 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616v.062c0 2.385 1.693 4.374 3.946 4.827a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/>
                   </svg>
-                  <span>@{member.twitter}</span>
+                  <span>connect</span>
                 </a>
               )}
             </div>

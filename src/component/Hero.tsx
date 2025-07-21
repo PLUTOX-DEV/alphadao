@@ -34,15 +34,7 @@ export default function Hero() {
               Join Alpha DAO and shape the future of people-powered investing.
             </p>
 
-            <div>
-              <span
-                className="text-transparent bg-clip-text bg-gradient-to-r px-10 from-purple-950 to-gray-300"
-                style={{ fontFamily: "'Georgia', cursive" }}
-              >
-                ALPHA DAO
-              </span>
-            </div>
-
+           
             <Link onClick={() => setActive(!active)} to="/sign-in">
               <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group hover:text-white focus:bg-gray-950 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
                 <span className="relative px-5 py-2.5 bg-gray-800 transition-all ease-in duration-75 bg-gradient-to-r from-purple-700 to-purple-950 rounded-md group-hover:bg-transparent">

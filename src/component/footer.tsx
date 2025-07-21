@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
 
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 pt-4">
       {/* Newsletter & Social Media Section */}
       <div className="flex flex-col md:flex-row justify-between items-center">
         <img className="w-10 h-10 animate-spin-slow" src="/Daologo.png" alt="Alpha Dao" />

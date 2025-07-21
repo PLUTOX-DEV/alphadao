@@ -10,6 +10,52 @@ import freq from "../assets/super-about.jpg";
 // import { useEffect } from "react";
 // import { SparklesCore } from "../ui/sparkles"
 
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  twitter?: string;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    name: 'LEX ',
+    role: 'Founder',
+    image: 'public/lex (2).jpg',
+    twitter: 'ALPHADAO101',
+  },
+  {
+    name: 'Npm',
+    role: 'CTO',
+    image: 'public/npm.jpg',
+    twitter: '2xQuant',
+  },
+  {
+    name: 'L3VI 🧧𝕏 l3viticus',
+    role: 'Community Manager',
+    image: 'public/levi.jpg',
+    twitter: 'toney_levi',
+  },
+  {
+    name: 'Feraragotta',
+    role: 'Project Manager',
+    image: 'public/fola.jpg',
+    twitter: 'GotaHarmony',
+  },
+   {
+    name: 'Mr. Professional',
+    role: 'CMO',
+    image: 'public/mr. professional.jpg',
+    twitter: 'sales_unwana',
+  },
+  {
+    name: 'Big Marv',
+    role: 'CFO',
+    image: 'public/bigmarv.jpg',
+    twitter: 'JustcallMarv',
+  },
+];
+
 export default function Home() {
   return (
     <div className="relative z-10 w-full flex flex-col min-h-screen bg-gray-950 text-gray-300 font-[Georgia]">
@@ -85,66 +131,56 @@ export default function Home() {
       <Roadmap/>
     
       {/* Team Section */}
-      <section className="py-12 px-4 md:px-12 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl mx-2 md:mx-8 shadow-lg border border-gray-800 transition-all mt-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-purple-300">Meet the Alpha DAO Team</h2>
-        <p className="mb-2 text-center text-gray-300">A global, remote team building the future of Alpha DAO — one block at a time.</p>
-        <p className="mb-8 text-center text-gray-400 text-sm">Committed to building the ecosystem</p>
-        <div className="relative">
-          {/* Arrow left */}
-          <button
-            type="button"
-            aria-label="Scroll left"
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/80 hover:bg-purple-800/80 text-purple-300 rounded-full p-2 shadow-lg transition-all"
-            onClick={() => {
-              const el = document.getElementById("team-scroll");
-              if (el) el.scrollBy({ left: -el.offsetWidth / 1.1, behavior: "smooth" });
-            }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          {/* Arrow right */}
-          <button
-            type="button"
-            aria-label="Scroll right"
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/80 hover:bg-purple-800/80 text-purple-300 rounded-full p-2 shadow-lg transition-all"
-            onClick={() => {
-              const el = document.getElementById("team-scroll");
-              if (el) el.scrollBy({ left: el.offsetWidth / 1.1, behavior: "smooth" });
-            }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+      <section className="py-12 px-4 md:px-12">
+        <h2 className="text-3xl font-bold text-white font-serif text-center mb-12 border-b-4 border-purple-900 drop-shadow">
+          Meet Our Team Leads
+        </h2>
+        <div
+          className="relative"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
           <div
-            id="team-scroll"
-            className="flex flex-row gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory sm:px-8 py-2"
-            style={{ scrollbarWidth: "none" } as React.CSSProperties}
+            className="flex gap-8 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-purple-800 scrollbar-track-gray-800 snap-x snap-mandatory"
+            style={{ scrollSnapType: "x mandatory" }}
           >
-            {[...Array(7)].map((_, i) => (
+            {teamMembers.map((member) => (
               <div
-                key={i}
-                className="bg-gradient-to-br from-purple-800/80 to-gray-900/80 border border-purple-900/40 rounded-xl shadow-lg min-w-[90vw] sm:min-w-[18rem] max-w-xs flex flex-col items-center p-6 transition-transform hover:scale-105 duration-200 snap-center"
+                key={member.name}
+                className="flex-shrink-0 w-72 bg-gradient-to-br from-gray-900/90 to-purple-950/80 shadow-2xl rounded-2xl p-8 mx-2 hover:scale-105 hover:shadow-purple-800/40 transition-transform duration-300 snap-center group"
               >
-                <div className="w-70 h-40 rounded-xl bg-gray-700 mb-4 flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-purple-300">👤</span>
+                <div className="relative mb-4">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-28 h-28 rounded-full object-cover border-4 border-purple-700 shadow-lg mx-auto group-hover:ring-4 group-hover:ring-purple-500 transition-all duration-300"
+                  />
+                  <div className="absolute bottom-0 right-0 bg-purple-700 rounded-full p-1 shadow-lg animate-pulse"></div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-100 mb-1">Name</h3>
-                <p className="text-purple-300 text-sm mb-2">Position</p>
-                <p className="text-gray-400 text-xs text-center">Short bio or expertise goes here.</p>
-                <div className="mt-4">
-                  <button className="bg-gradient-to-r from-purple-700 to-purple-950 text-white py-1 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
-                    View Profile
-                  </button>
-                </div>
+                <h3 className="text-xl font-bold text-white mb-1 text-center">{member.name}</h3>
+                <p className="text-purple-400 font-medium mb-2 text-center">{member.role}</p>
+                {member.twitter && (
+                  <a
+                    href={`https://twitter.com/${member.twitter}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-600 flex items-center gap-1 justify-center transition-colors duration-200"
+                    aria-label={`Follow ${member.name} on Twitter`}
+                  >
+                    <svg width="20" height="20" fill="currentColor" className="inline-block" viewBox="0 0 24 24">
+                      <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 2c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 7.89 4.1 6.13 1.671 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616v.062c0 2.385 1.693 4.374 3.946 4.827a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/>
+                    </svg>
+                    <span>connect</span>
+                  </a>
+                )}
               </div>
             ))}
           </div>
+          {/* Gradient fade for scroll hint */}
+          <div className="pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent" />
+          <div className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-gray-950 via-gray-950/80 to-transparent" />
         </div>
+        <p className="text-center text-gray-500 mt-4 text-sm">Scroll sideways to see all team members</p>
       </section>
-    
       {/* FAQ Section */}
       <section className="py-12 px-4 md:px-12 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl mx-2 md:mx-8 shadow-lg border border-gray-800 mt-8 flex flex-col md:flex-row gap-10 items-center">
         {/* FAQ List */}
@@ -173,7 +209,7 @@ export default function Home() {
           ))}
           <div className="flex flex-col md:flex-row items-center justify-start gap-4 mt-10">
             <a
-              href="https://t.me/yourcommunity"
+              href="https://t.co/OQ2Jlv2MHl"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-purple-700 to-purple-950 hover:from-purple-800 hover:to-purple-900 text-white px-6 py-2 rounded-full font-semibold shadow-md transition-all duration-200"
@@ -181,7 +217,7 @@ export default function Home() {
               Join Our Community
             </a>
             <a
-              href="/public/ALPHA DAO Whitepaper.pdf"
+              href="public/ALPHA DAO Whitepaper.pdf"
               className="bg-gray-800 hover:bg-purple-800 text-purple-300 px-6 py-2 rounded-full font-semibold shadow-md transition-all duration-200"
             >
               Read Whitepaper
