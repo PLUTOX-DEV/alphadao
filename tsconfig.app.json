@@ -7,22 +7,15 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "jsx": "react-jsx",
 
-    /* Output and build */
     "composite": true,
     "outDir": "./dist/app",
-    "noEmit": true,
 
-    /* Interop fix */
-    "esModuleInterop": true,
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
