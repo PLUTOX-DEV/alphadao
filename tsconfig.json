@@ -1,23 +1,35 @@
 {
   "compilerOptions": {
+    // Target modern JS
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+
+    // Output
+    "outDir": "dist",
+    "rootDir": "src",
+
+    // Declarations for type consumers
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // Base URL & paths for imports
     "baseUrl": "src",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "paths": {
       "@/*": ["./*"]
     },
-    // 👇 Add typeRoots so it can find your custom types
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+
+    // Type roots
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+
+    // Enforce good practices
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
-  // 👇 Or add include if you prefer
   "include": ["src"]
 }
