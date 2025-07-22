@@ -23,7 +23,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true
   },
   "include": ["vite.config.ts"]
 }

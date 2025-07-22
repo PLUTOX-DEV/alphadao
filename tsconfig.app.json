@@ -20,7 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    // ✅ added
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true
   },
   "include": ["src"]
 }
