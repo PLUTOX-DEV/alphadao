@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import api from '../api/axiosInstance';
 import Header from '../component/Header';
-import Loader from '../component/Loader';
+import Loader from '../component/loader';
 import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
