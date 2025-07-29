@@ -26,6 +26,8 @@ const Profile: React.FC = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const BASE_URL = "https://alphadao.onrender.com";
+
   const fetchUser = async () => {
     try {
       const res = await api.get("/api/auth/me", {
@@ -33,10 +35,16 @@ const Profile: React.FC = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+
       setUser(res.data);
-      setName(res.data.name);
+      setName(res.data.name || "");
       setUsername(res.data.username || "");
-      setAvatar(res.data.picture ? `https://alphadao.onrender.com${res.data.picture}` : null);
+      const pictureUrl = res.data.picture
+        ? res.data.picture.startsWith("http")
+          ? res.data.picture
+          : `${BASE_URL}${res.data.picture}`
+        : null;
+      setAvatar(pictureUrl);
     } catch {
       toast.error("Session expired. Please sign in.");
       navigate("/sign-in");
@@ -66,7 +74,7 @@ const Profile: React.FC = () => {
       });
 
       toast.success("Profile updated successfully!");
-      fetchUser(); // Refresh user data after update
+      fetchUser(); // Refresh user data
     } catch {
       toast.error("Failed to update profile.");
     }
@@ -155,7 +163,7 @@ const Profile: React.FC = () => {
             </div>
 
             <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[ 
+              {[
                 { label: "Tokens", value: "150 ALPHA" },
                 { label: "Staked", value: "100 ALPHA" },
                 { label: "Votes", value: "5" },
