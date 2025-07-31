@@ -8,6 +8,7 @@ import path from "path";
 import authRoutes from "./routes/auth.js";
 import blogRoutes from "./routes/blog.js";
 import adminRoutes from "./routes/admin.js";
+const bot = require("./bot"); // Make sure this is imported
 
 dotenv.config();
 
@@ -32,7 +33,7 @@ app.use(
 // Parse JSON bodies
 app.use(express.json());
 
-// Serve static files from /uploads with CORS-friendly headers
+// Serve static files from /uploads
 app.use(
   "/uploads",
   express.static(path.join(process.cwd(), "uploads"), {
@@ -41,37 +42,47 @@ app.use(
     },
   })
 );
+// Telegram webhook endpoint
+app.post(`/bot${process.env.TELEGRAM_BOT_TOKEN}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
 
-// Root test route
+// Test route
 app.get("/", (req, res) => {
   res.json({ message: "✅ Alpha DAO backend is running!" });
 });
 
-// App routes
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/admin", adminRoutes);
 
-// 404 route handler
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
-// Global error handler
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something went wrong" });
 });
 
-// Start server after DB connection
+// Connect to DB and start server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
+
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
     });
+
+    // 🟢 Start the bot after server is running
+    bot.launch();
+    console.log("🤖 Telegram bot started");
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error", err);
