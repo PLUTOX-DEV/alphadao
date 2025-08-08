@@ -40,7 +40,6 @@ const upload = multer({
 // 🔐 AUTH ROUTES
 // ---------------------------------------------
 
-// Traditional Register/Login
 router.post("/register", signup);
 router.post("/login", login);
 
@@ -146,24 +145,33 @@ router.post("/telegram", async (req, res) => {
 // ✅ TON Wallet Login
 router.post("/ton", async (req, res) => {
   const { wallet } = req.body;
-  if (!wallet) return res.status(400).json({ error: "Wallet is required" });
+
+  if (!wallet) {
+    return res.status(400).json({ error: "Wallet address is required" });
+  }
 
   try {
-    // Save wallet to session
-    req.session.user = { wallet };
+    // Optional: Save to session (skip if session isn't configured or needed)
+    if (req.session) {
+      req.session.user = { wallet };
+    }
 
-    // Optionally: Create a user or retrieve
     let user = await User.findOne({ tonWallet: wallet });
+
     if (!user) {
       user = new User({
         tonWallet: wallet,
         name: `TON_${wallet.slice(0, 6)}`,
         provider: "ton",
       });
+
       await user.save();
     }
 
-    // Create JWT
+    if (!process.env.JWT_SECRET) {
+      throw new Error("Missing JWT_SECRET in environment variables");
+    }
+
     const token = jwt.sign({ id: user._id, wallet: user.tonWallet }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
@@ -178,7 +186,7 @@ router.post("/ton", async (req, res) => {
       },
     });
   } catch (err) {
-    console.error("TON Wallet Login Error:", err);
+    console.error("TON Wallet Login Error:", err.message || err);
     return res.status(500).json({ error: "Failed to log in with TON wallet" });
   }
 });
