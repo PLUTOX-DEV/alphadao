@@ -1,23 +1,28 @@
+require("dotenv").config(); // Load .env
+
 const TelegramBot = require("node-telegram-bot-api");
 
-const token = process.env.TELEGRAM_BOT_TOKEN || "YOUR_TELEGRAM_BOT_TOKEN";
-const bot = new TelegramBot(token, { webHook: true });
+const token = process.env.TELEGRAM_BOT_TOKEN;
+if (!token) {
+  console.error("❌ TELEGRAM_BOT_TOKEN not set in .env");
+  process.exit(1);
+}
 
-const BASE_URL = "https://alphadao.onrender.com"; // replace with your backend
+const bot = new TelegramBot(token, { webhook: true });
+const BASE_URL = "https://alphadao.onrender.com";
+
 bot.setWebHook(`${BASE_URL}/bot${token}`);
 
-// Replace with your Alpha DAO Mini App and Banner Image
-const IMAGE_URL = "https://alphadao.vercel.app/Daologo.png"; // change to your Alpha DAO banner image
-const MINI_APP_URL = "https://t.me/alphadaoxbot/alphadao"; // replace with your Telegram Mini App link
+const IMAGE_URL = "https://alphadao.vercel.app/Daologo.png";
+const MINI_APP_URL = "https://t.me/alphadaoxbot/alphadao";
 
-// Handle the /start command
 bot.onText(/\/start(?: (.+))?/, (msg, match) => {
   const chatId = msg.chat.id;
   const referrer = match[1] || null;
 
   const welcomeMessage = referrer
     ? `👋 Welcome to *Alpha DAO*!\n\n🔗 You were referred by *${referrer}*.\nTime to discover the future of decentralized community governance.`
-    : `👋 Welcome to *Alpha DAO* – your gateway to decentralized community governance!\n\n🚀 Explore projects, vote on proposals, and earn rewards.`
+    : `👋 Welcome to *Alpha DAO* – your gateway to decentralized community governance!\n\n🚀 Explore projects, vote on proposals, and earn rewards.`;
 
   const launchUrl = referrer
     ? `${MINI_APP_URL}?start=${encodeURIComponent(referrer)}`
