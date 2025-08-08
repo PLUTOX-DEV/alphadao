@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    unique: false, // allow multiple nulls
     sparse: true,
+    match: [/^\S+@\S+\.\S+$/, "Invalid email format"],
   },
   telegramId: {
     type: String,
@@ -15,17 +15,17 @@ const userSchema = new mongoose.Schema({
   wallet: {
     type: String,
     unique: true,
-    sparse: true, // in case it's null for email/telegram users
+    sparse: true,
   },
   name: { type: String },
-  username: { type: String },
-  password: { type: String }, // Only for local auth
+  username: { type: String, lowercase: true },
+  password: { type: String },
   picture: { type: String },
   provider: {
     type: String,
     default: "local", // local, google, telegram, ton
   },
-});
+}, { timestamps: true });
 
 // ✅ Hash password before saving (only if modified)
 userSchema.pre("save", async function (next) {
