@@ -16,17 +16,52 @@ const SignIn: React.FC = () => {
   const userAddress = useTonAddress();
   const [loading, setLoading] = useState(false);
 
+  // Handle TON wallet login
   useEffect(() => {
     if (userAddress) {
       setLoading(true);
       console.log('TON Wallet Address:', userAddress);
-      // Replace this with real auth API if needed
-      setTimeout(() => {
-        setLoading(false);
-        navigate('/profile');
-      }, 1000);
+
+      fetch('https://alphadao.onrender.com/api/auth/ton', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // Important for session cookies
+        body: JSON.stringify({ wallet: userAddress }),
+      })
+        .then(async (res) => {
+          if (!res.ok) throw new Error('Auth failed');
+          const data = await res.json();
+          console.log('TON login success:', data);
+          navigate('/profile');
+        })
+        .catch((err) => {
+          console.error('TON login error:', err);
+          alert('TON login failed. Try again.');
+        })
+        .finally(() => setLoading(false));
     }
   }, [userAddress]);
+
+  // Inject Telegram Login Script
+  useEffect(() => {
+    const existingScript = document.getElementById('telegram-login-script');
+    if (!existingScript) {
+      const script = document.createElement('script');
+      script.id = 'telegram-login-script';
+      script.src = 'https://telegram.org/js/telegram-widget.js?7';
+      script.setAttribute('data-telegram-login', 'alphadaoxbot'); // your bot username
+      script.setAttribute('data-size', 'large');
+      script.setAttribute('data-radius', '10');
+      script.setAttribute('data-auth-url', 'https://alphadao.onrender.com/api/auth/telegram'); // your backend
+      script.setAttribute('data-request-access', 'write');
+      script.async = true;
+
+      const container = document.getElementById('telegram-login-button');
+      if (container) {
+        container.appendChild(script);
+      }
+    }
+  }, []);
 
   if (loading) return <Loader />;
 
@@ -59,21 +94,7 @@ const SignIn: React.FC = () => {
           </div>
 
           {/* Telegram Login Widget */}
-          <div className="w-full mt-6">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <script async src="https://telegram.org/js/telegram-widget.js?7"
-                    data-telegram-login="alphadaoxbot"
-                    data-size="large"
-                    data-radius="10"
-                    data-auth-url="https://alphadao.onrender.com/api/auth/telegram"
-                    data-request-access="write">
-                  </script>
-                `,
-              }}
-            />
-          </div>
+          <div id="telegram-login-button" className="w-full mt-6" />
         </motion.div>
       </main>
     </div>
