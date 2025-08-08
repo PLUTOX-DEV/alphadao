@@ -4,7 +4,8 @@ import bcrypt from "bcryptjs";
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    sparse: true,
+    unique: true, // prevent duplicate emails
+    sparse: true, // allow multiple nulls (for TON, Telegram users)
     match: [/^\S+@\S+\.\S+$/, "Invalid email format"],
   },
   telegramId: {
@@ -18,12 +19,18 @@ const userSchema = new mongoose.Schema({
     sparse: true,
   },
   name: { type: String },
-  username: { type: String, lowercase: true },
+  username: {
+    type: String,
+    lowercase: true,
+    unique: true,
+    sparse: true,
+  },
   password: { type: String },
   picture: { type: String },
   provider: {
     type: String,
-    default: "local", // local, google, telegram, ton
+    enum: ["local", "google", "telegram", "ton"],
+    default: "local",
   },
 }, { timestamps: true });
 
