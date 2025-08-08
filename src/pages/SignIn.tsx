@@ -17,7 +17,7 @@ const SignIn: React.FC = () => {
   const walletAddress = useTonAddress();
   const [loading, setLoading] = useState(false);
 
-  // TON Wallet auth handler
+  // ✅ TON Wallet auth handler
   useEffect(() => {
     if (!walletAddress) return;
 
@@ -33,6 +33,12 @@ const SignIn: React.FC = () => {
 
         if (!response.ok) throw new Error('TON auth failed');
         const data = await response.json();
+
+        // ✅ Save token if needed for protected routes
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+
         console.log('[✅] TON login success:', data);
         navigate('/profile');
       } catch (err) {
@@ -46,7 +52,7 @@ const SignIn: React.FC = () => {
     loginWithTon();
   }, [walletAddress]);
 
-  // Show Telegram login button only on this page
+  // ✅ Show Telegram login widget only on this page
   useEffect(() => {
     const widget = document.getElementById('telegram-login-widget-wrapper');
     if (widget) widget.style.display = 'flex';
@@ -56,6 +62,7 @@ const SignIn: React.FC = () => {
     };
   }, []);
 
+  // ✅ Show loader during login
   if (loading) return <Loader />;
 
   return (
@@ -88,8 +95,12 @@ const SignIn: React.FC = () => {
             <TonConnectButton className="w-full" />
           </div>
 
-          {/* Telegram Login - Controlled by index.html */}
-          <div className="w-full mt-6 flex justify-center" id="telegram-login-widget-wrapper" style={{ display: 'none' }} />
+          {/* Telegram Login Widget */}
+          <div
+            className="w-full mt-6 flex justify-center"
+            id="telegram-login-widget-wrapper"
+            style={{ display: 'none' }}
+          />
         </motion.div>
       </main>
     </div>
