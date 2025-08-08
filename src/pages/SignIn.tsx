@@ -46,23 +46,14 @@ const SignIn: React.FC = () => {
     loginWithTon();
   }, [walletAddress]);
 
-  // Telegram Login Script injection
+  // Show Telegram login button only on this page
   useEffect(() => {
-    const scriptId = 'telegram-login-script';
-    if (document.getElementById(scriptId)) return;
+    const widget = document.getElementById('telegram-login-widget-wrapper');
+    if (widget) widget.style.display = 'flex';
 
-    const script = document.createElement('script');
-    script.id = scriptId;
-    script.src = 'https://telegram.org/js/telegram-widget.js?7';
-    script.setAttribute('data-telegram-login', 'alphadaoxbot'); // <-- Replace with your bot username
-    script.setAttribute('data-size', 'large');
-    script.setAttribute('data-radius', '10');
-    script.setAttribute('data-auth-url', 'https://alphadao.onrender.com/api/auth/telegram');
-    script.setAttribute('data-request-access', 'write');
-    script.async = true;
-
-    const container = document.getElementById('telegram-login-button');
-    if (container) container.appendChild(script);
+    return () => {
+      if (widget) widget.style.display = 'none';
+    };
   }, []);
 
   if (loading) return <Loader />;
@@ -97,8 +88,8 @@ const SignIn: React.FC = () => {
             <TonConnectButton className="w-full" />
           </div>
 
-          {/* Telegram Login */}
-          <div id="telegram-login-button" className="w-full mt-6 flex justify-center" />
+          {/* Telegram Login - Controlled by index.html */}
+          <div className="w-full mt-6 flex justify-center" id="telegram-login-widget-wrapper" style={{ display: 'none' }} />
         </motion.div>
       </main>
     </div>

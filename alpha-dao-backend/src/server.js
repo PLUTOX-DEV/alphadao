@@ -97,7 +97,6 @@ mongoose
       console.log(`✅ Server running on port ${PORT}`);
     });
 
-    bot.launch();
     console.log("🤖 Telegram bot started");
   })
   .catch((err) => {

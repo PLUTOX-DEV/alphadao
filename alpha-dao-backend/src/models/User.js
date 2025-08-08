@@ -2,13 +2,29 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, sparse: true }, // sparse = optional
-  telegramId: { type: String, unique: true, sparse: true },
+  email: {
+    type: String,
+    unique: false, // allow multiple nulls
+    sparse: true,
+  },
+  telegramId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
+  wallet: {
+    type: String,
+    unique: true,
+    sparse: true, // in case it's null for email/telegram users
+  },
   name: { type: String },
   username: { type: String },
   password: { type: String }, // Only for local auth
   picture: { type: String },
-  provider: { type: String, default: "local" }, // local, google, telegram
+  provider: {
+    type: String,
+    default: "local", // local, google, telegram, ton
+  },
 });
 
 // ✅ Hash password before saving (only if modified)
@@ -25,5 +41,4 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 };
 
 const User = mongoose.model("User", userSchema);
-
 export default User;
