@@ -1,4 +1,3 @@
-// server.js
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -6,20 +5,35 @@ import cors from "cors";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser"; // ✳️ NEW
+import session from "express-session";     // ✳️ NEW
+
 import authRoutes from "./routes/auth.js";
 import blogRoutes from "./routes/blog.js";
 import adminRoutes from "./routes/admin.js";
-import bot from "./bot.js"; // Import the bot
+import bot from "./bot.js";
 
 dotenv.config();
-
-// Fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Middleware
+// ✳️ Session middleware (must come before routes)
+app.use(cookieParser());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "your-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true, // set to true if using HTTPS
+      sameSite: "None", // required for cross-site cookies
+    },
+  })
+);
+
+// Helmet
 app.use(
   helmet({
     crossOriginOpenerPolicy: false,
@@ -27,16 +41,17 @@ app.use(
   })
 );
 
+// CORS
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "https://alphadao.vercel.app",
-    credentials: true,
+    credentials: true, // ✳️ Must be true for sessions to work
   })
 );
 
 app.use(express.json());
 
-// Serve static uploads
+// Static uploads
 app.use(
   "/uploads",
   express.static(path.join(__dirname, "uploads"), {
@@ -46,28 +61,26 @@ app.use(
   })
 );
 
-// Telegram webhook (if you're deploying via webhook — optional)
+// Telegram webhook
 app.post(`/bot${process.env.TELEGRAM_BOT_TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 
-// API test route
+// Health check
 app.get("/", (req, res) => {
   res.json({ message: "✅ Alpha DAO backend is running!" });
 });
 
-// Routes
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/admin", adminRoutes);
 
-// 404 handler
+// 404 and error handling
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
-
-// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something went wrong" });
@@ -84,7 +97,6 @@ mongoose
       console.log(`✅ Server running on port ${PORT}`);
     });
 
-    // Start Telegram bot
     bot.launch();
     console.log("🤖 Telegram bot started");
   })
@@ -92,6 +104,6 @@ mongoose
     console.error("❌ MongoDB connection error", err);
   });
 
-// Optional: Graceful shutdown for bot
+// Optional: graceful shutdown
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));

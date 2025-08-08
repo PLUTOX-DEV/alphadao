@@ -17,7 +17,9 @@ const __dirname = dirname(__filename);
 const router = express.Router();
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-// Multer setup
+// ---------------------------------------------
+// 🔧 Multer for profile images
+// ---------------------------------------------
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -34,17 +36,15 @@ const upload = multer({
   },
 });
 
-// =============================================
+// ---------------------------------------------
 // 🔐 AUTH ROUTES
-// =============================================
+// ---------------------------------------------
 
-// Register
+// Traditional Register/Login
 router.post("/register", signup);
-
-// Login
 router.post("/login", login);
 
-// Google OAuth
+// ✅ Google OAuth
 router.post("/google", async (req, res) => {
   const { idToken } = req.body;
   if (!idToken) return res.status(400).json({ message: "No ID token provided" });
@@ -88,7 +88,7 @@ router.post("/google", async (req, res) => {
   }
 });
 
-// ✅ Telegram Auth
+// ✅ Telegram OAuth
 router.post("/telegram", async (req, res) => {
   const { id, first_name, last_name, username, photo_url, auth_date, hash } = req.body;
 
@@ -143,11 +143,49 @@ router.post("/telegram", async (req, res) => {
   }
 });
 
-// =============================================
-// 👤 PROFILE ROUTES
-// =============================================
+// ✅ TON Wallet Login
+router.post("/ton", async (req, res) => {
+  const { wallet } = req.body;
+  if (!wallet) return res.status(400).json({ error: "Wallet is required" });
 
-// Get current user
+  try {
+    // Save wallet to session
+    req.session.user = { wallet };
+
+    // Optionally: Create a user or retrieve
+    let user = await User.findOne({ tonWallet: wallet });
+    if (!user) {
+      user = new User({
+        tonWallet: wallet,
+        name: `TON_${wallet.slice(0, 6)}`,
+        provider: "ton",
+      });
+      await user.save();
+    }
+
+    // Create JWT
+    const token = jwt.sign({ id: user._id, wallet: user.tonWallet }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    return res.json({
+      message: "TON wallet login successful",
+      token,
+      user: {
+        id: user._id,
+        wallet: user.tonWallet,
+        name: user.name,
+      },
+    });
+  } catch (err) {
+    console.error("TON Wallet Login Error:", err);
+    return res.status(500).json({ error: "Failed to log in with TON wallet" });
+  }
+});
+
+// ---------------------------------------------
+// 👤 USER PROFILE ROUTES
+// ---------------------------------------------
 router.get("/me", async (req, res) => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
@@ -165,7 +203,6 @@ router.get("/me", async (req, res) => {
   }
 });
 
-// Update profile
 router.put("/me", upload.single("picture"), async (req, res) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "No token provided" });
@@ -193,11 +230,9 @@ router.put("/me", upload.single("picture"), async (req, res) => {
   }
 });
 
-// =============================================
-// 🛠 ADMIN
-// =============================================
-
-// Get all users
+// ---------------------------------------------
+// 👨‍💻 ADMIN
+// ---------------------------------------------
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -208,10 +243,9 @@ router.get("/users", async (req, res) => {
   }
 });
 
-// =============================================
-// ✉️ CONTACT
-// =============================================
-
+// ---------------------------------------------
+// ✉️ CONTACT FORM
+// ---------------------------------------------
 router.get("/contact", (req, res) => {
   res.json({
     success: true,
