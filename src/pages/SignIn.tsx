@@ -1,99 +1,89 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../public/bg-sign-in-basic.jpeg';
-import Daologo from '../../public/Daologo.png';
 import { motion } from 'framer-motion';
-import { ToastContainer, toast } from 'react-toastify';
-import api from '../api/axiosInstance';
+import Daologo from '../../public/Daologo.png';
+import logo from '../../public/bg-sign-in-basic.jpeg';
+
 import Header from '../component/Header';
 import Loader from '../component/loader';
-import 'react-toastify/dist/ReactToastify.css';
-
-declare global {
-  interface Window {
-    google: any;
-  }
-}
+import {
+  TonConnectButton,
+  TonConnectUIProvider,
+  useTonAddress
+} from '@tonconnect/ui-react';
 
 const SignIn: React.FC = () => {
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const userAddress = useTonAddress();
+  const [loading, setLoading] = useState(false);
 
-  const handleGoogleResponse = async (response: any) => {
-    const idToken = response.credential;
-    try {
-      setLoading(true);
-      const res = await api.post('/api/auth/google', { idToken });
-      localStorage.setItem('token', res.data.token);
-      toast.success('Google sign-in successful!');
-      navigate('/profile');
-    } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Google sign-in failed!');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Handle TON login
   useEffect(() => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-    if (window.google && clientId) {
-      window.google.accounts.id.initialize({
-        client_id: clientId,
-        callback: handleGoogleResponse,
-      });
+    if (userAddress) {
+      setLoading(true);
+      console.log('TON Wallet Address:', userAddress);
+      
+      // TODO: Replace this with an actual API call to your backend
+      setTimeout(() => {
+        setLoading(false);
+        navigate('/profile');
+      }, 1000);
     }
-  }, []);
+  }, [userAddress]);
 
-  const handleCustomGoogleSignIn = () => {
-    if (window.google) {
-      window.google.accounts.id.prompt();
-    }
-  };
+  if (loading) return <Loader />;
 
   return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div
-          className="min-h-screen bg-gray-950"
-          style={{
-            backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.7), rgba(0, 0, 0, 0.9)), url(${logo})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <Header />
-          <ToastContainer />
-          <main className="flex items-center justify-center min-h-[calc(100vh-80px)] px-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="backdrop-blur-md bg-gray-900/80 shadow-2xl rounded-3xl p-10 w-full max-w-md text-white flex flex-col items-center space-y-6"
-            >
-              <div className="flex flex-col items-center space-y-2">
-                <img src={Daologo} alt="Alpha DAO" className="w-16 h-16 animate-spin-slow" />
-                <h1 className="text-3xl font-bold tracking-widest text-purple-400">ALPHA DAO</h1>
-                <p className="text-sm text-gray-300">Sign in to your account</p>
-              </div>
+    <TonConnectUIProvider manifestUrl="https://alphadao.vercel.app/tonconnect-manifest.json">
+      {/* TODO: Replace "yourdomain.com" with your actual hosted domain */}
+      <div
+        className="min-h-screen bg-gray-950"
+        style={{
+          backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.7), rgba(0, 0, 0, 0.9)), url(${logo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <Header />
+        <main className="flex items-center justify-center min-h-[calc(100vh-80px)] px-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="backdrop-blur-md bg-gray-900/80 shadow-2xl rounded-3xl p-10 w-full max-w-md text-white flex flex-col items-center space-y-6"
+          >
+            <div className="flex flex-col items-center space-y-2">
+              <img src={Daologo} alt="Alpha DAO" className="w-16 h-16 animate-spin-slow" />
+              <h1 className="text-3xl font-bold tracking-widest text-purple-400">ALPHA DAO</h1>
+              <p className="text-sm text-gray-300">Sign in to your account</p>
+            </div>
 
-              <button
-                onClick={handleCustomGoogleSignIn}
-                className="mt-4 flex items-center justify-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white font-medium rounded-lg transition duration-300"
-              >
-                <img
-                  src="https://developers.google.com/identity/images/g-logo.png"
-                  alt="Google"
-                  className="w-5 h-5"
-                />
-                Continue with Google
-              </button>
-            </motion.div>
-          </main>
-        </div>
-      )}
-    </>
+            {/* TON Wallet Connect Button */}
+            <div className="w-full">
+              <TonConnectButton className="w-full" />
+            </div>
+
+            {/* Telegram Login Widget */}
+            <div className="w-full mt-6">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    <script async src="https://telegram.org/js/telegram-widget.js?7"
+                      data-telegram-login="alphadaoxbot"
+                      data-size="large"
+                      data-radius="10"
+                      data-auth-url="https://alphadao.onrender.com/api/auth/telegram"
+                      data-request-access="write">
+                    </script>
+                  `,
+                }}
+              />
+              {/* TODO: Replace "YourBotUsername" and "your-backend.com" with actual bot and API */}
+            </div>
+          </motion.div>
+        </main>
+      </div>
+    </TonConnectUIProvider>
   );
 };
 

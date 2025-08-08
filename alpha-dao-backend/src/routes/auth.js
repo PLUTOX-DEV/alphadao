@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import multer from "multer";
 import path from "path";
 import nodemailer from "nodemailer";
+import crypto from "crypto";
 import User from "../models/User.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -14,11 +15,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const router = express.Router();
-
-// 🟢 GOOGLE CLIENT
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-// 🟢 MULTER SETUP
+// Multer setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -27,7 +26,6 @@ const storage = multer.diskStorage({
     cb(null, uniqueName);
   },
 });
-
 const upload = multer({
   storage,
   fileFilter: (req, file, cb) => {
@@ -36,17 +34,17 @@ const upload = multer({
   },
 });
 
-// =====================================================================
-// 🟢 AUTH ROUTES
-// =====================================================================
+// =============================================
+// 🔐 AUTH ROUTES
+// =============================================
 
-// REGISTER
+// Register
 router.post("/register", signup);
 
-// LOGIN
+// Login
 router.post("/login", login);
 
-// GOOGLE OAUTH
+// Google OAuth
 router.post("/google", async (req, res) => {
   const { idToken } = req.body;
   if (!idToken) return res.status(400).json({ message: "No ID token provided" });
@@ -56,9 +54,10 @@ router.post("/google", async (req, res) => {
       idToken,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
-    const payload = ticket.getPayload();
 
+    const payload = ticket.getPayload();
     let user = await User.findOne({ email: payload.email });
+
     if (!user) {
       user = new User({
         email: payload.email,
@@ -69,11 +68,9 @@ router.post("/google", async (req, res) => {
       await user.save();
     }
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.json({
       message: "Google sign-in successful",
@@ -91,11 +88,66 @@ router.post("/google", async (req, res) => {
   }
 });
 
-// =====================================================================
-// 🟢 PROFILE ROUTES
-// =====================================================================
+// ✅ Telegram Auth
+router.post("/telegram", async (req, res) => {
+  const { id, first_name, last_name, username, photo_url, auth_date, hash } = req.body;
 
-// GET CURRENT USER
+  const dataCheckString = Object.entries(req.body)
+    .filter(([key]) => key !== "hash")
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, value]) => `${key}=${value}`)
+    .join("\n");
+
+  const secretKey = crypto
+    .createHash("sha256")
+    .update(process.env.TELEGRAM_BOT_TOKEN)
+    .digest();
+
+  const hmac = crypto.createHmac("sha256", secretKey).update(dataCheckString).digest("hex");
+
+  if (hmac !== hash) {
+    return res.status(403).json({ message: "Invalid Telegram hash" });
+  }
+
+  try {
+    let user = await User.findOne({ telegramId: id });
+
+    if (!user) {
+      user = new User({
+        telegramId: id,
+        name: `${first_name} ${last_name || ""}`.trim(),
+        username,
+        picture: photo_url,
+        provider: "telegram",
+      });
+      await user.save();
+    }
+
+    const token = jwt.sign({ id: user._id, telegramId: user.telegramId }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.json({
+      message: "Telegram login successful",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        username: user.username,
+        picture: user.picture,
+      },
+    });
+  } catch (err) {
+    console.error("Telegram Auth Error:", err);
+    res.status(500).json({ message: "Telegram authentication failed" });
+  }
+});
+
+// =============================================
+// 👤 PROFILE ROUTES
+// =============================================
+
+// Get current user
 router.get("/me", async (req, res) => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
@@ -113,7 +165,7 @@ router.get("/me", async (req, res) => {
   }
 });
 
-// UPDATE PROFILE
+// Update profile
 router.put("/me", upload.single("picture"), async (req, res) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "No token provided" });
@@ -123,8 +175,8 @@ router.put("/me", upload.single("picture"), async (req, res) => {
     const userId = decoded.id;
 
     const { name, username, password } = req.body;
-
     const updateData = {};
+
     if (name) updateData.name = name;
     if (username) updateData.username = username;
     if (req.file) updateData.picture = `/uploads/${req.file.filename}`;
@@ -141,11 +193,11 @@ router.put("/me", upload.single("picture"), async (req, res) => {
   }
 });
 
-// =====================================================================
-// 🟢 ADMIN/DEBUG ROUTES
-// =====================================================================
+// =============================================
+// 🛠 ADMIN
+// =============================================
 
-// GET ALL USERS
+// Get all users
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -156,11 +208,10 @@ router.get("/users", async (req, res) => {
   }
 });
 
-// =====================================================================
-// 🟢 CONTACT FORM
-// =====================================================================
+// =============================================
+// ✉️ CONTACT
+// =============================================
 
-// STATUS CHECK
 router.get("/contact", (req, res) => {
   res.json({
     success: true,
@@ -168,17 +219,8 @@ router.get("/contact", (req, res) => {
   });
 });
 
-// SUBMIT FORM
 router.post("/contact", async (req, res) => {
   const { firstName, lastName, email, enquiry, message } = req.body;
-
-  console.log("📨 Received contact form submission:", {
-    firstName,
-    lastName,
-    email,
-    enquiry,
-    message,
-  });
 
   try {
     const transporter = nodemailer.createTransport({
@@ -201,7 +243,6 @@ router.post("/contact", async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
-    console.log("✅ Email sent successfully.");
     res.json({ success: true, message: "Email sent" });
   } catch (err) {
     console.error("❌ Failed to send email:", err);
