@@ -6,21 +6,21 @@ import Footer from "../component/footer";
 import api from "../api/axiosInstance";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { useTonConnectUI } from "@tonconnect/ui-react"; // ✅ for TON disconnect
 
 interface User {
   id: string;
   name: string;
-  email: string;
+  email?: string;
   username?: string;
-  picture?: string; // covers both Telegram photo_url and uploaded avatar
+  picture?: string;
+  provider?: "local" | "google" | "telegram" | "ton"; // ✅ add provider check
 }
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "settings">(
-    "dashboard"
-  );
+  const [activeTab, setActiveTab] = useState<"dashboard" | "settings">("dashboard");
   const [user, setUser] = useState<User | null>(null);
   const [avatar, setAvatar] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -29,25 +29,24 @@ const Profile: React.FC = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const [tonConnectUI] = useTonConnectUI(); // ✅ TON wallet instance
+
   const BASE_URL = "https://alphadao.onrender.com";
 
   const fetchUser = async () => {
     try {
       const res = await api.get("/api/auth/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
       setUser(res.data);
       setName(res.data.name || "");
       setUsername(res.data.username || "");
 
-      // ✅ Unified avatar logic
       const pictureUrl = res.data.picture
         ? res.data.picture.startsWith("http")
-          ? res.data.picture // Telegram photo_url
-          : `${BASE_URL}${res.data.picture}` // Uploaded avatar
+          ? res.data.picture
+          : `${BASE_URL}${res.data.picture}`
         : null;
 
       setAvatar(pictureUrl);
@@ -69,14 +68,12 @@ const Profile: React.FC = () => {
       const token = localStorage.getItem("token");
       const formData = new FormData();
       formData.append("name", name);
-      formData.append("username", username);
+      if (username) formData.append("username", username);
       if (password) formData.append("password", password);
       if (avatarFile) formData.append("picture", avatarFile);
 
       await api.put("/api/auth/me", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       toast.success("Profile updated successfully!");
@@ -86,8 +83,18 @@ const Profile: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("token");
+
+    if (user?.provider === "ton") {
+      try {
+        await tonConnectUI.disconnect(); // ✅ Disconnect TON wallet
+        toast.success("Disconnected TON wallet");
+      } catch (err) {
+        console.error("TON disconnect error:", err);
+      }
+    }
+
     navigate("/sign-in");
   };
 
@@ -149,7 +156,7 @@ const Profile: React.FC = () => {
           ))}
         </div>
 
-        {/* Dashboard Tab */}
+        {/* Dashboard */}
         {activeTab === "dashboard" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -167,7 +174,10 @@ const Profile: React.FC = () => {
               </div>
               <h2 className="text-2xl font-bold mt-4">{name}</h2>
               <p className="text-gray-400">@{username || "username"}</p>
-              <p className="text-sm text-gray-500">{user.email}</p>
+              {user.email && <p className="text-sm text-gray-500">{user.email}</p>}
+              <p className="text-xs text-gray-400 mt-1">
+                Provider: <span className="capitalize">{user.provider}</span>
+              </p>
             </div>
 
             <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -189,7 +199,7 @@ const Profile: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Settings Tab */}
+        {/* Settings */}
         {activeTab === "settings" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -217,33 +227,40 @@ const Profile: React.FC = () => {
                   className="w-full p-2 bg-gray-700 rounded-md text-white focus:outline-none"
                 />
               </div>
-              <div>
-                <label className="text-sm text-gray-400">Username</label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full p-2 bg-gray-700 rounded-md text-white focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-sm text-gray-400">New Password</label>
-                <div className="flex">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full p-2 bg-gray-700 rounded-l-md text-white"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    className="px-3 bg-gray-600 rounded-r-md text-sm"
-                  >
-                    {showPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-              </div>
+
+              {/* Hide username/password if logged in with TON */}
+              {user.provider !== "ton" && (
+                <>
+                  <div>
+                    <label className="text-sm text-gray-400">Username</label>
+                    <input
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      className="w-full p-2 bg-gray-700 rounded-md text-white focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm text-gray-400">New Password</label>
+                    <div className="flex">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full p-2 bg-gray-700 rounded-l-md text-white"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="px-3 bg-gray-600 rounded-r-md text-sm"
+                      >
+                        {showPassword ? "Hide" : "Show"}
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+
               <button
                 type="submit"
                 className="w-full py-2 bg-purple-700 hover:bg-purple-800 rounded-md font-semibold transition"

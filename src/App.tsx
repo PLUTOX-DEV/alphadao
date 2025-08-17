@@ -11,6 +11,7 @@ import ContactUs from "./pages/contactus";
 import Profile from "./pages/Profile";
 import PrivacyPolicy from "./pages/Privacypolicy";
 import Governance from "./pages/Governance";
+import  Dashboard from  "./pages/DashBoard"
 
 const App = () => {
   return (
@@ -28,6 +29,8 @@ const App = () => {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/governance" element={<Governance />} />
+          <Route path="/governance" element={<Governance />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </BlogProvider>
