@@ -6,7 +6,7 @@ import Footer from "../component/footer";
 import api from "../api/axiosInstance";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import { useTonConnectUI } from "@tonconnect/ui-react"; // ✅ for TON disconnect
+import { useTonConnectUI } from "@tonconnect/ui-react";
 
 interface User {
   id: string;
@@ -14,13 +14,21 @@ interface User {
   email?: string;
   username?: string;
   picture?: string;
-  provider?: "local" | "google" | "telegram" | "ton"; // ✅ add provider check
+  provider?: "local" | "google" | "telegram" | "ton";
+}
+
+interface Task {
+  id: string;
+  title: string;
+  description: string;
+  reward: string;
+  completed: boolean;
 }
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "settings">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "settings" | "tasks">("dashboard");
   const [user, setUser] = useState<User | null>(null);
   const [avatar, setAvatar] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -28,9 +36,9 @@ const Profile: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  const [tonConnectUI] = useTonConnectUI(); // ✅ TON wallet instance
-
+  const [tonConnectUI] = useTonConnectUI();
   const BASE_URL = "https://alphadao.onrender.com";
 
   const fetchUser = async () => {
@@ -58,8 +66,40 @@ const Profile: React.FC = () => {
     }
   };
 
+  const fetchTasks = async () => {
+    try {
+      // Example tasks (you can fetch from backend if available)
+      setTasks([
+        {
+          id: "1",
+          title: "Connect your TON Wallet",
+          description: "Link your TON wallet to unlock rewards.",
+          reward: "10 ALPHA",
+          completed: user?.provider === "ton",
+        },
+        {
+          id: "2",
+          title: "Stake your first tokens",
+          description: "Start staking to earn rewards and voting power.",
+          reward: "20 ALPHA",
+          completed: false,
+        },
+        {
+          id: "3",
+          title: "Follow AlphaDAO on Twitter",
+          description: "Stay updated by following us on social media.",
+          reward: "5 ALPHA",
+          completed: false,
+        },
+      ]);
+    } catch {
+      toast.error("Failed to fetch tasks");
+    }
+  };
+
   useEffect(() => {
     fetchUser();
+    fetchTasks();
   }, [navigate]);
 
   const handleSaveSettings = async (e: React.FormEvent) => {
@@ -85,16 +125,14 @@ const Profile: React.FC = () => {
 
   const handleLogout = async () => {
     localStorage.removeItem("token");
-
     if (user?.provider === "ton") {
       try {
-        await tonConnectUI.disconnect(); // ✅ Disconnect TON wallet
+        await tonConnectUI.disconnect();
         toast.success("Disconnected TON wallet");
       } catch (err) {
         console.error("TON disconnect error:", err);
       }
     }
-
     navigate("/sign-in");
   };
 
@@ -106,6 +144,15 @@ const Profile: React.FC = () => {
       reader.onloadend = () => setAvatar(reader.result as string);
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleCompleteTask = (id: string) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, completed: true } : task
+      )
+    );
+    toast.success("Task completed! 🎉");
   };
 
   if (loading) {
@@ -141,7 +188,7 @@ const Profile: React.FC = () => {
 
         {/* Tabs */}
         <div className="flex space-x-6 border-b border-gray-700 mb-6">
-          {["dashboard", "settings"].map((tab) => (
+          {["dashboard", "tasks", "settings"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab as any)}
@@ -199,6 +246,42 @@ const Profile: React.FC = () => {
           </motion.div>
         )}
 
+        {/* Tasks */}
+        {activeTab === "tasks" && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-gray-800/60 backdrop-blur p-6 rounded-2xl shadow-xl"
+          >
+            <h2 className="text-xl font-bold mb-4 text-purple-400">Tasks & Rewards</h2>
+            <div className="space-y-4">
+              {tasks.map((task) => (
+                <div
+                  key={task.id}
+                  className="flex items-center justify-between p-4 bg-gray-700 rounded-xl hover:bg-gray-600 transition"
+                >
+                  <div>
+                    <h3 className="font-semibold">{task.title}</h3>
+                    <p className="text-sm text-gray-400">{task.description}</p>
+                    <p className="text-xs text-green-400">Reward: {task.reward}</p>
+                  </div>
+                  {task.completed ? (
+                    <span className="px-3 py-1 bg-green-600 rounded-md text-sm">Completed</span>
+                  ) : (
+                    <button
+                      onClick={() => handleCompleteTask(task.id)}
+                      className="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
+                    >
+                      Complete
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Settings */}
         {activeTab === "settings" && (
           <motion.div
@@ -228,7 +311,6 @@ const Profile: React.FC = () => {
                 />
               </div>
 
-              {/* Hide username/password if logged in with TON */}
               {user.provider !== "ton" && (
                 <>
                   <div>
