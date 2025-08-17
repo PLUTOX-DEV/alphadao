@@ -64,15 +64,15 @@ const SignIn: React.FC = () => {
     const script = document.createElement("script");
     script.src = "https://telegram.org/js/telegram-widget.js?22";
     script.async = true;
-    script.setAttribute("data-telegram-login", "alphadaoxbot"); // <- replace with your bot username
+    script.setAttribute("data-telegram-login", "AlphaDaoxBot"); // <-- Your bot username (no @)
     script.setAttribute("data-size", "large");
     script.setAttribute("data-request-access", "write");
     script.setAttribute("data-userpic", "true");
-    script.setAttribute("data-onauth", "handleTelegramAuth(user)");
+    script.setAttribute("data-onauth", "handleTelegramAuth");
 
     container.appendChild(script);
 
-    // Expose global callback
+    // ✅ Expose global callback
     (window as any).handleTelegramAuth = async (user: any) => {
       try {
         setLoading(true);
@@ -84,7 +84,8 @@ const SignIn: React.FC = () => {
 
         toast.success("Signed in with Telegram!");
         navigate("/profile");
-      } catch {
+      } catch (err) {
+        console.error("Telegram login failed:", err);
         toast.error("Telegram login failed.");
       } finally {
         setLoading(false);
@@ -143,4 +144,3 @@ const SignIn: React.FC = () => {
 };
 
 export default SignIn;
-// Note: Replace YOUR_TELEGRAM_BOT_USERNAME with your actual Telegram bot username
