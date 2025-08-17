@@ -1,3 +1,4 @@
+// src/pages/Profile.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
@@ -11,14 +12,15 @@ interface User {
   name: string;
   email: string;
   username?: string;
-  picture?: string; // uploaded picture
-  telegramPicture?: string; // telegram profile picture
+  picture?: string; // covers both Telegram photo_url and uploaded avatar
 }
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "settings">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "settings">(
+    "dashboard"
+  );
   const [user, setUser] = useState<User | null>(null);
   const [avatar, setAvatar] = useState<string | null>(null);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -41,13 +43,11 @@ const Profile: React.FC = () => {
       setName(res.data.name || "");
       setUsername(res.data.username || "");
 
-      // Priority: Uploaded Avatar > Telegram Picture > Default
+      // ✅ Unified avatar logic
       const pictureUrl = res.data.picture
         ? res.data.picture.startsWith("http")
-          ? res.data.picture
-          : `${BASE_URL}${res.data.picture}`
-        : res.data.telegramPicture
-        ? res.data.telegramPicture
+          ? res.data.picture // Telegram photo_url
+          : `${BASE_URL}${res.data.picture}` // Uploaded avatar
         : null;
 
       setAvatar(pictureUrl);
@@ -80,7 +80,7 @@ const Profile: React.FC = () => {
       });
 
       toast.success("Profile updated successfully!");
-      fetchUser(); // Refresh user data
+      fetchUser();
     } catch {
       toast.error("Failed to update profile.");
     }
@@ -132,6 +132,7 @@ const Profile: React.FC = () => {
           </button>
         </div>
 
+        {/* Tabs */}
         <div className="flex space-x-6 border-b border-gray-700 mb-6">
           {["dashboard", "settings"].map((tab) => (
             <button
@@ -148,6 +149,7 @@ const Profile: React.FC = () => {
           ))}
         </div>
 
+        {/* Dashboard Tab */}
         {activeTab === "dashboard" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -187,6 +189,7 @@ const Profile: React.FC = () => {
           </motion.div>
         )}
 
+        {/* Settings Tab */}
         {activeTab === "settings" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
