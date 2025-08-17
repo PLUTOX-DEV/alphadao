@@ -1,4 +1,3 @@
-// src/pages/Profile.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../component/Header";
@@ -7,6 +6,15 @@ import api from "../api/axiosInstance";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { useTonConnectUI } from "@tonconnect/ui-react";
+import {
+  LogOut,
+  Link,
+  Gem,
+  Youtube,
+  CheckCircle2,
+  Star,
+  Eye,
+} from "lucide-react";
 
 interface User {
   id: string;
@@ -158,16 +166,12 @@ const Profile: React.FC = () => {
 
   // ✅ Verify YouTube/manual code
   const handleVerifyCode = (task: Task) => {
-    // Example static check
     if (task.codeInput?.trim().toUpperCase() === "ALPHA123") {
       handleCompleteTask(task.id);
       toast.success(`Code verified! 🎉 You earned ${task.reward}`);
     } else {
       toast.error("Invalid code. Try again.");
     }
-
-    // 👉 Later replace with API call:
-    // api.post("/api/tasks/verify", { taskId: task.id, code: task.codeInput })
   };
 
   if (loading) {
@@ -195,9 +199,9 @@ const Profile: React.FC = () => {
           <h1 className="text-3xl font-bold text-purple-500">My Profile</h1>
           <button
             onClick={handleLogout}
-            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-white transition"
+            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl text-white transition"
           >
-            Logout
+            <LogOut className="w-4 h-4" /> Logout
           </button>
         </div>
 
@@ -278,11 +282,11 @@ const Profile: React.FC = () => {
                 >
                   {/* Icon + Info */}
                   <div className="flex items-center gap-4">
-                    <span className="text-2xl">
-                      {task.id === "1" && "🔗"}
-                      {task.id === "2" && "💎"}
-                      {task.id === "3" && "🎥"}
-                      {!["1", "2", "3"].includes(task.id) && "⭐"}
+                    <span className="text-purple-400">
+                      {task.id === "1" && <Link className="w-6 h-6" />}
+                      {task.id === "2" && <Gem className="w-6 h-6" />}
+                      {task.id === "3" && <Youtube className="w-6 h-6" />}
+                      {!["1", "2", "3"].includes(task.id) && <Star className="w-6 h-6" />}
                     </span>
                     <div>
                       <h3 className="font-semibold">{task.title}</h3>
@@ -293,15 +297,15 @@ const Profile: React.FC = () => {
 
                   {/* Actions */}
                   {task.completed ? (
-                    <span className="mt-3 md:mt-0 px-3 py-1 bg-green-600 rounded-md text-sm text-center">
-                      ✅ Completed
+                    <span className="mt-3 md:mt-0 flex items-center gap-1 px-3 py-1 bg-green-600 rounded-md text-sm text-center">
+                      <CheckCircle2 className="w-4 h-4" /> Completed
                     </span>
                   ) : task.id === "3" ? (
                     <div className="mt-3 md:mt-0 flex gap-2">
                       <input
                         type="text"
                         placeholder="Enter code"
-                        className="px-2 py-1 rounded-md bg-gray-600 text-sm text-white focus:outline-none"
+                        className="px-3 py-2 rounded-lg bg-gray-600 text-sm text-white focus:outline-none"
                         onChange={(e) =>
                           setTasks((prev) =>
                             prev.map((t) =>
@@ -312,7 +316,7 @@ const Profile: React.FC = () => {
                       />
                       <button
                         onClick={() => handleVerifyCode(task)}
-                        className="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
+                        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm font-semibold"
                       >
                         Claim
                       </button>
@@ -320,7 +324,7 @@ const Profile: React.FC = () => {
                   ) : (
                     <button
                       onClick={() => handleCompleteTask(task.id)}
-                      className="mt-3 md:mt-0 px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
+                      className="mt-3 md:mt-0 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm font-semibold"
                     >
                       Complete
                     </button>
@@ -389,7 +393,7 @@ const Profile: React.FC = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                         className="px-3 bg-gray-600 rounded-r-md text-sm"
                       >
-                        {showPassword ? "Hide" : "Show"}
+                        {showPassword ? <Eye className="w-4 h-4" /> : "Show"}
                       </button>
                     </div>
                   </div>
@@ -398,7 +402,7 @@ const Profile: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-2 bg-purple-700 hover:bg-purple-800 rounded-md font-semibold transition"
+                className="w-full py-2 bg-purple-700 hover:bg-purple-800 rounded-xl font-semibold transition"
               >
                 Save Changes
               </button>
