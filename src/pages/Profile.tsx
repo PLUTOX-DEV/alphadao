@@ -11,7 +11,8 @@ interface User {
   name: string;
   email: string;
   username?: string;
-  picture?: string;
+  picture?: string; // uploaded picture
+  telegramPicture?: string; // telegram profile picture
 }
 
 const Profile: React.FC = () => {
@@ -39,11 +40,16 @@ const Profile: React.FC = () => {
       setUser(res.data);
       setName(res.data.name || "");
       setUsername(res.data.username || "");
+
+      // Priority: Uploaded Avatar > Telegram Picture > Default
       const pictureUrl = res.data.picture
         ? res.data.picture.startsWith("http")
           ? res.data.picture
           : `${BASE_URL}${res.data.picture}`
+        : res.data.telegramPicture
+        ? res.data.telegramPicture
         : null;
+
       setAvatar(pictureUrl);
     } catch {
       toast.error("Session expired. Please sign in.");
