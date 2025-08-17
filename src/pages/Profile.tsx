@@ -23,6 +23,7 @@ interface Task {
   description: string;
   reward: string;
   completed: boolean;
+  codeInput?: string;
 }
 
 const Profile: React.FC = () => {
@@ -67,7 +68,7 @@ const Profile: React.FC = () => {
     }
   };
 
-  // ✅ Load example tasks (replace with API fetch if backend ready)
+  // ✅ Load tasks
   const fetchTasks = async () => {
     setTasks([
       {
@@ -86,9 +87,9 @@ const Profile: React.FC = () => {
       },
       {
         id: "3",
-        title: "Follow AlphaDAO on Twitter",
-        description: "Stay updated by following us on social media.",
-        reward: "5 ALPHA",
+        title: "Watch YouTube & Claim Code",
+        description: "Enter the secret code shown in the video.",
+        reward: "15 ALPHA",
         completed: false,
       },
     ]);
@@ -100,7 +101,7 @@ const Profile: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
-  // ✅ Save updated profile settings
+  // ✅ Save profile settings
   const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -122,7 +123,7 @@ const Profile: React.FC = () => {
     }
   };
 
-  // ✅ Handle logout
+  // ✅ Logout
   const handleLogout = async () => {
     localStorage.removeItem("token");
     if (user?.provider === "ton") {
@@ -147,12 +148,26 @@ const Profile: React.FC = () => {
     }
   };
 
-  // ✅ Mark task as completed
+  // ✅ Mark task complete
   const handleCompleteTask = (id: string) => {
     setTasks((prev) =>
       prev.map((task) => (task.id === id ? { ...task, completed: true } : task))
     );
     toast.success("Task completed! 🎉");
+  };
+
+  // ✅ Verify YouTube/manual code
+  const handleVerifyCode = (task: Task) => {
+    // Example static check
+    if (task.codeInput?.trim().toUpperCase() === "ALPHA123") {
+      handleCompleteTask(task.id);
+      toast.success(`Code verified! 🎉 You earned ${task.reward}`);
+    } else {
+      toast.error("Invalid code. Try again.");
+    }
+
+    // 👉 Later replace with API call:
+    // api.post("/api/tasks/verify", { taskId: task.id, code: task.codeInput })
   };
 
   if (loading) {
@@ -186,7 +201,7 @@ const Profile: React.FC = () => {
           </button>
         </div>
 
-        {/* ✅ Tabs */}
+        {/* Tabs */}
         <div className="flex space-x-6 border-b border-gray-700 mb-6">
           {["dashboard", "tasks", "settings"].map((tab) => (
             <button
@@ -203,7 +218,7 @@ const Profile: React.FC = () => {
           ))}
         </div>
 
-        {/* ✅ Dashboard */}
+        {/* Dashboard */}
         {activeTab === "dashboard" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -246,7 +261,7 @@ const Profile: React.FC = () => {
           </motion.div>
         )}
 
-        {/* ✅ Tasks */}
+        {/* Tasks */}
         {activeTab === "tasks" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -259,19 +274,53 @@ const Profile: React.FC = () => {
               {tasks.map((task) => (
                 <div
                   key={task.id}
-                  className="flex items-center justify-between p-4 bg-gray-700 rounded-xl hover:bg-gray-600 transition"
+                  className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gray-700 rounded-xl hover:bg-gray-600 transition"
                 >
-                  <div>
-                    <h3 className="font-semibold">{task.title}</h3>
-                    <p className="text-sm text-gray-400">{task.description}</p>
-                    <p className="text-xs text-green-400">Reward: {task.reward}</p>
+                  {/* Icon + Info */}
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl">
+                      {task.id === "1" && "🔗"}
+                      {task.id === "2" && "💎"}
+                      {task.id === "3" && "🎥"}
+                      {!["1", "2", "3"].includes(task.id) && "⭐"}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold">{task.title}</h3>
+                      <p className="text-sm text-gray-400">{task.description}</p>
+                      <p className="text-xs text-green-400">Reward: {task.reward}</p>
+                    </div>
                   </div>
+
+                  {/* Actions */}
                   {task.completed ? (
-                    <span className="px-3 py-1 bg-green-600 rounded-md text-sm">Completed</span>
+                    <span className="mt-3 md:mt-0 px-3 py-1 bg-green-600 rounded-md text-sm text-center">
+                      ✅ Completed
+                    </span>
+                  ) : task.id === "3" ? (
+                    <div className="mt-3 md:mt-0 flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Enter code"
+                        className="px-2 py-1 rounded-md bg-gray-600 text-sm text-white focus:outline-none"
+                        onChange={(e) =>
+                          setTasks((prev) =>
+                            prev.map((t) =>
+                              t.id === task.id ? { ...t, codeInput: e.target.value } : t
+                            )
+                          )
+                        }
+                      />
+                      <button
+                        onClick={() => handleVerifyCode(task)}
+                        className="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
+                      >
+                        Claim
+                      </button>
+                    </div>
                   ) : (
                     <button
                       onClick={() => handleCompleteTask(task.id)}
-                      className="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
+                      className="mt-3 md:mt-0 px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-md text-sm"
                     >
                       Complete
                     </button>
@@ -282,7 +331,7 @@ const Profile: React.FC = () => {
           </motion.div>
         )}
 
-        {/* ✅ Settings */}
+        {/* Settings */}
         {activeTab === "settings" && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -314,7 +363,7 @@ const Profile: React.FC = () => {
                 />
               </div>
 
-              {/* Username & Password only if NOT Ton user */}
+              {/* Username & Password */}
               {user.provider !== "ton" && (
                 <>
                   <div>
