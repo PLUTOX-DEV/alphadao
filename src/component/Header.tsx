@@ -25,7 +25,6 @@ const Header: React.FC = () => {
             <img src="/Daologo.png" className="w-8 h-8 animate-spin-slow" alt="Alpha" />
             <span
               className="text-xl font-extrabold text-gray-300"
-              style={{ fontFamily: "'Georgia', cursive" }}
             >
               ALPHA DAO
             </span>
@@ -63,7 +62,7 @@ const Header: React.FC = () => {
             ) : (
               <Link to="/sign-in">
                 <button className="relative inline-flex items-center justify-center md:px-1 p-0.5 mb-2 mt-4 me-2 overflow-hidden text-sm font-medium text-gray-300 rounded-lg group hover:text-white focus:ring-purple-900">
-                  <span className="relative px-5 py-2.5 font-[Georgia] bg-gradient-to-r from-purple-700 to-purple-950 rounded-md group-hover:bg-transparent">
+                  <span className="relative px-5 py-2.5 bg-gradient-to-r from-purple-700 to-purple-950 rounded-md group-hover:bg-transparent">
                     Sign In
                   </span>
                 </button>
@@ -96,9 +95,10 @@ const Header: React.FC = () => {
           <div
             className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'}`}
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-[Georgia] font-medium border border-purple-900 rounded-lg bg-transparent md:space-x-8 md:flex-row md:mt-0 md:border-0">
+            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-purple-900 rounded-lg bg-transparent md:space-x-8 md:flex-row md:mt-0 md:border-0">
               <li><Link to="/home" className="block py-2 px-3 text-gray-300">Home</Link></li>
-              <li><a href="/ALPHA DAO Whitepaper.pdf" className="block py-2 px-3 text-gray-300 hover:text-purple-900">Whitepaper</a></li>
+              <li><a href="/AlphaDAO_Whitepaper.pdf" className="block py-2 px-3 text-gray-300 hover:text-purple-900 cursor-pointer">Whitepaper</a></li>
+               <li><a href="/ATD DAO ROADMAP -2.pdf" className="block py-2 px-3 text-gray-300 hover:text-purple-900 cursor-pointer">Road Map</a></li>
               <li><Link to="/blog" className="block py-2 px-3 text-gray-300 hover:text-purple-900">Blogs</Link></li>
               <li><Link to="#" className="block py-2 px-3 text-gray-300 hover:text-purple-900">Miniapp</Link></li>
               <li><Link to="/about" className="block py-2 px-3 text-gray-300 hover:text-purple-900">About</Link></li>
