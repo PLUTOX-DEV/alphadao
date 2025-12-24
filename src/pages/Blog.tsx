@@ -19,7 +19,7 @@ const Blog: React.FC = () => {
         <Header />
       </div>
       <motion.div
-                  className="relative z-10 bg-gray-900/95 backdrop-blur-sm"
+                  className="relative z-10 bg-gray-900/95 backdrop-blur-sm min-h-screen"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
