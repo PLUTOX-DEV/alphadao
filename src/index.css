@@ -6,6 +6,7 @@
 body {
   background: linear-gradient(to right, #0f0c0c, #2c073f); /* Grey to Purple */
   color: white;
+  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
 .nav-link {

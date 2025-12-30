@@ -3,6 +3,7 @@ import { Toaster } from "react-hot-toast";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import { BlogProvider } from "./blog/context/BlogContext";
 import Blog from "./pages/Blog";
 import SignIn from "./pages/SignIn";
@@ -19,7 +20,7 @@ const App = () => {
       <BrowserRouter>
         <Toaster position="top-right" reverseOrder={false} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
