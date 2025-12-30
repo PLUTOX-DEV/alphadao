@@ -144,7 +144,7 @@ export default function AnimatedBackground() {
       {/* Matrix canvas */}
       <canvas ref={canvasRef} className="matrix-canvas" />
 
-      <style jsx>{`
+      <style>{`
         .aurora {
           position: fixed;
           inset: 0;
