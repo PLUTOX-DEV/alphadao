@@ -125,7 +125,7 @@ export default function Landing() {
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         .boot-box {
           width: 380px;
           max-width: calc(100% - 48px);

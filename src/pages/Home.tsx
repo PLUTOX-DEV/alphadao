@@ -99,7 +99,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              A digital nation composed of <span className="text-purple-400 font-semibold">three interconnected pillars</span>
+              <span className="text-purple-400 font-semibold">The Three Pillars of AlphaDAO</span>
             </p>
           </motion.div>
           
@@ -113,22 +113,22 @@ export default function Home() {
               {
                 icon: "👥",
                 title: "AlphaDAO Society",
-                subtitle: "Community Layer",
-                desc: "Global network of builders learning, contributing & governing together",
+                subtitle: "The Community",
+                desc: "The living heartbeat of the ecosystem. A collective of learners, voters, builders, creators, and contributors.",
                 gradient: "from-purple-600 to-purple-800"
+              },
+              {
+                icon: "🎓",
+                title: "AlphaDAO Bootcamp",
+                subtitle: "Education",
+                desc: "Our educational engine providing free Web3, trading, and governance education, awarding soulbound NFT certifications and Learn2Earn rewards.",
+                gradient: "from-blue-600 to-purple-600"
               },
               {
                 icon: "🔬",
                 title: "AlphaDAO Labs",
-                subtitle: "Innovation Hub",
-                desc: "Research, development & infrastructure for the decentralized future",
-                gradient: "from-blue-600 to-purple-600"
-              },
-              {
-                icon: "🛡️",
-                title: "Recertify",
-                subtitle: "Verification Engine",
-                desc: "Blockchain-powered digital records & skill certification system",
+                subtitle: "Development",
+                desc: "Our innovation hub where ideas become real products such as mini-apps, tools, experiments, and future prediction markets.",
                 gradient: "from-purple-600 to-purple-800"
               }
             ].map((pillar, idx) => (
@@ -266,6 +266,100 @@ export default function Home() {
       </motion.section>
       
       <Roadmap />
+      
+      {/* AlphaDAO Academy Section */}
+      <motion.section 
+        className="py-20 px-4 md:px-12 relative bg-gray-900/50 backdrop-blur-sm"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-900/80 to-emerald-900/40 backdrop-blur-sm rounded-3xl border border-emerald-500/30 p-8 md:p-12 shadow-2xl">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center">
+                  <span className="text-3xl">🎓</span>
+                </div>
+                <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  AlphaDAO Academy
+                </h2>
+              </div>
+              <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                The education and talent-development arm of the AlphaDAO ecosystem. <span className="text-emerald-400 font-semibold">Education is treated as infrastructure</span> — not content creation alone.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 className="text-2xl font-bold text-emerald-300 mb-6 flex items-center gap-2">
+                  <span>🎯</span> Core Responsibilities
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    "Curriculum design across Web3, blockchain, product, and research disciplines",
+                    "Delivery of bootcamps, cohorts, workshops, and guided programs",
+                    "Learn-to-earn and quest-based education models",
+                    "Skill assessment and certification via Recertify",
+                    "Talent discovery and onboarding into AlphaDAO Labs and partner projects"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="text-emerald-400 mt-1">•</span>
+                      <span className="text-gray-200">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold text-emerald-300 mb-6 flex items-center gap-2">
+                  <span>🏢</span> Internal Structure
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { unit: "Head of Academy", function: "Strategic leadership, curriculum direction, DAO reporting" },
+                    { unit: "Curriculum & Content Team", function: "Program design, learning materials, syllabus updates" },
+                    { unit: "Instructors & Mentors", function: "Teaching, guidance, technical instruction" },
+                    { unit: "Assessment & Certification Team", function: "Skill evaluation, certification issuance (Recertify)" },
+                    { unit: "Learning Facilitators", function: "Cohort coordination, learner support, engagement" }
+                  ].map((item, i) => (
+                    <div key={i} className="bg-emerald-900/30 rounded-xl p-4 border border-emerald-500/20">
+                      <h4 className="text-emerald-200 font-semibold mb-1">{item.unit}</h4>
+                      <p className="text-gray-300 text-sm">{item.function}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-r from-blue-900/40 to-cyan-900/40 rounded-2xl p-6 border border-blue-500/30 text-center">
+                <div className="text-3xl mb-3">🌐</div>
+                <h4 className="text-blue-200 font-semibold mb-2">Ecosystem Integration</h4>
+                <p className="text-gray-300 text-sm">Labs receive talent from the Academy, while the Foundation supports programs through funding and grants.</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 rounded-2xl p-6 border border-purple-500/30 text-center">
+                <div className="text-3xl mb-3">💰</div>
+                <h4 className="text-purple-200 font-semibold mb-2">Incentives & Sustainability</h4>
+                <p className="text-gray-300 text-sm">Contributors are compensated through DAO-approved revenue allocations, grants, and incentive programs.</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-orange-900/40 to-red-900/40 rounded-2xl p-6 border border-orange-500/30 text-center">
+                <div className="text-3xl mb-3">🗳️</div>
+                <h4 className="text-orange-200 font-semibold mb-2">Governance Alignment</h4>
+                <p className="text-gray-300 text-sm">The Academy operates under DAO governance. The Academy executes; the DAO governs.</p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gradient-to-r from-emerald-900/60 to-teal-900/60 rounded-2xl p-8 border border-emerald-500/40">
+                <p className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
+                  Developing skilled contributors, certifying real competencies
+                </p>
+                <p className="text-gray-300 text-lg">Creating a continuous pipeline of talent for AlphaDAO Labs, partners, and the broader Web3 ecosystem</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
       
       {/* Innovation Showcase Section */}
       <motion.section 

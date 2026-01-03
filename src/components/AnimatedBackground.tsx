@@ -144,7 +144,7 @@ export default function AnimatedBackground() {
       {/* Matrix canvas */}
       <canvas ref={canvasRef} className="matrix-canvas" />
 
-      <style jsx>{`
+      <style>{`
         .aurora {
           position: fixed;
           inset: 0;
@@ -243,7 +243,7 @@ export default function AnimatedBackground() {
           z-index: 1;
         }
 
-        :global(.glassy-box) {
+        .glassy-box {
           position: absolute;
           width: 120px;
           height: 120px;
@@ -268,7 +268,7 @@ export default function AnimatedBackground() {
           100% { box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 20px rgba(255,255,255,0.25) inset, 0 0 0px #d59bff; }
         }
 
-        :global(.shimmer-box) {
+        .shimmer-box {
           position: absolute;
           inset: 0;
           background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
@@ -290,7 +290,7 @@ export default function AnimatedBackground() {
           z-index: 1;
         }
 
-        :global(.light-orb) {
+        .light-orb {
           position: absolute;
           width: 240px;
           height: 240px;
@@ -315,7 +315,7 @@ export default function AnimatedBackground() {
           z-index: 1;
         }
 
-        :global(.halo-ring) {
+        .halo-ring {
           position: absolute;
           width: 420px;
           height: 420px;
