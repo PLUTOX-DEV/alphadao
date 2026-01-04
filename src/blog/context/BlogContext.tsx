@@ -23,6 +23,74 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const response: { data: BlogPost[], total: number, page: number, limit: number } = await new Promise(resolve => setTimeout(() => {
      const allPosts: BlogPost[] = [
   {
+    id: 'alphadao-academy',
+    title: 'AlphaDAO Academy: Structure & Operating Model',
+    author: 'AlphaDAO Education Team',
+    description: 'Discover how AlphaDAO Academy develops skilled contributors and creates a continuous pipeline of talent for the Web3 ecosystem.',
+    content: `<div class="prose max-w-none">
+      <h2>AlphaDAO Academy: Structure & Operating Model</h2>
+      
+      <p>AlphaDAO Academy is the education and talent-development arm of the AlphaDAO ecosystem. It exists to develop skilled contributors, certify real competencies, and create a continuous pipeline of talent for AlphaDAO Labs, partners, and the broader Web3 ecosystem.</p>
+      
+      <h3>1. Mandate & Purpose</h3>
+      <p>The Academy focuses on structured learning, verifiable skill acquisition, and contributor readiness. <strong>Education is treated as infrastructure</strong> — not content creation alone.</p>
+      
+      <h3>2. Core Responsibilities</h3>
+      <ul>
+        <li>Curriculum design across Web3, blockchain, product, and research disciplines</li>
+        <li>Delivery of bootcamps, cohorts, workshops, and guided programs</li>
+        <li>Learn-to-earn and quest-based education models</li>
+        <li>Skill assessment and certification via Recertify</li>
+        <li>Talent discovery and onboarding into AlphaDAO Labs and partner projects</li>
+      </ul>
+      
+      <h3>3. Internal Structure</h3>
+      <table class="w-full border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 p-2 text-left">Unit</th>
+            <th class="border border-gray-300 p-2 text-left">Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2"><strong>Head of Academy</strong></td>
+            <td class="border border-gray-300 p-2">Strategic leadership, curriculum direction, DAO reporting</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2"><strong>Curriculum & Content Team</strong></td>
+            <td class="border border-gray-300 p-2">Program design, learning materials, syllabus updates</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2"><strong>Instructors & Mentors</strong></td>
+            <td class="border border-gray-300 p-2">Teaching, guidance, technical instruction</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2"><strong>Assessment & Certification Team</strong></td>
+            <td class="border border-gray-300 p-2">Skill evaluation, certification issuance (Recertify)</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2"><strong>Learning Facilitators</strong></td>
+            <td class="border border-gray-300 p-2">Cohort coordination, learner support, engagement</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3>4. Relationship to Other AlphaDAO Arms</h3>
+      <p>AlphaDAO Academy operates independently but in coordination with other ecosystem arms. Labs receive talent from the Academy, while the Foundation supports programs through funding and grants. Governance remains DAO-driven.</p>
+      
+      <h3>5. Incentives & Sustainability</h3>
+      <p>Academy contributors are compensated through DAO-approved revenue allocations, grants, and incentive programs. Participation and achievement may be rewarded with credentials, reputation, and future opportunities.</p>
+      
+      <h3>6. Governance Alignment</h3>
+      <p>The Academy operates under DAO governance. Program launches, budgets, and major changes are subject to DAO-approved frameworks. <strong>The Academy executes; the DAO governs.</strong></p>
+    </div>`,
+    imageUrl: './blogpic.jpeg',
+    tags: ['academy', 'education', 'alphadao', 'web3'],
+    published: true,
+    createdAt: '2025-01-16T12:00:00Z',
+  },
+  {
     id: 'alphadao-1',
     title: 'AlphaDAO: A Digital Nation for Builders, Creators, and Innovators',
     author: 'AlphaDAO Team',

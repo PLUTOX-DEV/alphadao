@@ -90,7 +90,7 @@ const About = () => (
                   The Three Pillars
                 </h2>
               </div>
-              <p className="text-xl text-gray-300">AlphaDAO is built on three interconnected foundations</p>
+              <p className="text-xl text-gray-300">The Three Pillars of AlphaDAO</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -99,28 +99,28 @@ const About = () => (
                   icon: "👥",
                   number: "01",
                   title: "AlphaDAO Society",
-                  subtitle: "Community Layer",
-                  desc: "Global network where builders learn, contribute & govern together",
+                  subtitle: "The Community",
+                  desc: "The living heartbeat of the ecosystem. A collective of learners, voters, builders, creators, and contributors.",
                   gradient: "from-purple-600 to-purple-800",
                   features: ["Community voting", "Learn-to-Earn", "On-chain identity"]
                 },
                 {
-                  icon: "🔬",
+                  icon: "🎓",
                   number: "02",
-                  title: "AlphaDAO Labs",
-                  subtitle: "Innovation Hub",
-                  desc: "Research & development arm building the decentralized future",
+                  title: "AlphaDAO Bootcamp",
+                  subtitle: "Education",
+                  desc: "Our educational engine providing free Web3, trading, and governance education, awarding soulbound NFT certifications and Learn2Earn rewards.",
                   gradient: "from-blue-600 to-purple-600",
-                  features: ["Product development", "Research", "Infrastructure"]
+                  features: ["Web3 education", "Trading courses", "NFT certifications"]
                 },
                 {
-                  icon: "🛡️",
+                  icon: "🔬",
                   number: "03",
-                  title: "Recertify",
-                  subtitle: "Verification Engine",
-                  desc: "Blockchain-powered digital records & skill certification",
+                  title: "AlphaDAO Labs",
+                  subtitle: "Development",
+                  desc: "Our innovation hub where ideas become real products such as mini-apps, tools, experiments, and future prediction markets.",
                   gradient: "from-cyan-600 to-blue-600",
-                  features: ["Skill certification", "Digital badges", "Trusted records"]
+                  features: ["Mini-apps", "Tools & experiments", "Prediction markets"]
                 }
               ].map((pillar, idx) => (
                 <div key={idx} className="group relative cursor-pointer" onClick={() => window.open('/AlphaDAO-Complete-Whitepaper.pdf', '_blank')}>
@@ -355,6 +355,74 @@ const About = () => (
               </div>
               <div className="mt-6 p-4 bg-green-800/40 rounded-xl border border-green-500/30 text-center">
                 <p className="text-green-200 font-semibold">Reputation First, Rewards Follow</p>
+              </div>
+            </div>
+          </section>
+
+          {/* AlphaDAO Academy Section */}
+          <section className="group">
+            <div className="bg-gradient-to-br from-emerald-900/60 to-teal-900/40 backdrop-blur-sm rounded-3xl border border-emerald-500/30 p-10 hover:border-emerald-400/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center">
+                  <span className="text-3xl">🎓</span>
+                </div>
+                <div>
+                  <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                    AlphaDAO Academy
+                  </h2>
+                  <p className="text-emerald-200 text-xl">Structure & Operating Model</p>
+                </div>
+              </div>
+              
+              <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+                The education and talent-development arm of the AlphaDAO ecosystem. It exists to develop skilled contributors, certify real competencies, and create a <span className="text-emerald-400 font-semibold">continuous pipeline of talent</span> for AlphaDAO Labs, partners, and the broader Web3 ecosystem.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-emerald-300 mb-4 flex items-center gap-2">
+                    <span>🎯</span> Core Responsibilities
+                  </h3>
+                  <div className="space-y-3">
+                    {[
+                      "Curriculum design across Web3, blockchain, product, and research disciplines",
+                      "Delivery of bootcamps, cohorts, workshops, and guided programs",
+                      "Learn-to-earn and quest-based education models",
+                      "Skill assessment and certification via Recertify",
+                      "Talent discovery and onboarding into AlphaDAO Labs and partner projects"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="text-emerald-400">•</span>
+                        <span className="text-gray-200 text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-bold text-emerald-300 mb-4 flex items-center gap-2">
+                    <span>🏢</span> Internal Structure
+                  </h3>
+                  <div className="space-y-3">
+                    {[
+                      { unit: "Head of Academy", function: "Strategic leadership, curriculum direction" },
+                      { unit: "Curriculum & Content Team", function: "Program design, learning materials" },
+                      { unit: "Instructors & Mentors", function: "Teaching, guidance, technical instruction" },
+                      { unit: "Assessment Team", function: "Skill evaluation, certification issuance" }
+                    ].map((item, i) => (
+                      <div key={i} className="bg-emerald-900/30 rounded-xl p-3 border border-emerald-500/20">
+                        <h4 className="text-emerald-200 font-semibold text-sm mb-1">{item.unit}</h4>
+                        <p className="text-gray-300 text-xs">{item.function}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-r from-emerald-800/40 to-teal-800/40 rounded-2xl p-6 border border-emerald-500/30 text-center">
+                <p className="text-emerald-200 italic text-lg">
+                  "Education is treated as infrastructure — not content creation alone."
+                </p>
               </div>
             </div>
           </section>
